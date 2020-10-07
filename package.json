@@ -1,9 +1,7 @@
 {
-  "//1": "ACAR Tarafından hazırlanıp özellikle etkinlikleri ayarlanmış bir register botudur.",
-  "//2": "Yüksek performans ve gereksiz kod olmadan sorunsuz kullanım.",
-  "name": "hello-express",
+  "name": "acar-temiz-altyapi",
   "version": "0.0.1",
-  "description": "Selahattin ACAR Register Botu Alt Yapısı",
+  "description": "discord.gg/acar",
   "main": "acar.js",
   "scripts": {
     "start": "node acar.js"

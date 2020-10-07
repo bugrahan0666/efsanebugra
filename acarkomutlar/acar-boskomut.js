@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
-const acarayarlar = require('../acarregister/botayarlari.json');
-let acar = require('../acarregister/botayarlari.json');
+const acarayarlar = require('../acar/botayarlari.json');
+let acar = require('../acar/botayarlari.json');
 
 
 exports.run = (client, message, args) => {
@@ -17,10 +17,4 @@ exports.help = {
   name: "boşkomut",
   description: "ACAR Temiz v11 Altyapı",
   usage: ""
-};
-
-
-exports.acar = {
-    acardizini: 'acar-boskomut.js',
-    acarprefix: acar.prefix,
 };

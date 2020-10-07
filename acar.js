@@ -27,7 +27,7 @@ fs.readdir('./acarkomutlar/', (err, files) => {
   log(`( ${files.length} ) adet dizin ve komut algılandı ve yüklendi.`);
   files.forEach(f => {
     let props = require(`./acarkomutlar/${f}`);
-    log(`Yüklenen komut ve dizin: ${props.acar.acarprefix}${props.help.name} & ${props.acar.acardizini}.`);
+    log(`Yüklenen komut ve dizin: ${acar.prefix}${props.help.name}`);
     client.commands.set(props.help.name, props);
     props.conf.aliases.forEach(alias => {
       client.aliases.set(alias, props.help.name);

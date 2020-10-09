@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const acarayarlar = require('../acar/botayarlari.json');
 let acar = require('../acar/botayarlari.json');
+const db = require('quick.db')
 exports.run = async (client, message, args) => {
   message.delete()
   if (!message.member.roles.has(acarayarlar.registercommandid) && !message.member.roles.has(acarayarlar.botcommandid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
@@ -21,6 +22,7 @@ let yas = args[2]
   .setImage(acarayarlar.sunucuembedaltıresim)
   .addField(`🔹 İşlem Bilgisi`, `▫ Kullanıcının Yeni İsmi : \`${acarf(isim)}\`\n▫ Kullanıcının Yeni Yaşı : \`${yas}\``) 
   .setDescription("\n▫ <@" + member.user.id + "> Adlı kullanıcının isim bilgilerini değiştirdim!")
+  db.add(`yetkili.${message.author.id}.isim`, 1);
   message.channel.send(embed).then(msg => msg.delete(12000));
 };
 

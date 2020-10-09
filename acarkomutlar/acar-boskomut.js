@@ -7,14 +7,11 @@ exports.run = (client, message, args) => {
   
 let uye = message.mentions.users.first() || message.author;
 let bilgi = db.get(`yetkili.${uye.id}`);
-var erkek = bilgi.erkek  
-var kiz = bilgi.kadın  
-var ban = bilgi.ban
-var jail = bilgi.jail
-var mute = bilgi.mute
-if(bilgi !== null) { 
-message.reply("Yetkili işlemi uygulanmamış.").then(message => message.delete(2000))
-}
+let erkek = db.get(`yetkili.${uye.id}.erkek`) || 0;
+let kiz = db.get(`yetkili.${uye.id}.kiz`) || 0;
+let ban = db.get(`yetkili.${uye.id}.ban`) || 0;
+let jail = db.get(`yetkili.${uye.id}.jail`) || 0;
+let mute = db.get(`yetkili.${uye.id}.mute`) || 0;
 
 var ses_suresi = Math.round(db.get(`${uye.id}_sesdedur`)/60)+" dakika"
  const embed = new Discord.RichEmbed()

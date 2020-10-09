@@ -9,6 +9,7 @@ exports.run = async (client, message, args) => {
   let user = message.mentions.users.first();
   let rol = message.mentions.roles.first()
   let member = message.guild.member(kullanıcı)
+   if (member.roles.has(acarayarlar.kayıtsızrol)) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.sunucuadi} Hata` , `Kullanıcı zaten kayıtlı tekrardan kayıt edemem!`).setColor("RED").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
 if(member.roles.has(acarayarlar.erkekrol1)) {
 db.fetch(`yetkili.${message.author.id}`);
 db.add(`yetkili.${message.author.id}.erkek`, -1);

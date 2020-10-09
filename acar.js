@@ -252,3 +252,23 @@ if(member.user.username.includes("tag girin")){
 }
   
 });
+
+client.on('voiceStateUpdate', async (oldMember, newMember) => {
+  let oV = oldMember.voiceChannel;
+  let nV = newMember.voiceChannel;
+  if (!oV) {
+   var ksesgiris = Date.now()
+   db.set(`kgiris_${oldMember.id}`, ksesgiris)
+  } else if (!nV) {
+   var kegiris = db.get(`kgiris_${oldMember.id}`)
+   if(kegiris === null) return;
+    var sessuresi = Date.now()-kegiris
+    var sesdedurma = db.get(`${oldMember.id}_sesdedur`)
+    var sncinsindensure = Math.round(sessuresi/1000)
+    if(sesdedurma === null) {
+      db.set(`${oldMember.id}_sesdedur`, sncinsindensure) //Veriyi çekerken db.get(`KULLANICI ID_sesdedur`) kullanın - var ses_suresi = Math.round(db.get(`KULLANICI ID_sesdedur`)/60)+" dakika" - kullanarak dakika cinsinden kullanabilirsiniz
+    } else {
+      db.set(`${oldMember.id}_sesdedur`, sesdedurma+sncinsindensure) //Veriyi çekerken db.get(`KULLANICI ID_sesdedur`) kullanın - var ses_suresi = Math.round(db.get(`KULLANICI ID_sesdedur`)/60)+" dakika" -kullanarak dakika cinsinden kullanabilirsiniz
+    }
+  }
+});

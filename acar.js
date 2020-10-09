@@ -573,7 +573,9 @@ client.on("message", async message => {
   }
 });
 
-client.on("message", async msg => {
+client.on("message", async (oldMsg, newMsg, msg) => {
+  let aktif = await db.fetch(`küfürEngelacar_${oldMsg.channel.id}`)
+  if(!aktif) return;
     if(msg.author.bot) return;
     if(msg.channel.type === "dm") return;
                   const küfür = [

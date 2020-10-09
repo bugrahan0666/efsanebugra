@@ -28,7 +28,7 @@ exports.conf = {
   permLevel: 3
 };
 exports.help = {
-  name: 'reklam-engel',
+  name: 'reklamengel',
   description: 'reklam engellemeyi açar',
   usage: 'CodeShare'
 }

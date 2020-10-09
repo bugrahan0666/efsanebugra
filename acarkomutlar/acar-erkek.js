@@ -46,10 +46,10 @@ await
   .setTitle(acarayarlar.tag + ' ' + acarayarlar.sunucuadi)
   .setThumbnail(acarayarlar.sunucuresim)
   .setImage(acarayarlar.sunucuembedaltıresim)
-  .addField(`🔹 İşlem Bilgileri`, ` ▫ İşlem Yapılan Kullanıcı : <@${member.user.id}>\n▫ İşlem Yapılan Kullanıcı ID : \`${member.user.id}\`\n▫ İşlem Yapılanın İsmi : \`${acarf(isim)}\`\n▫ İşlem Yapılanın Yaşı : \`${yas}\`\n▫ İşlem Sırasında Alınan Roller : <@&${acarayarlar.kayıtsızrol}>\n▫ İşlem Sırasında Verilen Roller : <@&${acarayarlar.erkekrol1}> & <@&${acarayarlar.erkekrol1}>\n`) 
-  .addField(`🔸 Yetkili Bilgileri`,` ▫ İşlemi Yapan Yetkili : \`${message.author.tag}\`\n▫ İşlemi Yapan Yetkili ID : \`${message.author.id}\`\n▫ Yetkilinin detaylı bilgileri için : \`${acarayarlar.prefix}yb <@${message.author.id}>\` `)
-  .setDescription("▫ <@" + member.user.id + "> Adlı kullanıcı **Erkek** olarak kayıt edildi!")
-  return await(kanal1.send(embed).then(kanal.send(embed1).then(msg => msg.delete(12000))));
+  .addField(`🔹 İşlem Bilgileri`, `▫ İşlem Yapılanın İsmi : \`${acarf(isim)}\`\n▫ İşlem Yapılanın Yaşı : \`${yas}\`\n▫ İşlem Yapılan Kullanıcı Adı : \`${member.user.tag}\`\n▫ İşlem Yapılan Kullanıcı ID : \`${member.user.id}\``) 
+  .addField(`🔸 Yetkili Bilgileri`,`▫ İşlemi Yapan Yetkili : \`${message.author.tag}\`\n▫ İşlemi Yapan Yetkili ID : \`${message.author.id}\`\n▫ Detaylı bilgi için : \`${acarayarlar.prefix}yb <@${message.author.id}>\` `)
+  .setDescription("\n▫ <@" + member.user.id + "> Adlı kullanıcı **Erkek** olarak kayıt edildi!")
+  return  await(message.reply('Erkek olarak başarıyla kayıt ettim!').then(msg => msg.delete(5000)).then(kanal1.send(embed).then(kanal.send(embed1).then(msg => msg.delete(12000)))));
 };
 exports.conf = {
   enabled: true,

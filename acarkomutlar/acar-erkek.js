@@ -46,7 +46,7 @@ await
   .setTitle(acarayarlar.tag + ' ' + acarayarlar.sunucuadi)
   .setThumbnail(acarayarlar.sunucuresim)
   .addField(`🔹 İşlem Bilgileri`, ` ▫ İşlem Yapılan Kullanıcı : \`${member.user.tag}\`\n▫ İşlem Yapılan Kullanıcı ID : \`${member.user.id}\`\n▫ İşlem Yapılanın İsmi : \`${acarf(isim)}\`\n▫ İşlem Yapılanın Yaşı : \`${yas}\`\n▫ İşlem Sırasında Alınan Roller : <@&${acarayarlar.kayıtsızrol}>\n▫ İşlem Sırasında Verilen Roller : <@&${acarayarlar.erkekrol1}> & <@&${acarayarlar.erkekrol1}>\n`) 
-  .addField(`🔸 Yetkili Bilgileri`,` ▫ İşlemi Yapan Yetkili : \`${message.author.tag}\`\n▫ İşlemi Yapan Yetkili ID : \`${message.author.id}\`\n▫ Yetkilinin diğer bilgileri için : \`${acarayarlar.prefix}yetkilibilgi \` `)
+  .addField(`🔸 Yetkili Bilgileri`,` ▫ İşlemi Yapan Yetkili : \`${message.author.tag}\`\n▫ İşlemi Yapan Yetkili ID : \`${message.author.id}\`\n▫ Yetkilinin diğer bilgileri için : \`${acarayarlar.prefix}yetkilibilgi <@etiket>\` `)
   .setDescription("▫ " + member.user.tag + " Adlı kullanıcı **Erkek** olarak kayıt edildi!")
   return await(kanal1.send(embed).then(kanal.send(embed1).then(msg => msg.delete(12000))));
   message.reply(`▫ Şuan da toplam \`${erkek+kiz}\` adet kayıt işlemi bulunmakta seni tebrik ederiz.`).then(msg => msg.delete(5000));

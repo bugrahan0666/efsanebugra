@@ -5,7 +5,7 @@ const db = require('quick.db')
 
 exports.run = (client, message, args) => {
   
-let uye = message.mentions.users.first() || message.author;
+let uye = message.mentions.users.first() || message.author
 let bilgi = db.get(`yetkili.${uye.id}`);
 let erkek = db.get(`yetkili.${uye.id}.erkek`) || 0;
 let kiz = db.get(`yetkili.${uye.id}.kadın`) || 0;

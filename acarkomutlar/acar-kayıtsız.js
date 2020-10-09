@@ -3,17 +3,13 @@ const db = require("quick.db")
 const acarayarlar = require('../acar/botayarlari.json');
 let acar = require('../acar/botayarlari.json');
 exports.run = async (client, message, args) => {
-const emoji3 = client.emojis.find(emoji => emoji.name === acarayarlar.tagemojiadi);
- if (!message.member.roles.has(acarayarlar.registercommandid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.morparıltı}   Bilgi` , `${acarayarlar.ünlem}  Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+ if (!message.member.roles.has(acarayarlar.registercommandid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Bilgi` , `Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   let kullanıcı = message.mentions.users.first()
-  if (!kullanıcı) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.morparıltı}  Bilgi` , `${acarayarlar.ünlem}  Bir kullanıcı etiketlemelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+  if (!kullanıcı) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Bilgi` , `Bir kullanıcı etiketlemelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   let user = message.mentions.users.first();
   let rol = message.mentions.roles.first()
   let member = message.guild.member(kullanıcı)
- //let isim = args[1]
-   //   if(!isim) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.morparıltı} Bilgi` , `${acarayarlar.ünlem}  Bir isim girmelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
-
-if(message.member.roles.has(acarayarlar.erkekrol1)) {
+if(member.roles.has(acarayarlar.erkekrol1)) {
 db.fetch(`yetkili.${message.author.id}`);
 db.add(`yetkili.${message.author.id}.erkek`, -1);
 message.author.send('Bir erkeği kayıtsıza attığın için teyit sıralamana -1 puan yansıdı.')
@@ -32,7 +28,7 @@ message.guild.members.get(member.id).removeRole(r)
   
   let embed = new Discord.RichEmbed() 
   .setColor("BLACK")
-  .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}`, `${emoji3} ${member.user} **adlı üyeye** <@&${acarayarlar.kayıtsızrol}> **rolünü verip kayıtsıza attım.**`)                                                                             
+  .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}`, `${member.user} **adlı üyeye** <@&${acarayarlar.kayıtsızrol}> **rolünü verip kayıtsıza attım.**`)                                                                             
   .setFooter(message.author.tag ,message.author.avatarURL)
   .setTimestamp()
   return message.channel.send(embed).then(msg => msg.delete(5000));

@@ -116,40 +116,40 @@ client.on("guildMemberAdd", async member => {
          const user2 = member.user;
          var tarih = ''
             if(moment(user2.createdAt).format('MM') === '01') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __**${moment(user.createdAt).format('DD')} Ocak (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})**__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __**${moment(user.createdAt).format('DD')} Ocak (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__**`
             }
             if(moment(user2.createdAt).format('MM') === '02') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __**${moment(user.createdAt).format('DD')} Şubat (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})**__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} **__${moment(user.createdAt).format('DD')} Şubat (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__**`
             }
             if(moment(user2.createdAt).format('MM') === '03') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __**${moment(user.createdAt).format('DD')} Mart (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})**__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} **__${moment(user.createdAt).format('DD')} Mart (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__**`
             }
             if(moment(user2.createdAt).format('MM') === '04') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __**${moment(user.createdAt).format('DD')} Nisan (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})**__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} **__${moment(user.createdAt).format('DD')} Nisan (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__**`
             }
             if(moment(user2.createdAt).format('MM') === '05') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __**${moment(user.createdAt).format('DD')} Mayıs (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})**__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} **__${moment(user.createdAt).format('DD')} Mayıs (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__**`
             }
             if(moment(user2.createdAt).format('MM') === '06') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __**${moment(user.createdAt).format('DD')} Haziran (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})**__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} **__${moment(user.createdAt).format('DD')} Haziran (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__**`
             }
             if(moment(user2.createdAt).format('MM') === '07') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __**${moment(user.createdAt).format('DD')} Temmuz (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})**__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} **__${moment(user.createdAt).format('DD')} Temmuz (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__**`
             }
             if(moment(user2.createdAt).format('MM') === '08') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __**${moment(user.createdAt).format('DD')} Ağustos (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})**__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} **__${moment(user.createdAt).format('DD')} Ağustos (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__**`
             }
             if(moment(user2.createdAt).format('MM') === '09') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __**${moment(user.createdAt).format('DD')} Eylül (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})**__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} **__${moment(user.createdAt).format('DD')} Eylül (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__**`
             }
             if(moment(user2.createdAt).format('MM') === '10') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __**${moment(user.createdAt).format('DD')} Ekim (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})**__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __**${moment(user.createdAt).format('DD')} Ekim (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__**`
             }
             if(moment(user2.createdAt).format('MM') === '11') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __**${moment(user.createdAt).format('DD')} Kasım (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})**__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} **__${moment(user.createdAt).format('DD')} Kasım (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__**`
             }
             if(moment(user2.createdAt).format('MM') === '12') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __**${moment(user.createdAt).format('DD')} Aralık (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})**__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} **__${moment(user.createdAt).format('DD')} Aralık (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__**`
             }
 
     await member.setNickname(`${kullanıcıadı}`);
@@ -158,18 +158,15 @@ client.on("guildMemberAdd", async member => {
     let acargüvensiz = client.emojis.find(emoji => emoji.name === "güvensiz");
     await client.channels
     
-      .get(' ')
-      .send(`**${acar} Welcome to ACAR Code Center ${acar}**\n
-${acar} **Hoşgeldin ${member} Seninle beraber ${member.guild.memberCount} Kişiyiz!**\n
-${acar} **Müsait olduğunda Teyit odalarından birine geçip kaydını yaptırabilirsin.**\n
-${acar} <@&763924998263275540> seninle ilgilenecektir.\n
-${acar} Hesabın oluşturma tarihi: **${tarih}** \n${new Date().getTime() - member.user.createdAt.getTime() <15 * 24 * 60 * 60 * 1000 ? "__**Bu Hesap Şüpheli Görünüyor**__" 
+      .get('763812215550640171')
+      .send(`**${acar} Welcome to ACAR Code Center ${acar}**
+${acar} **Hoşgeldin ${member} Seninle Beraber ${member.guild.memberCount} Kişiyiz!**
+${acar} **Müsait Olduğunda Teyit Odalarından Birine Geçip Kaydını Yaptırabilirsin.**
+${acar} <@&763924998263275540> seninle ilgilenecektir.
+${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - member.user.createdAt.getTime() <15 * 24 * 60 * 60 * 1000 
+            ? "__**Bu Hesap Şüpheli Görünüyor**__"
             : "__**Bu Hesap Güvenilir Görünüyor**__"
-            } 
-`,
-         new Discord.Attachment(
-          
-        )  );
+            }`);
   } catch (err) {
     console.log(err);
   }

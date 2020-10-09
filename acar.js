@@ -311,3 +311,251 @@ client.on('voiceStateUpdate', async (oldMember, newMember) => {
     }
   }
 });
+
+client.on('message', async message => {
+   if(message.author.bot || message.channel.type === "dm") return;
+           if (message.content.toLowerCase() === prefix+'tag') {
+    message.channel.sendMessage(acar.tag).then(msg => msg.delete(5000));
+            
+  }
+});
+client.on('userUpdate', async (oldUser, newUser) => {
+  var tag3 = acar.tag
+   let acar10 = client.emojis.find(emoji => emoji.name === acar.ototagemoji);
+  let sunucu = client.guilds.find(e => e.id === acar.sunucuid)
+  let rol = sunucu.roles.find(a => a.id === acar.familyrol)
+  let uye = sunucu.members.get(newUser.id)
+  if (newUser.username.includes(tag3) && !oldUser.username.includes(tag3)) {
+    uye.addRole(acar.familyrol)
+    let embed = new Discord.RichEmbed()
+    .setColor(`GREEN`)
+    .setDescription(`${acar10} <@${newUser.id}> adlı üye "${acar.tag}" tagımızı aldığı için <@&${acar.familyrol}> rolü verildi!`)
+    client.channels.get(acar.tagallogid).send(embed)
+
+  }
+}
+          );
+
+client.on('userUpdate', async (oldUser, newUser) => {
+  var tag3 = acar.tag
+  let acar10 = client.emojis.find(emoji => emoji.name === acar.ototagemoji);
+  let sunucu = client.guilds.find(e => e.id === acar.sunucuid)
+  let rol = sunucu.roles.find(a => a.id === acar.familyrol)
+  let uye = sunucu.members.get(oldUser.id)
+  if (oldUser.username.includes(tag3) && !newUser.username.includes(tag3)) {
+    uye.removeRole(acar.familyrol) // family
+    let embed = new Discord.RichEmbed()
+    .setColor(`RED`)
+    .setDescription(`${acar10} <@${oldUser.id}> adlı üye "${acar.tag}" tagımızı çıkardığı için <@&${acar.familyrol}> rolü alındı!`)
+    client.channels.get(acar.tagallogid).send(embed)
+
+  }
+}
+          );
+
+
+client.on('message', async (message , member) => {
+   if(message.author.bot || message.channel.type === "dm") return;
+           if (message.content.toLowerCase() === '!tag') {
+    message.channel.sendMessage(acar.tag).then(msg => msg.delete(10000));
+  }
+});
+
+
+
+client.on('message', async message => {
+   if(message.author.bot || message.channel.type === "dm") return;
+           if (message.content.toLowerCase() === prefix+'link') {
+    message.reply(acar.sunucudavetlinki).then(msg => msg.delete(10000));
+  }
+});
+
+client.on('message', async message => {
+   if(message.author.bot || message.channel.type === "dm") return;
+           if (message.content.toLowerCase() === 'link') {
+    message.reply(acar.sunucudavetlinki).then(msg => msg.delete(10000));
+       
+  }
+});
+client.on('message', async (message, member) => {
+   if(message.author.bot || message.channel.type === "dm") return;
+           if (message.content.toLowerCase() === '!link') {
+    message.reply(acar.sunucudavetlinki).then(msg => msg.delete(10000));
+  }
+});
+
+
+client.on("message",async message => {
+   if (message.author.bot || message.channel.type === "dm") return;
+ 
+  //return message.channel.send(`**${user_tag}** Şu anda afk.\nNedeni:${key.reason}`)
+  //return message.reply(`Artık afk değilsin. Tekrardan hoş geldin.`).then(msg => msg.delete(9000))
+    var afklar =await db.fetch(`afk_${message.author.id}, ${message.guild.id}`)
+    
+  if(afklar){
+    
+    db.delete(`afk_${message.author.id}, ${message.guild.id}`)
+    db.delete(`afk-zaman_${message.author.id}, ${message.guild.id}`)
+    
+    message.reply(`Artık afk değilsin. Tekrardan hoş geldin.`).then(msg => msg.delete(9000))
+       try{
+    let takma_ad = message.member.nickname.replace("[AFK]", "")
+    message.member.setNickname(takma_ad).catch(err => console.log(err));
+       }catch(err){   
+
+ console.log(err.message)
+  }
+  }
+  var kullanıcı = message.mentions.users.first()
+  if(!kullanıcı) return
+   let zaman =  await db.fetch(`afk-zaman_${kullanıcı.id}, ${message.guild.id}`)
+  
+   
+    var süre = ms(Date.now() - zaman)
+    
+    
+   var sebep = await db.fetch(`afk_${kullanıcı.id}, ${message.guild.id}`)
+  if(await db.fetch(`afk_${message.mentions.users.first().id}, ${message.guild.id}`)){
+  if(süre.days !== 0){
+     message.channel.send(`**${kullanıcı}** adlı kullanıcı **${sebep}** sebebi ile afk! `)
+   return
+   }
+  }
+})
+    client.on("message", async msg => {
+    if (msg.channel.type === "dm") return;
+      if(msg.author.bot) return;  
+        if (msg.content.length > 4) {
+         if (db.fetch(`capslock_${msg.guild.id}`)) {
+           let caps = msg.content.toUpperCase()
+           if (msg.content == caps) {
+             if (!msg.member.hasPermission("ADMINISTRATOR")) {
+               if (!msg.mentions.users.first()) {
+                 msg.delete()
+                 return msg.channel.send(`${msg.author}, Capslock kullanma!`).then(m => m.delete(5000))
+     }
+       }
+     }
+   }
+  }
+});
+client.on("message", msg => {
+  if (msg.content.toLowerCase() === "sa") {
+    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content.toLowerCase() === "Sa") {
+    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content.toLowerCase() === "Sea") {
+    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content.toLowerCase() === "sea") {
+    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content.toLowerCase() === "Selamın Aleyküm") {
+    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content.toLowerCase() === "selamın aleyküm") {
+    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content.toLowerCase() === "Selamun Aleyküm") {
+    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content.toLowerCase() === "selamun aleyküm") {
+    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content.toLowerCase() === "bot seni kim yaptı") {
+    msg.reply("Nam-ı Değer Puşşttt ACAR#0001 Yaptı!!");
+  }
+});
+
+client.on("message", async msg => {
+    if(msg.author.bot) return;
+    if(msg.channel.type === "dm") return;
+ 
+              const reklam = ["discord.app", "discord.gg", "invite","discordapp","discordgg", ".com", ".net", ".xyz", ".tk", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ".org", ".com.tr", ".biz", ".party", ".rf.gd", ".az",];
+              if (reklam.some(word => msg.content.toLowerCase().includes(word))) {
+                try {
+                  if (!msg.member.hasPermission("MANAGE_GUILD")) {
+                    msg.delete();                   
+                     return msg.reply("Reklam yapmak yasaktır lütfen reklam yapma!").then(msg => msg.delete(2000));
+                  }             
+                } catch(err) {
+                  console.log(err);
+              
+              }
+          }
+  });
+
+client.on("message", async msg => {
+    if(msg.author.bot) return;
+    if(msg.channel.type === "dm") return;
+                  const küfür = [
+      "amcık",
+      "orospu",
+      "piç",
+      "sikerim",
+      "sikik",
+      "amına",
+      "pezevenk",
+      "yavşak",
+      "ananı",
+      "anandır",
+      "orospu",
+      "evladı",
+      "göt",
+      "pipi",
+      "sokuk",
+      "yarrak",
+      "oç",
+      "o ç",
+      "siktir",
+      "bacını",
+      "karını",
+      "amk",
+      "aq",
+      "sik",
+      "amq",
+      "anaskm",
+      "AMK",
+      "YARRAK",
+      "sıkerım"
+    ];
+              if (küfür.some(word => msg.content.toLowerCase().includes(word))) {
+                try {
+                  if (!msg.member.hasPermission("MANAGE_GUILD")) {
+                    msg.delete();                   
+                  
+                                        
+                    return msg.reply("Küfür etmek yasaktır").then(msg => msg.delete(2000));
+                  }             
+                } catch(err) {
+                  console.log(err);
+                }
+              }
+          
+  });

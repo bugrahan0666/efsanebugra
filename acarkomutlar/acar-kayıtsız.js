@@ -21,7 +21,6 @@ message.guild.members.get(member.id).removeRole(r)
 })
     await member.addRole(acarayarlar.kayıtsızrol) // kayıtsız 1
   
-    message.react(acarayarlar.siyahtikid);
   let embed = new Discord.RichEmbed() 
   .setColor("BLACK")
   .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}`, `${emoji3} ${member.user} **adlı üyeye** <@&${acarayarlar.kayıtsızrol}> **rolünü verip kayıtsıza attım.**`)                                                                             

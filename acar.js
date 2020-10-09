@@ -233,21 +233,21 @@ let m = await db.fetch(`mute.${member.id}`)
 let j = await db.fetch(`jail.${member.id}`)
 db.fetch(`mute.${member.id}`, '0');
 db.fetch(`jail.${member.id}`, '0');
-member.addRole(acar.kayıtsızrolid)
+member.addRole(acar.kayıtsızrol)
 member.setNickname(`${acarayarlar.tag} ${kullanıcıadı}`);
 
   
 if(j == '0' && m == '0') {
-          member.addRole(acar.kayıtsızrolid)
+          member.addRole(acar.kayıtsızrol)
           member.setNickname(`${acarayarlar.tag} ${kullanıcıadı}`);
 }
   
 if(j == '1') {
-      member.removeRole(acar.kayıtsızrolid) 
+      member.removeRole(acar.kayıtsızrol) 
       member.addRole(acar.cezalırolid).then(x => {
         x.addRole(acar.cezalırolid)
         x.setNickname(acar.tagsiz + ' Cezalı Üye')  
-        x.removeRole(acar.kayıtsızrolid)
+        x.removeRole(acar.kayıtsızrol)
     });
   let kanal = client.channels.get(acar.cezaişlemid) //log kanal ıd.
      kanal.send(`${member} adlı kullanıcı sunucuya katıldı jaildeyken çık gir yaptığı için yeniden jaile attım.`) 
@@ -258,7 +258,7 @@ if(m == '1') {
      member.addRole(acar.muterolid).then(x => {
         x.addRole(acar.muterolid)
         member.setNickname(`${acarayarlar.tagsiz} ${kullanıcıadı}`);
-        x.addRole(acar.kayıtsızrolid)
+        x.addRole(acar.kayıtsızrol)
        x.addRole(acar.muterolid)
     });    
     let kanalmute = client.channels.get(acar.cezaişlemid)
@@ -268,10 +268,10 @@ if(m == '1') {
   let member2 = member.user;
   let zaman = new Date().getTime() - member2.createdAt.getTime();
   if (zaman < 604800000) {
-     member.removeRole(acar.kayıtsızrolid) 
+     member.removeRole(acar.kayıtsızrol) 
       member.addRole(acar.şüphelirolid).then(x => {
       x.addRole(acar.şüphelirolid)
-      x.removeRole(acar.kayıtsızrolid)
+      x.removeRole(acar.kayıtsızrol)
       member.setNickname(`${acarayarlar.tagsiz} ${kullanıcıadı}`);
          const logChannelx = member.guild.channels.find(channel => channel.id === acar.şüphelilog);
     const embed = new Discord.RichEmbed()

@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const ms = require("ms");
 const db = require("quick.db")
 const client = new Discord.Client();
-const muteayarlari = require('../acarregister/rol.json')
+const muteayarlari = require('../acar/rol.json')
 const acarayarlar = require('../acar/botayarlari.json');
 let acar = require('../acar/botayarlari.json');
 

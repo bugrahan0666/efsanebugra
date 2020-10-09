@@ -4,16 +4,16 @@ const acarayarlar = require('../acar/botayarlari.json');
 let acar = require('../acar/botayarlari.json');
 exports.run = async (client, message, args) => {
  const emoji3 = client.emojis.find(emoji => emoji.name === acarayarlar.tagemojiadi);
-  if (!message.member.roles.has(acarayarlar.registercommandid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.morparıltı} ${acarayarlar.sunucuadi} Bilgi` , `${acarayarlar.ünlem}  Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+  if (!message.member.roles.has(acarayarlar.registercommandid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.sunucuadi} Bilgi` , `Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   let kullanıcı = message.mentions.users.first()
-  if (!kullanıcı) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.morparıltı} ${acarayarlar.sunucuadi} Bilgi` , `${acarayarlar.ünlem}  Bir kullanıcı etiketlemelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+  if (!kullanıcı) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.sunucuadi} Bilgi` , `Bir kullanıcı etiketlemelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   let user = message.mentions.users.first();
   let rol = message.mentions.roles.first()
   let member = message.guild.member(kullanıcı)
 let isim = args[1]
-      if(!isim) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.morparıltı} Bilgi` , `${acarayarlar.ünlem}  Kayıtı tamamlaya bilmem için lütfen bir isim girmelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
+      if(!isim) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Bilgi` , `Kayıtı tamamlaya bilmem için lütfen bir isim girmelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
 let yas = args[2]
-      if(!yas) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.morparıltı} Bilgi` , `${acarayarlar.ünlem}  Kayıtı bitirebilmem için lütfen bir yaş girmelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
+      if(!yas) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Bilgi` , `Kayıtı bitirebilmem için lütfen bir yaş girmelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
 await 
   member.setNickname(`${acarayarlar.tag} ' ${isim} | ${yas}`)
   member.addRole(acarayarlar.erkekrol1); // erkek 1
@@ -23,7 +23,7 @@ await
   member.removeRole(acarayarlar.kadınrol2); // kadın 2
 
   member.removeRole(acarayarlar.kayıtsızrol) // kayıtsız 1
-    message.react(acarayarlar.siyahtikid);
+    db.add(`yetkili.${message.author.id}.erkek`, 1);
     const kanal = message.guild.channels.find(c => c.id == acarayarlar.chatid)
     const kanal1 = message.guild.channels.find(c => c.id == acarayarlar.kayıtlogid) 
     const embed1 = new Discord.RichEmbed() 

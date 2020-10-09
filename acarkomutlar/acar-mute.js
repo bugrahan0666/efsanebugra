@@ -46,16 +46,25 @@ if(!mute){
   
   const muteembed = new Discord.RichEmbed()
   .setColor('RANDOM')    
-  .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}` , ` ${mod} adlı moderatör susturma kullandı.**<@${user.id}>** adlı kullanıcı **${reason}** sebebi ile ${mutezaman} susturuldu.`)
-  .setFooter(msg.author.tag , msg.author.avatarURL)
-    msg.channel.send(muteembed);
-  db.set(`mute.${user.id}`, '1') 
+  .addField(`🔹 Yetkiyi Kullanan Yetkili` , `▫ ${mod} adlı yetkili susturma komutu kullandı.`)
+  .setDescription(`🔸 ${acarayarlar.sunucuadi} \n\n**▫ <@${user.id}>** adlı kullanıcı **${reason}** sebebi ile ${mutezaman} susturuldu.`)
+  .setTimestamp()
+  .setThumbnail(acar.sunucubanner)
+  let kanal1 = msg.guild.channels.get(acarayarlar.mutelogid);
+  if (!kanal1) return;
+  kanal1.send(muteembed);
+   const muteembed1 = new Discord.RichEmbed()
+  .setColor('RANDOM')    
+  .setDescription(`🔹 ${acarayarlar.sunucuadi}\n**▫ <@${user.id}>** adlı kullanıcı **${reason}** sebebi ile ${mutezaman} susturuldu.\n\n`)
+  .setThumbnail(acar.sunucubanner)
+   
+  msg.channel.send(muteembed1).then(msg => msg.delete(10000));
+  msg.delete()
   setTimeout(function(){
     // msg.channel.send(`<@${user.id}> Muten açıldı.`)
-    db.set(`mute.${user.id}`,'0') 
       const muteembed = new Discord.RichEmbed()
       .setDescription(`<@${user.id}> süren doldu, artık konuşabilirsin!`)
-        msg.channel.send(muteembed)
+        msg.channel.send(muteembed).then(msg => msg.delete(10000));
     user.removeRole(mute.id);
     
   }, ms(mutetime));

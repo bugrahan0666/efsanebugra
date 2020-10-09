@@ -16,7 +16,6 @@ const emoji3 = client.emojis.find(emoji => emoji.name === acarayarlar.tagemojiad
   .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}`, `${emoji3} ${member.user} **adlı üyenin adını** \`${acarayarlar.tag} ' ${isim} | ${yas}\` **olarak değiştirdim** `)
   .setFooter(message.author.tag ,message.author.avatarURL)
   .setTimestamp()
-  message.react(acarayarlar.siyahtikid)
   message.channel.send(embed).then(msg => msg.delete(5000));
 };
 

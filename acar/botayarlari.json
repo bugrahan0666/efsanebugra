@@ -11,12 +11,24 @@
   "hoşgeldingüvensizemojiadı" : "gvensiz",
   "hoşgeldingüvenliemojiadı" : "gvenli",
   "hoşgeldinkanalid" : "763812215550640171",
-  
-  "kayıtsızrolid": "763919772143714305",
+  "yenibiriisim": "Kayıtsız Üye",
+  "kayıtsızrol": "763919772143714305",
   "şüphelirolid": "763919755194794045",
   "cezalırolid": "763942448233054208",  
   "cezaişlemid" : "",
   "şüphelilog" : "",
-  "muterolid": ""
+  "muterolid": "",
+  "chatid": "",
+  "kayıtlogid": "",
   
+  "erkekrol1": "",
+  "erkekrol2": "",
+  "kadınrol1": "",
+  "kadınrol2": "",
+  
+  "registercommandid": "",
+  "mutecommandid": "",
+  "jailhammerid": "",
+  "bancırolid": "",
+  "botcommandid": ""
 }

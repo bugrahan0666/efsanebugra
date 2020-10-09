@@ -12,7 +12,6 @@ exports.run = async (client, message, args) => {
   let member = message.guild.member(kullanıcı)
    let reason = args.slice(1).join(" ") || `Sebep girilmemiş.`;
       if(!reason) return message.channel.send(acarayarlar.ünlem+" Kaldırmak için lütfen bir sebep yazınız.").then(m => m.delete(5000));
-  message.react(acarayarlar.siyahtikid);
   db.set(`jail.${kullanıcı.id}` , '0') 
   await(member.addRole(acar.kayıtsızrol));
     member.setNickname(`${acar.tagsiz} ' ${acar.yenibiriisim}`)
@@ -25,7 +24,7 @@ exports.run = async (client, message, args) => {
     .setColor("RED")
     .setFooter(message.author.tag , message.author.avatarURL)
     .setTimestamp()
-  return message.channel.send(embed1).then(m => m.delete(5000));
+  return message.channel.send(embed1)
   
 }
 

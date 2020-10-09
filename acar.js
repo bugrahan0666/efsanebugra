@@ -267,8 +267,8 @@ if(m == '1') {
   let zaman = new Date().getTime() - member2.createdAt.getTime();
   if (zaman < 604800000) {
      member.removeRole(acar.kayıtsızrol) 
-      member.addRole(acar.şüphelirolid).then(x => {
-      x.addRole(acar.şüphelirolid)
+      member.addRole(acar.şüphelirol).then(x => {
+      x.addRole(acar.şüphelirol)
       x.removeRole(acar.kayıtsızrol)
       member.setNickname(`${acarayarlar.tagsiz} ${kullanıcıadı}`);
          const logChannelx = member.guild.channels.find(channel => channel.id === acar.şüphelilog);

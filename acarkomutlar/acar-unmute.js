@@ -9,7 +9,7 @@ let acar = require('../acar/botayarlari.json');
 exports.run = async (receivedMessage, msg, args) => {
       if (!msg.member.roles.has(acarayarlar.mutecommandid) && !msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.send("Bir yetkili değilsin bu yüzden komutu kullanamazsın!")
 var mod = msg.author
-let reason = args.slice(1).join(" ");
+let reason = args.slice(1).join(" ") || `Sebep Girilmemiş.`;
       if(!reason) return msg.reply('Mute kaldırabilmem için bir sebep girmelisin.')
 let user = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
   if (!user) return msg.reply('Bir kullanıcı etiketlemelisin.')

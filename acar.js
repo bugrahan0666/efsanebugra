@@ -108,7 +108,16 @@ client.on('error', e => {
 client.login(acar.token);
 
 // Main Olarak Belirlediğimiz Yer !
-
+client.on('guildMemberAdd', async member => {
+   let acar1 = await db.get(`forceban_${member.guild.id}`)
+  if(acar1 && acar1.some(id => `k${member.user.id}` === id)) {
+    try {
+      await member.guild.owner.user.send(new Discord.RichEmbed().setTimestamp().setFooter(client.user.username + " Force Ban", client.user.avatarURL).setDescription(`Bir kullanıcı **${member.guild.name}** adlı sunucuna girmeye çalıştı! Force banı olduğu için tekrar yasaklandı. \n**Kullanıcı:** ${member.user.id} | ${member.user.tag}`))
+      await member.user.send(new Discord.RichEmbed().setTimestamp().setFooter(client.user.username + " Force Ban", client.user.avatarURL).setDescription(`**${member.guild.name}** sunucusundan force banlı olduğun için yasaklandın!`))
+      member.ban({reason: 'Forceban'})
+    } catch(err) { console.log(err) }
+  }
+});
 client.on("guildMemberAdd", async member => {
   try {
     let embed = new Discord.RichEmbed();
@@ -280,15 +289,8 @@ if(m == '1') {
 logChannelx.send(embed)
     });
     }
-  let acar1 = await db.get(`forceban_${member.guild.id}`)
-  if(acar1 && acar.some(id => `k${member.user.id}` === id)) {
-    try {
-      await member.guild.owner.user.send(new Discord.RichEmbed().setTimestamp().setFooter(client.user.username + " Force Ban", client.user.avatarURL).setDescription(`Bir kullanıcı **${member.guild.name}** adlı sunucuna girmeye çalıştı! Force banı olduğu için tekrar yasaklandı. \n**Kullanıcı:** ${member.user.id} | ${member.user.tag}`))
-      await member.user.send(new Discord.RichEmbed().setTimestamp().setFooter(client.user.username + " Force Ban", client.user.avatarURL).setDescription(`**${member.guild.name}** sunucusundan force banlı olduğun için yasaklandın!`))
-      member.ban({reason: 'Forceban'})
-    } catch(err) { console.log(err) }
-  }
 });
+
   
 
 

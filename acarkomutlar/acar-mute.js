@@ -60,8 +60,11 @@ if(!mute){
    
   msg.channel.send(muteembed1).then(msg => msg.delete(10000));
   msg.delete()
+    db.set(`mute.${user.id}`, '1')
+    db.add(`yetkili.${msg.author.id}.mute`, 1);
   setTimeout(function(){
     // msg.channel.send(`<@${user.id}> Muten açıldı.`)
+    db.set(`mute.${user.id}`,'0') 
       const muteembed = new Discord.RichEmbed()
       .setDescription(`<@${user.id}> süren doldu, artık konuşabilirsin!`)
         msg.channel.send(muteembed).then(msg => msg.delete(10000));

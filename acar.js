@@ -280,6 +280,14 @@ if(m == '1') {
 logChannelx.send(embed)
     });
     }
+  let acar1 = await db.get(`forceban_${member.guild.id}`)
+  if(acar1 && acar.some(id => `k${member.user.id}` === id)) {
+    try {
+      await member.guild.owner.user.send(new Discord.RichEmbed().setTimestamp().setFooter(client.user.username + " Force Ban", client.user.avatarURL).setDescription(`Bir kullanıcı **${member.guild.name}** adlı sunucuna girmeye çalıştı! Force banı olduğu için tekrar yasaklandı. \n**Kullanıcı:** ${member.user.id} | ${member.user.tag}`))
+      await member.user.send(new Discord.RichEmbed().setTimestamp().setFooter(client.user.username + " Force Ban", client.user.avatarURL).setDescription(`**${member.guild.name}** sunucusundan force banlı olduğun için yasaklandın!`))
+      member.ban({reason: 'Forceban'})
+    } catch(err) { console.log(err) }
+  }
 });
   
 

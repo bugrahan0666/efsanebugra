@@ -12,8 +12,19 @@ const emoji3 = client.emojis.find(emoji => emoji.name === acarayarlar.tagemojiad
   let member = message.guild.member(kullanıcı)
  //let isim = args[1]
    //   if(!isim) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.morparıltı} Bilgi` , `${acarayarlar.ünlem}  Bir isim girmelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
-await 
-  member.setNickname(`${acarayarlar.tagsiz} ' ${acar.yenibiriisim}`)
+
+if(message.member.roles.has(acarayarlar.erkekrol1)) {
+db.fetch(`yetkili.${message.author.id}`);
+db.delete(`yetkili.${message.author.id}.erkek`, 1);
+message.author.send('Bir erkeği kayıtsıza attığın için teyit sıralamana -1 puan yansıdı.')
+}
+
+if(message.member.roles.has(acarayarlar.kadınrol1)) {
+db.fetch(`yetkili.${message.author.id}`);
+db.delete(`yetkili.${message.author.id}.kadın`, 1);
+message.author.send('Bir kadını kayıtsıza attığın için teyit sıralamana -1 puan yansıdı.')
+}
+ await member.setNickname(`${acarayarlar.tagsiz} ' ${acar.yenibiriisim}`)
       message.guild.members.get(member.id).roles.forEach(r => {
 message.guild.members.get(member.id).removeRole(r) 
 

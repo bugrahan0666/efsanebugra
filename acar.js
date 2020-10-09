@@ -109,18 +109,6 @@ client.login(acar.token);
 
 // Main Olarak Belirlediğimiz Yer !
 
-client.ayar = {
-  "SunucuID": acarayarlar.sunucuid,
-  "SahipRolüID": acarayarlar.sahip,
-  "TeyitYetkilisi": acarayarlar.teyityetkiliid,
-  "TeyitsizRolü":  acarayarlar.kayıtsızrolid,
-  "TeyitKanal": acarayarlar.teyitedilecekkanalid,
-  "ErkekÜye": acarayarlar.erkekrolid,
-  "KızÜye": acarayarlar.kızrolid,
-  "SohbetKanalID": acarayarlar.genelsohbetkanalid
-}
-
-
 client.on("guildMemberAdd", async member => {
   try {
     let embed = new Discord.RichEmbed();
@@ -239,19 +227,62 @@ ${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - memb
   } catch (err) {
     console.log(err);
   }
+  
+let kullanıcıadı = member.user.username.replace(/\W/g, "");
+let m = await db.fetch(`mute.${member.id}`)
+let j = await db.fetch(`jail.${member.id}`)
+db.fetch(`mute.${member.id}`, '0');
+db.fetch(`jail.${member.id}`, '0');
+member.addRole(acar.kayıtsızrolid)
+member.setNickname(`${acarayarlar.tag} ${kullanıcıadı}`);
 
-if(member.user.username.includes("tag girin")){
-  member.send("Yasaklı tagda bulunduğunuz için sizi cezalıya atmak zorunda kaldım!") 
-  member.addRole(acarayarlar.cezalırolid)
-  await member.removeRole(acarayarlar.kayıtsızrolid) 
-} else {
   
-  var olusturulmaSuresi = (Date.now() - member.user.createdTimestamp) > 15*24*60*60*1000 ;// 15*24*60*60*1000
-  olusturulmaSuresi ? member.addRole(acarayarlar.kayıtsızrolid) : member.setRoles([acarayarlar.şüphelihesaprolid]);
-  
+if(j == '0' && m == '0') {
+          member.addRole(acar.kayıtsızrolid)
+          member.setNickname(`${acarayarlar.tag} ${kullanıcıadı}`);
 }
   
+if(j == '1') {
+      member.removeRole(acar.kayıtsızrolid) 
+      member.addRole(acar.cezalırolid).then(x => {
+        x.addRole(acar.cezalırolid)
+        x.setNickname(acar.tagsiz + ' Cezalı Üye')  
+        x.removeRole(acar.kayıtsızrolid)
+    });
+  let kanal = client.channels.get(acar.cezaişlemid) //log kanal ıd.
+     kanal.send(`${member} adlı kullanıcı sunucuya katıldı jaildeyken çık gir yaptığı için yeniden jaile attım.`) 
+   member.send(`Öncelikle sunucumuza hoşgeldin. Sen önceden jailde olduğun için seni yeniden jaile atmak zorunda kaldım!`)
+    } 
+if(m == '1') {
+     member.addRole(acar.muterolid)
+     member.addRole(acar.muterolid).then(x => {
+        x.addRole(acar.muterolid)
+        member.setNickname(`${acarayarlar.tagsiz} ${kullanıcıadı}`);
+        x.addRole(acar.kayıtsızrolid)
+       x.addRole(acar.muterolid)
+    });    
+    let kanalmute = client.channels.get(acar.cezaişlemid)
+      kanalmute.send(`${member} adlı kullanıcı sunucuda susturulmadan kaçtığı için süresi kalkana kadar tekrardan susturulmuştur.`)
+      member.send(`Sunucumuza tekrardan geldiğin teşekkür ederiz fakat muteden kaçmak kolay değil.`)
+  }
+  let member2 = member.user;
+  let zaman = new Date().getTime() - member2.createdAt.getTime();
+  if (zaman < 604800000) {
+     member.removeRole(acar.kayıtsızrolid) 
+      member.addRole(acar.şüphelirolid).then(x => {
+      x.addRole(acar.şüphelirolid)
+      x.removeRole(acar.kayıtsızrolid)
+      member.setNickname(`${acarayarlar.tagsiz} ${kullanıcıadı}`);
+         const logChannelx = member.guild.channels.find(channel => channel.id === acar.şüphelilog);
+    const embed = new Discord.RichEmbed()
+      .setColor("RED")
+      .addField(`${acar.tag} ${acar.sunucuadi}` , `${member} adlı kullanıcının hesabı __7__ (yedi) günden önce açıldığı için şüpheli rolü verildi!`)
+logChannelx.send(embed)
+    });
+    }
 });
+  
+
 
 client.on('voiceStateUpdate', async (oldMember, newMember) => {
   let oV = oldMember.voiceChannel;

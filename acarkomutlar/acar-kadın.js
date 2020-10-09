@@ -12,10 +12,13 @@ const emoji3 = client.emojis.find(emoji => emoji.name === acarayarlar.tagemojiad
   let member = message.guild.member(kullanıcı)
 let isim = args[1].toString();
       if(!isim) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Bilgi` , `Kayıtı tamamlaya bilmem için lütfen bir isim girmelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
+  function düzelt(nick){
+ return typeof nick == "string" ? nick.charAt(0).toUpperCase() + nick.slice(1) : "";
+      }
 let yas = args[2]
       if(!yas) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Bilgi` , `Kayıtı bitirebilmem için lütfen bir yaş girmelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
 await 
-  member.setNickname(`${acarayarlar.tag} ' ${isim} | ${yas}`)
+  member.setNickname(`${acarayarlar.tag} ' ${düzelt(isim)} | ${yas}`)
   member.removeRole(acarayarlar.erkekrol1); // erkek 1
   member.removeRole(acarayarlar.erkekrol2); // erkek 2
   

@@ -31,7 +31,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "yetkilibilgi",
+  name: "yb",
   description: "ACAR Temiz v11 Altyapı",
   usage: ""
 };

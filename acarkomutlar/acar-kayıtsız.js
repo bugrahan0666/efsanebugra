@@ -30,11 +30,11 @@ let erkek = db.get(`yetkili.${uye.id}.erkek`) || 0;
 let kiz = db.get(`yetkili.${uye.id}.kadın`) || 0;
   let embed = new Discord.RichEmbed() 
   .setColor("BLACK")
-  .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}`, `${member.user} **adlı üyeye** <@&${acarayarlar.kayıtsızrol}> **rolünü verip kayıtsıza attım.**`)
-  .addField(`Yetkili Bilgilerin`,`${erkek+kiz} toplam teyitlerin\n kayıtsız işlemi yaptığın için etkilendin ve teyitlerinden bir kişi düşüldü.`)
+  .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}`, `${member.user} **adlı üyeye** <@&${acarayarlar.kayıtsızrol}> **rolünü verip kayıtsıza attım.**\n`)
+  .addField(`Sistem Mesajı !`,`▫ **${erkek+kiz}** toplam teyitlerin\n▫ Kayıtsız işlemi yaptığın için etkilendin ve teyitlerinden bir kişi düşüldü.`)
   .setFooter(message.author.tag ,message.author.avatarURL)
   .setTimestamp()
-  return message.channel.send(embed).then(message => message.delete(12000));
+  return message.channel.send(embed).then(msg => msg.delete(12000));
 
  
 };

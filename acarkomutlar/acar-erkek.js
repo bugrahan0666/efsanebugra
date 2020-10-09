@@ -38,13 +38,18 @@ await
     .addField(`${acarayarlar.tag} Heyy! ${acarayarlar.sunucuadi} Ailesi Yeni biri daha`, `${member.user}, Ailemize hoşgeldin seni ailemiz de görmekten büyük mutluluk duyarız.`)
     .setColor("BLUE")
     .setThumbnail(acarayarlar.saygif)
+ let uye = message.mentions.users.first() || message.author;
+ let bilgi = db.get(`yetkili.${uye.id}`);
+ let erkek = db.get(`yetkili.${uye.id}.erkek`) || 0;
+ let kiz = db.get(`yetkili.${uye.id}.kadın`) || 0;
   let embed = new Discord.RichEmbed() 
   .setColor("BLACK")
   .setThumbnail(acarayarlar.saygif)
-  .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}`, `${member.user}, adlı üyeyi **Erkek Üye** olarak kayıt edip <@&${acarayarlar.erkekrol1}> ve <@&${acarayarlar.erkekrol2}> rollerini verdim.`)                                                                             
+  .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}`, `${member.user}, adlı üyeyi **Erkek Üye** olarak kayıt edip <@&${acarayarlar.erkekrol1}> ve <@&${acarayarlar.erkekrol2}> rollerini verdim.\n`) 
+  .addField(`Sistem Mesajı !`,`▫ **${erkek+kiz}** toplam kayıtların\n▫ **${erkek}** erkek kayıt etmişsin tebrikler!`)
   .setFooter(message.author.tag ,message.author.avatarURL)
   .setTimestamp()
-  return kanal1.send(embed).then(kanal.send(embed1).then(msg => msg.delete(5000)));
+  return await(kanal1.send(embed).then(kanal.send(embed1).then(msg => msg.delete(12000))));
  
 };
 exports.conf = {

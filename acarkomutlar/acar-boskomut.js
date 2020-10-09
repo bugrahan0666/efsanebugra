@@ -16,8 +16,17 @@ let sesmute = db.get(`yetkili.${uye.id}.sesmute`) || 0;
 let mute = db.get(`yetkili.${uye.id}.mute`) || 0;
 let isim = db.get(`yetkili.${uye.id}.isim`) || 0;
   
+var input = db.get(`${uye.id}_sesdedur`)
 var toplamislem = erkek+kiz+ban+kick+jail+sesmute+mute+isim 
-var ses_suresi = Math.round(db.get(`${uye.id}_sesdedur`)/60)+" dakika"
+function timeConvert(n) {
+var num = n;
+var hours = (num / 60);
+var rhours = Math.floor(hours);
+var minutes = (hours - rhours) * 60;
+var rminutes = Math.round(minutes);
+return num + " minutes = " + rhours + " hour(s) and " + rminutes + " minute(s).";
+}
+var ses_suresi = Math.round(db.get(`${uye.id}_sesdedur`)/60)
  const embed = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setAuthor(`${uye.tag} işlem bilgileri`, uye.avatarURL)
@@ -25,7 +34,7 @@ var ses_suresi = Math.round(db.get(`${uye.id}_sesdedur`)/60)+" dakika"
   .setImage(acarayarlar.sunucuembedaltıresim)
   .addField(`🔹 Kayıt İşlemleri`, `▫ Şuana kadar toplam \`${kiz+erkek}\` kişiyi kayıt etmiş.\n▫ Şuana kadar \`${erkek}\` erkek kayıt etmiş.\n▫ Şuana kadar \`${kiz}\` kadın kayıt etmiş.\n ▫ Şuana kadar toplam \`${isim}\` isim ve yaş değiştirmiş.`) 
   .addField(`🔸 Mod İşlemleri`,`▫ Şuana kadar \`${ban}\` kişiyi sunucudan yasaklamış.\n▫ Şuana kadar \`${kick}\` kişiyi sunucudan atmış.\n▫ Şuana kadar \`${jail}\` kişiyi jail'e atmış.\n ▫ Şuana kadar \`${mute}\` chat'de susturmuş.\n ▫ Şuana kadar \`${sesmute}\` ses de susturmuş.`)
-  .addField(`🔊 Ses bilgileri`, ``)
+  .addField(`🔊 Ses bilgileri`, `${timeConvert(ses_suresi)}`)
   .setDescription(`▫ `)
   message.channel.send(embed);
 };

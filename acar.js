@@ -210,7 +210,7 @@ client.on("guildMemberAdd", async member => {
                 var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Aralık ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
             }
 
-    await member.setNickname(`${kullanıcıadı}`);
+    await member.setNickname(`${acarayarlar.tag} ${kullanıcıadı}`);
     let acar = client.emojis.find(emoji => emoji.name === acarayarlar.hoşgeldinbaşlıkemojiadı);
     let acargüvenli = client.emojis.find(emoji => emoji.name === acarayarlar.hoşgeldingüvenliemojiadı);
     let acargüvensiz = client.emojis.find(emoji => emoji.name === acarayarlar.hoşgeldingüvensizemojiadı);
@@ -220,19 +220,20 @@ client.on("guildMemberAdd", async member => {
       .send(`${acar} **ACAR Code Center'a Hoşgeldin, ${member} Seninle Beraber \`${member.guild.memberCount}\` Kişiyiz!**
 ${acar} **Müsait Olduğunda Teyit Odalarından Birine Geçip Kaydını Yaptırabilirsin.**
 ${acar} <@&763924998263275540> seninle ilgilenecektir.
-${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - member.user.createdAt.getTime() <15 * 24 * 60 * 60 * 1000 
+${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - member.user.createdAt.getTime() <0 //15 * 24 * 60 * 60 * 1000
             ? acargüvensiz + " __**Bu Hesap Şüpheli Görünüyor**__ " + acargüvensiz
             : acargüvenli + " __**Bu Hesap Güvenilir Görünüyor**__ " + acargüvenli
             }`);
   } catch (err) {
     console.log(err);
   }
-  var olusturulmaSuresi = (Date.now() - member.user.createdTimestamp) > 15*24*60*60*1000;
+if(member.user.username.includes("ac1ar")){
+  member.send("Yasaklı tagda bulunduğunuz için sizi cezalıya atmak zorunda kaldım!") 
+  member.addRole(acarayarlar.cezalırolid)
+  member.removeRole(acarayarlar.kayıtsızrolid) 
+  member.removeRole(acarayarlar.şüphelihesaprolid)
+}
+var olusturulmaSuresi = (Date.now() - member.user.createdTimestamp) > 0;
   olusturulmaSuresi ? member.addRole(acarayarlar.kayıtsızrolid) : member.setRoles([acarayarlar.şüphelihesaprolid]);
   
-  if(member.user.username.includes("acar")){
-member.addRole(acarayarlar.cezalırolid)
-member.removeRole(acarayarlar.kayıtsızrolid)
-member.send("Yasaklı tagda bulunduğunuz için sizi cezalıya atmak zorunda kaldım!")
-}
 });

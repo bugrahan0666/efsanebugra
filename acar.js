@@ -114,10 +114,10 @@ client.ayar = {
   "SahipRolüID": acarayarlar.sahip,
   "TeyitYetkilisi": acarayarlar.teyityetkiliid,
   "TeyitsizRolü":  acarayarlar.kayıtsızrolid,
-  "TeyitKanal": "Sunucuya katılan kişilerin teyit edileceği kanalın ID",
-  "ErkekÜye": "Erkek üyelere verilecek rolün ID",
-  "KızÜye": "Kız üyelere verilecek rolün ID",
-  "SohbetKanalID": "Sunucunuzun genel chat kanalının ID"
+  "TeyitKanal": acarayarlar.teyitedilecekkanalid,
+  "ErkekÜye": acarayarlar.erkekrolid,
+  "KızÜye": acarayarlar.kızrolid,
+  "SohbetKanalID": acarayarlar.genelsohbetkanalid
 }
 
 

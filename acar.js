@@ -105,3 +105,6 @@ client.on('error', e => {
 });
 
 client.login(acar.token);
+
+// Main Olarak Belirlediğimiz Yer !
+

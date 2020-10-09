@@ -108,20 +108,9 @@ client.on('error', e => {
 client.login(acar.token);
 
 // Main Olarak Belirlediğimiz Yer !
-client.on('guildMemberAdd', async member => {
-   let acar1 = await db.get(`forceban_${member.guild.id}`)
-  if(acar1 && acar1.some(id => `k${member.user.id}` === id)) {
-    try {
-      await member.guild.owner.user.send(new Discord.RichEmbed().setTimestamp().setFooter(client.user.username + " Force Ban", client.user.avatarURL).setDescription(`Bir kullanıcı **${member.guild.name}** adlı sunucuna girmeye çalıştı! Force banı olduğu için tekrar yasaklandı. \n**Kullanıcı:** ${member.user.id} | ${member.user.tag}`))
-      await member.user.send(new Discord.RichEmbed().setTimestamp().setFooter(client.user.username + " Force Ban", client.user.avatarURL).setDescription(`**${member.guild.name}** sunucusundan force banlı olduğun için yasaklandın!`))
-      member.ban({reason: 'Forceban'})
-    } catch(err) { console.log(err) }
-  }
-});
 client.on("guildMemberAdd", async member => {
   try {
     let embed = new Discord.RichEmbed();
-    const kullanıcıadı = member.user.username.replace(/\W/g, "");
     let user = client.users.get(member.id);
          const user2 = member.user;
          var hafta = moment(user2.createdAt).format('dddd')
@@ -219,7 +208,7 @@ client.on("guildMemberAdd", async member => {
                 var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Aralık ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
             }
 
-    await member.setNickname(`${acarayarlar.tag} ${kullanıcıadı}`);
+  
     let acar = client.emojis.find(emoji => emoji.name === acarayarlar.hoşgeldinbaşlıkemojiadı);
     let acargüvenli = client.emojis.find(emoji => emoji.name === acarayarlar.hoşgeldingüvenliemojiadı);
     let acargüvensiz = client.emojis.find(emoji => emoji.name === acarayarlar.hoşgeldingüvensizemojiadı);
@@ -289,6 +278,15 @@ if(m == '1') {
 logChannelx.send(embed)
     });
     }
+  let djstürkiye = await db.get(`forceban_${member.guild.id}`)
+  if(djstürkiye && djstürkiye.some(id => `k${member.user.id}` === id)) {
+    try {
+      member.ban({reason: 'Forceban'})
+      await member.guild.owner.user.send(new Discord.RichEmbed().setTimestamp().setFooter(client.user.username + " Force Ban", client.user.avatarURL).setDescription(`Bir kullanıcı **${member.guild.name}** adlı sunucuna girmeye çalıştı! Force banı olduğu için tekrar yasaklandı. \n**Kullanıcı:** ${member.user.id} | ${member.user.tag}`))
+      await member.user.send(new Discord.RichEmbed().setTimestamp().setFooter(client.user.username + " Force Ban", client.user.avatarURL).setDescription(`**${member.guild.name}** sunucusundan force banlı olduğun için yasaklandın!`))
+      member.ban({reason: 'Forceban'})
+    } catch(err) { console.log(err) }
+  }
 });
 
   

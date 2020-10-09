@@ -42,12 +42,11 @@ await
   let erkek = db.get(`yetkili.${uye.id}.erkek`) || 0;
   let kiz = db.get(`yetkili.${uye.id}.kadın`) || 0;
   let embed = new Discord.RichEmbed() 
-  .setColor("BLACK")
-  .setThumbnail(acarayarlar.saygif)
-  .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}`, `${member.user}, adlı üyeyi **Erkek Üye** olarak kayıt edip <@&${acarayarlar.erkekrol1}> ve <@&${acarayarlar.erkekrol2}> rollerini verdim.\n`) 
-  .addField(`Sistem Mesajı !`,`**${erkek+kiz}** toplam kayıtların\n**${erkek}** erkek kayıt etmişsin tebrik ederim!`)
-  .setFooter(message.author.tag ,message.author.avatarURL)
-  .setTimestamp()
+  .setColor("RANDOM")
+  .setTitle(acarayarlar.tag + ' ' + acarayarlar.sunucuadi)
+  .setThumbnail(acarayarlar.sunucuresim)
+  .addField(`🔹 Yapılan İşlem Açıklaması`, ` ▫ ${member.user}, adlı üyeyi **Erkek Üye** olarak kayıt edip <@&${acarayarlar.erkekrol1}> ve <@&${acarayarlar.erkekrol2}> rollerini verdim.\n`) 
+  .addField(`🔸 Yapan Yetkili Bilgileri`,` ▫ Toplam **${message.author.tag}** .\n▫ Toplam **${erkek+kiz}** adet kayıt işlemin bulunmaktadır.\n▫ Toplam **${erkek}** erkek kayıt etmişsin seni tebrik ederim!`)
   return await(kanal1.send(embed).then(kanal.send(embed1).then(msg => msg.delete(12000))));
  
 };

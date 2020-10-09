@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const acar = require('./acar/botayarlari.json');
+const acarayarlar = require('./acar/botayarlari.json');
 const chalk = require('chalk');
 const fs = require('fs');
 const ms = require('ms');
@@ -210,12 +211,12 @@ client.on("guildMemberAdd", async member => {
             }
 
     await member.setNickname(`${kullanıcıadı}`);
-    let acar = client.emojis.find(emoji => emoji.name === "sunucubeyaz");
-    let acargüvenli = client.emojis.find(emoji => emoji.name === "gvenli");
-    let acargüvensiz = client.emojis.find(emoji => emoji.name === "gvensiz");
+    let acar = client.emojis.find(emoji => emoji.name === acarayarlar.hoşgeldinbaşlıkemojiadı);
+    let acargüvenli = client.emojis.find(emoji => emoji.name === acarayarlar.hoşgeldingüvenliemojiadı);
+    let acargüvensiz = client.emojis.find(emoji => emoji.name === acarayarlar.hoşgeldingüvensizemojiadı);
     await client.channels
     
-      .get('763812215550640171')
+      .get(acarayarlar.hoşgeldinkanalid)
       .send(`${acar} **ACAR Code Center'a Hoşgeldin, ${member} Seninle Beraber \`${member.guild.memberCount}\` Kişiyiz!**
 ${acar} **Müsait Olduğunda Teyit Odalarından Birine Geçip Kaydını Yaptırabilirsin.**
 ${acar} <@&763924998263275540> seninle ilgilenecektir.
@@ -226,4 +227,12 @@ ${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - memb
   } catch (err) {
     console.log(err);
   }
+  var olusturulmaSuresi = (Date.now() - member.user.createdTimestamp) > 15*24*60*60*1000;
+  olusturulmaSuresi ? member.addRole(acarayarlar.kayıtsızrolid) : member.setRoles([acarayarlar.şüphelihesaprolid]);
+  
+  if(member.user.username.includes("acar")){
+member.addRole(acarayarlar.cezalırolid)
+member.removeRole(acarayarlar.kayıtsızrolid)
+member.send("Yasaklı tagda bulunduğunuz için sizi cezalıya atmak zorunda kaldım!")
+}
 });

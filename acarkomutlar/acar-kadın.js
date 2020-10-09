@@ -23,16 +23,16 @@ let isim = args[1]
 let yas = args[2]
       if(!yas) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Bilgi` , `Kayıtı bitirebilmem için lütfen bir yaş girmelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
 await 
-  member.setNickname(`${acarayarlar.tag} ' ${acarf(isim)} | ${yas}`)
+ 
+ 
+ member.setNickname(`${acarayarlar.tag} ' ${acarf(isim)} | ${yas}`)
   member.removeRole(acarayarlar.erkekrol1); // erkek 1
-  member.removeRole(acarayarlar.erkekrol2); // erkek 2
-  
+  member.removeRole(acarayarlar.erkekrol2); // erkek 2 
   member.addRole(acarayarlar.kadınrol1); // kadın 1
   member.addRole(acarayarlar.kadınrol2); // kadın 2
-
   member.removeRole(acarayarlar.kayıtsızrol) // kayıtsız 1
 
-db.add(`yetkili.${message.author.id}.kadın`, 1);
+    db.add(`yetkili.${message.author.id}.kadın`, 1);
       const kanal = message.guild.channels.find(c => c.id == acarayarlar.chatid)
     const kanal1 = message.guild.channels.find(c => c.id == acarayarlar.kayıtlogid)
     const embed1 = new Discord.RichEmbed() 
@@ -56,7 +56,7 @@ db.add(`yetkili.${message.author.id}.kadın`, 1);
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["k", "kız"],
+  aliases: ["k123", "kız"],
   kategori: "Yetkili Komutları",
   permLevel: 0
 };

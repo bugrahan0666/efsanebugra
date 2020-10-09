@@ -109,6 +109,18 @@ client.login(acar.token);
 
 // Main Olarak Belirlediğimiz Yer !
 
+client.ayar = {
+  "SunucuID": acarayarlar.sunucuid,
+  "SahipRolüID": acarayarlar.sahip,
+  "TeyitYetkilisi": acarayarlar.teyityetkiliid,
+  "TeyitsizRolü":  acarayarlar.kayıtsızrolid,
+  "TeyitKanal": "Sunucuya katılan kişilerin teyit edileceği kanalın ID",
+  "ErkekÜye": "Erkek üyelere verilecek rolün ID",
+  "KızÜye": "Kız üyelere verilecek rolün ID",
+  "SohbetKanalID": "Sunucunuzun genel chat kanalının ID"
+}
+
+
 client.on("guildMemberAdd", async member => {
   try {
     let embed = new Discord.RichEmbed();
@@ -220,20 +232,23 @@ client.on("guildMemberAdd", async member => {
       .send(`${acar} **ACAR Code Center'a Hoşgeldin, ${member} Seninle Beraber \`${member.guild.memberCount}\` Kişiyiz!**
 ${acar} **Müsait Olduğunda Teyit Odalarından Birine Geçip Kaydını Yaptırabilirsin.**
 ${acar} <@&763924998263275540> seninle ilgilenecektir.
-${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - member.user.createdAt.getTime() <0 //15 * 24 * 60 * 60 * 1000
+${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - member.user.createdAt.getTime() < 15*24*60*60*1000
             ? acargüvensiz + " __**Bu Hesap Şüpheli Görünüyor**__ " + acargüvensiz
             : acargüvenli + " __**Bu Hesap Güvenilir Görünüyor**__ " + acargüvenli
             }`);
   } catch (err) {
     console.log(err);
   }
-if(member.user.username.includes("ac1ar")){
+
+if(member.user.username.includes("tag girin")){
   member.send("Yasaklı tagda bulunduğunuz için sizi cezalıya atmak zorunda kaldım!") 
   member.addRole(acarayarlar.cezalırolid)
-  member.removeRole(acarayarlar.kayıtsızrolid) 
-  member.removeRole(acarayarlar.şüphelihesaprolid)
-}
-var olusturulmaSuresi = (Date.now() - member.user.createdTimestamp) > 0;
+  await member.removeRole(acarayarlar.kayıtsızrolid) 
+} else {
+  
+  var olusturulmaSuresi = (Date.now() - member.user.createdTimestamp) > 15*24*60*60*1000 ;// 15*24*60*60*1000
   olusturulmaSuresi ? member.addRole(acarayarlar.kayıtsızrolid) : member.setRoles([acarayarlar.şüphelihesaprolid]);
+  
+}
   
 });

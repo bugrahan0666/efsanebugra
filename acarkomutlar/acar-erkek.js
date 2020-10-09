@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
   let user = message.mentions.users.first();
   let rol = message.mentions.roles.first()
   let member = message.guild.member(kullanıcı)
-let isim = args[1]
+let isim = args[1] || isim.charAt(0).toUpperCase() + isim.slice(1) || "";
       if(!isim) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Bilgi` , `Kayıtı tamamlaya bilmem için lütfen bir isim girmelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
 let yas = args[2]
       if(!yas) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Bilgi` , `Kayıtı bitirebilmem için lütfen bir yaş girmelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())

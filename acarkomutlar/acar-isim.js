@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
   if (!message.member.roles.has(acarayarlar.botcommandid, acarayarlar.registercommandid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Bilgi` , `Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   let member = message.mentions.members.first()
   if (!member) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Bilgi` , `Bir kullanıcı etiketlemelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
-  let isim = args[1]
+  let isim = args[1].toString();
       if(!isim) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Bilgi` , `Bir isim girmelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
   let yas = args[2]
       if(!yas) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Bilgi` , `Kayıtı bitirebilmem için lütfen bir yaş girmelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())

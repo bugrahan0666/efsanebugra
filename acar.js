@@ -137,43 +137,76 @@ client.on("guildMemberAdd", async member => {
                var hafta = 'Pazar'
              }
          var gün = moment(user.createdAt).format('DD')
-             
+            if(moment(user2.createdAt).format('DD') === '01') {
+               var gün = '1'
+               }
+            if(moment(user2.createdAt).format('DD') === '02') {
+               var gün = '2'
+             }
+            if(moment(user2.createdAt).format('DD') === '03') {
+               var gün = '3'
+             }
+            if(moment(user2.createdAt).format('DD') === '04') {
+               var gün = '4'
+             }
+            if(moment(user2.createdAt).format('DD') === '05') {
+               var gün = '5'
+             }
+            if(moment(user2.createdAt).format('DD') === '06') {
+               var gün = '6'
+             }
+            if(moment(user2.createdAt).format('DD') === '07') {
+               var gün = '7'
+             }
+            if(moment(user2.createdAt).format('DD') === '08') {
+               var gün = '8'
+             }
+            if(moment(user2.createdAt).format('DD') === '09') {
+               var gün = '9'
+             }
+          var güno = moment(user.createdAt).format('a')
+            if(moment(user2.createdAt).format('a') === 'pm') {
+               var güno = 'Öğleden sonra'
+               }
+            if(moment(user2.createdAt).format('DD') === 'am') {
+               var güno = 'Öğleden önce'
+             }
          var tarih = ''
             if(moment(user2.createdAt).format('MM') === '01') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${moment(user.createdAt).format('DD')} Ocak ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Ocak ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
             }
             if(moment(user2.createdAt).format('MM') === '02') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${moment(user.createdAt).format('DD')} Şubat ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Şubat ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
             }
             if(moment(user2.createdAt).format('MM') === '03') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${moment(user.createdAt).format('DD')} Mart ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Mart ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
             }
             if(moment(user2.createdAt).format('MM') === '04') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${moment(user.createdAt).format('DD')} Nisan ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Nisan ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
             }
             if(moment(user2.createdAt).format('MM') === '05') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${moment(user.createdAt).format('DD')} Mayıs ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Mayıs ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
             }
             if(moment(user2.createdAt).format('MM') === '06') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${moment(user.createdAt).format('DD')} Haziran ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Haziran ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
             }
             if(moment(user2.createdAt).format('MM') === '07') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${moment(user.createdAt).format('DD')} Temmuz ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Temmuz ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
             }
             if(moment(user2.createdAt).format('MM') === '08') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${moment(user.createdAt).format('DD')} Ağustos ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Ağustos ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
             }
             if(moment(user2.createdAt).format('MM') === '09') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${moment(user.createdAt).format('DD')} Eylül ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Eylül ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
             }
             if(moment(user2.createdAt).format('MM') === '10') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${moment(user.createdAt).format('DD')} Ekim ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Ekim ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
             }
             if(moment(user2.createdAt).format('MM') === '11') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${moment(user.createdAt).format('DD')} Kasım ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Kasım ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
             }
             if(moment(user2.createdAt).format('MM') === '12') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${moment(user.createdAt).format('DD')} Aralık ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Aralık ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
             }
 
     await member.setNickname(`${kullanıcıadı}`);

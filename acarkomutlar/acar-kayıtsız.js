@@ -15,13 +15,11 @@ const emoji3 = client.emojis.find(emoji => emoji.name === acarayarlar.tagemojiad
 
 if(message.member.roles.has(acarayarlar.erkekrol1)) {
 db.fetch(`yetkili.${message.author.id}`);
-db.delete(`yetkili.${message.author.id}.erkek`, 1);
+db.add(`yetkili.${message.author.id}.erkek`, -1);
 message.author.send('Bir erkeği kayıtsıza attığın için teyit sıralamana -1 puan yansıdı.')
-}
-
-if(message.member.roles.has(acarayarlar.kadınrol1)) {
+} else {
 db.fetch(`yetkili.${message.author.id}`);
-db.delete(`yetkili.${message.author.id}.kadın`, 1);
+db.add(`yetkili.${message.author.id}.kadın`, -1);
 message.author.send('Bir kadını kayıtsıza attığın için teyit sıralamana -1 puan yansıdı.')
 }
  await member.setNickname(`${acarayarlar.tagsiz} ' ${acar.yenibiriisim}`)

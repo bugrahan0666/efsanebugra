@@ -164,7 +164,7 @@ client.on("guildMemberAdd", async member => {
          const user2 = member.user;
          var tarih = ''
             if(moment(user2.createdAt).format('MM') === '01') {
-                var tarih = `${moment(user.createdAt).format('DD')} Ocak ${moment(user2.createdAt).format('YYYY')} `
+                var tarih = `${moment(user2.createdAt).format('YYYY')} **${moment(user.createdAt).format('DD')} Ocak**`
             }
             if(moment(user2.createdAt).format('MM') === '02') {
                 var tarih = `${moment(user.createdAt).format('DD')} Şubat ${moment(user2.createdAt).format('YYYY')} `
@@ -201,27 +201,22 @@ client.on("guildMemberAdd", async member => {
             }
 
     await member.setNickname(`${kullanıcıadı}`);
-    let acar1 = client.emojis.find(emoji => emoji.name === "sunucubeyaz");
+    let acar = client.emojis.find(emoji => emoji.name === "sunucubeyaz");
+    let acargüvenli = client.emojis.find(emoji => emoji.name === "güvenli");
+    let acargüvensiz = client.emojis.find(emoji => emoji.name === "güvensiz");
     await client.channels
     
       .get(' ')
       .send(
-        `              **${acar1} Welcome to ACAR Code Center ${acar1}
-
-${acar1} Hoşgeldin ${member} Seninle beraber ${
-          member.guild.memberCount
-        } Kişiyiz! ${acar1}
-\n🔸 Kayıt Olmak İçin Soldaki Ses Odalarına Giriş Yapabilirsin \n
-🔸 Hesap: ${tarih} ${
+        `**${acar} Welcome to ACAR Code Center ${acar}**\n
+${acar} **Hoşgeldin ${member} Seninle beraber ${member.guild.memberCount} Kişiyiz!**\n
+${acar} **Müsait olduğunda Teyit odalarından birine geçip kaydını yaptırabilirsin.**\n
+${acar} <@&763924998263275540> seninle ilgilenecektir.\n
+${acar} Hesabın oluşturma tarihi: **${tarih}** \n${
           new Date().getTime() - member.user.createdAt.getTime() <
           15 * 24 * 60 * 60 * 1000
-            ? "Tehlikeli Hesap ❌"
-            : "Güvenli Hesap ✅"
-        }
-  \n 💎Sunucumuza kayıt olmak için lütfen #kayıt-ol kanalındaki tepkiye tıklayınız!**`,
-        new Discord.Attachment(
-          acar.sunucubanner
-        )
+            ? "__Tehlikeli Hesap ❌__"
+            : "__Güvenli Hesap ✅__"}`,
       );
   } catch (err) {
     console.log(err);

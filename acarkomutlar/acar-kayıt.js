@@ -4,7 +4,6 @@ const acarayarlar = require('../acar/botayarlari.json');
 let acar = require('../acar/botayarlari.json');
 exports.run = async (client, message, args) => {
  message.delete()
- const emoji3 = client.emojis.find(emoji => emoji.name === acarayarlar.tagemojiadi);
   if (!message.member.roles.has(acarayarlar.registercommandid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   let kullanıcı = message.mentions.users.first()
   if (!kullanıcı) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bir kullanıcı etiketlemelisin!`).setColor("RED")).then(msg => msg.delete(3000))
@@ -36,7 +35,7 @@ await member.setNickname(`${acarayarlar.tag} ' ${acarf(isim)} | ${yas}`)
     const kanal = message.guild.channels.find(c => c.id == acarayarlar.chatid)
     const kanal1 = message.guild.channels.find(c => c.id == acarayarlar.kayıtlogid) 
     const embed1 = new Discord.RichEmbed() 
-    .addField(`${acarayarlar.tag} Heyy! ${acarayarlar.sunucuadi}`, `🔥 ${member.user}, Ailemize hoşgeldin seni ailemiz de görmekten büyük mutluluk duyarız.`)
+    .addField(`${acarayarlar.tag} Heyy!`, `🔥 ${member.user}, Ailemize hoşgeldin seni ailemiz de görmekten büyük mutluluk duyarız.`)
     .setColor("BLUE")
     .setThumbnail(acarayarlar.saygif)
   let uye =  message.author;
@@ -63,7 +62,7 @@ await member.setNickname(`${acarayarlar.tag} ' ${acarf(isim)} | ${yas}`)
     const kanal = message.guild.channels.find(c => c.id == acarayarlar.chatid)
     const kanal1 = message.guild.channels.find(c => c.id == acarayarlar.kayıtlogid) 
     const embed1 = new Discord.RichEmbed() 
-    .addField(`${acarayarlar.tag} Heyy! ${acarayarlar.sunucuadi}`, `🔥 ${member.user}, Ailemize hoşgeldin seni ailemiz de görmekten büyük mutluluk duyarız.`)
+    .addField(`${acarayarlar.tag} Heyy!`, `🔥 ${member.user}, Ailemize hoşgeldin seni ailemiz de görmekten büyük mutluluk duyarız.`)
     .setColor("BLUE")
     .setThumbnail(acarayarlar.saygif)
   let uye =  message.author;

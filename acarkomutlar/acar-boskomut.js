@@ -12,17 +12,21 @@ let kiz = db.get(`yetkili.${uye.id}.kadın`) || 0;
 let ban = db.get(`yetkili.${uye.id}.ban`) || 0;
 let kick = db.get(`yetkili.${uye.id}.kick`) || 0;
 let jail = db.get(`yetkili.${uye.id}.jail`) || 0;
+let sesmute = db.get(`yetkili.${uye.id}.sesmute`) || 0;
 let mute = db.get(`yetkili.${uye.id}.mute`) || 0;
 let isim = db.get(`yetkili.${uye.id}.isim`) || 0;
+  
+var toplamislem = erkek+kiz+ban+kick+jail+sesmute+mute+isim 
 var ses_suresi = Math.round(db.get(`${uye.id}_sesdedur`)/60)+" dakika"
  const embed = new Discord.RichEmbed()
   .setColor("RANDOM")
-  .setAuthor(`Yetkili Bilgileri`, client.user.avatarURL)
+  .setAuthor(`${uye.tag} işlem bilgileri`, uye.avatarURL)
   .setThumbnail(acarayarlar.sunucuresim)
   .setImage(acarayarlar.sunucuembedaltıresim)
   .addField(`🔹 Kayıt İşlemleri`, `▫ Şuana kadar toplam \`${kiz+erkek}\` kişiyi kayıt etmiş.\n▫ Şuana kadar \`${erkek}\` erkek kayıt etmiş.\n▫ Şuana kadar \`${kiz}\` kadın kayıt etmiş.\n ▫ Şuana kadar toplam \`${isim}\` isim ve yaş değiştirmiş.`) 
-  .addField(`🔸 Mod İşlemleri`,`▫ Şuana kadar toplam \`${ban}\` kişiyi sunucudan men etmiş.\n▫ Şuana kadar toplam \`${kick}\` kişiyi sunucudan atmış.\n▫ Şuana kadar toplam \`${jail}\` kişiyi jail'e atmış.\n ▫ Şuana kadar toplam \`${mute}\` chat'de susturmuş.\n ▫ Şuana kadar toplam \`${sesmute}\` ses de susturmuş.`)
-  .setDescription("")
+  .addField(`🔸 Mod İşlemleri`,`▫ Şuana kadar \`${ban}\` kişiyi sunucudan yasaklamış.\n▫ Şuana kadar \`${kick}\` kişiyi sunucudan atmış.\n▫ Şuana kadar \`${jail}\` kişiyi jail'e atmış.\n ▫ Şuana kadar \`${mute}\` chat'de susturmuş.\n ▫ Şuana kadar \`${sesmute}\` ses de susturmuş.`)
+  .addField(`🔊 Ses bilgileri`, ``)
+  .setDescription(`▫ `)
   message.channel.send(embed);
 };
 

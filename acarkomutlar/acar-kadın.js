@@ -10,10 +10,6 @@ const emoji3 = client.emojis.find(emoji => emoji.name === acarayarlar.tagemojiad
   let user = message.mentions.users.first();
   let rol = message.mentions.roles.first()
   let member = message.guild.member(kullanıcı)
-  let uye = message.mentions.users.first() || message.author;
-  let bilgi = db.get(`yetkili.${uye.id}`);
-  let erkek = db.get(`yetkili.${uye.id}.erkek`) || 0;
-  let kiz = db.get(`yetkili.${uye.id}.kadın`) || 0;
   if (member.roles.has(acarayarlar.erkekrol1)) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.sunucuadi} Hata` , `Kullanıcı zaten kayıtlı tekrardan kayıt edemem!`).setColor("RED").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
   if (member.roles.has(acarayarlar.erkekrol2)) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.sunucuadi} Hata` , `Kullanıcı zaten kayıtlı tekrardan kayıt edemem!`).setColor("RED").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
   if (member.roles.has(acarayarlar.kadınrol1)) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.sunucuadi} Hata` , `Kullanıcı zaten kayıtlı tekrardan kayıt edemem!`).setColor("RED").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())
@@ -43,11 +39,14 @@ db.add(`yetkili.${message.author.id}.kadın`, 1);
     .addField(`${acarayarlar.tag} Heyy! ${acarayarlar.sunucuadi} Ailesi Yeni biri daha`, `${member.user}, Ailemize hoşgeldin seni ailemiz de görmekten büyük mutluluk duyarız.`)
     .setColor("PURPLE")
     .setThumbnail(acarayarlar.saygif)
+    let uye = message.author;
+  let erkek = db.get(`yetkili.${uye.id}.erkek`) || 0;
+  let kiz = db.get(`yetkili.${uye.id}.kadın`) || 0;
   let embed = new Discord.RichEmbed() 
   .setColor("BLACK")
   .setThumbnail(acarayarlar.saygif)
   .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}`, `${member.user}, adlı üyeyi **Kadın Üye** olarak kayıt edip <@&${acarayarlar.kadınrol1}> ve <@&${acarayarlar.kadınrol2}> rollerini verdim.`)
-  .addField(`Sistem Mesajı !`,`▫ **${erkek+kiz}** toplam kayıtların\n▫ **${kiz}** kadın kayıt etmişsin tebrikler!`)
+  .addField(`Sistem Mesajı !`,`**${erkek+kiz}** toplam kayıtların\n**${kiz}** kadın kayıt etmişsin tebrik ederim!`)
   .setFooter(message.author.tag ,message.author.avatarURL)
   .setTimestamp()
   return kanal1.send(embed).then(kanal.send(embed1).then(msg => msg.delete(5000)));

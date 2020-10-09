@@ -7,15 +7,8 @@ exports.run = (client, message, args) => {
   
 let uye = message.mentions.users.first() || message.author;
 let bilgi = db.get(`yetkili.${uye.id}`);
-if(bilgi.erkek === "1" && bilgi.kiz === "1") {
 var erkek = bilgi.erkek || 0 
 var kiz = bilgi.kiz || 0 
-} else {
-var erkek = "0"
-var kiz = "0"
-}
-var erkek = bilgi.erkek || 0 
-var kiz = bilgi.kiz || 0
 
 
 var ses_suresi = Math.round(db.get(`${uye.id}_sesdedur`)/60)+" dakika"

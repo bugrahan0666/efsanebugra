@@ -493,23 +493,85 @@ client.on("message", msg => {
   }
 });
 
-client.on("message", async msg => {
-    if(msg.author.bot) return;
-    if(msg.channel.type === "dm") return;
- 
-              const reklam = ["discord.app", "discord.gg", "invite","discordapp","discordgg", ".com", ".net", ".xyz", ".tk", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ".org", ".com.tr", ".biz", ".party", ".rf.gd", ".az",];
-              if (reklam.some(word => msg.content.toLowerCase().includes(word))) {
-                try {
-                  if (!msg.member.hasPermission("MANAGE_GUILD")) {
-                    msg.delete();                   
-                     return msg.reply("Reklam yapmak yasaktır lütfen reklam yapma!").then(msg => msg.delete(2000));
-                  }             
-                } catch(err) {
-                  console.log(err);
-              
-              }
-          }
-  });
+
+client.on('message', async message => {
+let aktif = await db.fetch(`reklamEngelacar_${message.channel.id}`)
+if (!aktif) return 
+let reklamlar = ["discord.app", "discord.gg" ,"discordapp","discordgg", ".com", ".net", ".xyz", ".tk", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ".org", ".com.tr", ".biz", ".party", ".rf.gd", ".az", ".cf", ".me", ".in"]
+let kelimeler = message.content.slice(" ").split(/ +/g)
+if (reklamlar.some(word => message.content.toLowerCase().includes(word))) {
+if (message.member.hasPermission("BAN_MEMBERS")) return;
+message.delete()
+message.reply('Reklamları engelliyorum!').then(msg => msg.delete(7000)) 
+}
+});
+
+client.on("messageUpdate", async (oldMsg, newMsg) => {
+let aktif = await db.fetch(`reklamEngelacar_${oldMsg.channel.id}`)
+if(!aktif) return
+let reklamlar = ["discord.app", "discord.gg","discordapp","discordgg", ".com", ".net", ".xyz", ".tk", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ".org", ".com.tr", ".biz", ".party", ".rf.gd", ".az", ".cf", ".me", ".in"]
+let kelimeler = newMsg.content.slice(" ").split(/ +/g)
+if (reklamlar.some(word => newMsg.content.toLowerCase().includes(word))) {
+if (newMsg.member.hasPermission("BAN_MEMBERS")) return;
+newMsg.delete()
+oldMsg.reply('Reklamları engelliyorum!').then(msg => msg.delete(7000)) 
+}
+});
+
+client.on("message", async message => {
+  let kişiuyari = await db.fetch(  `uyarisayisi_${message.author.id}${message.guild.id}`);
+  let sınır = await db.fetch(`reklamsınır_${message.guild.id}`);
+  let reklambanayar = await db.fetch(`reklambanayar_${message.guild.id}`);
+  let kullanici = message.member;
+  const reklambankelimeler = [
+    "discord.app",
+    "discord.gg",
+    "invite",
+    "discordapp",
+    "discordgg"
+  ];
+  if (reklambanayar == "kapali") return;
+  if (reklambanayar == "acik") {
+    if (
+      reklambankelimeler.some(word =>
+        message.content.toLowerCase().includes(word)
+      )
+    ) {
+      if (!message.member.hasPermission("ADMINISTRATOR")) {
+        message.delete();
+        db.add(`uyarisayisi_${message.author.id}${message.guild.id}`, 1);
+        let reklambanuyari = new Discord.RichEmbed()
+          .addField(
+            `Reklam Ban Sistemi Tarafından Discord Reklamı Engellendi :thumbsup:`,
+            `Sunucu Reklamını Atan Kişi: **${message.author.tag}**\nUyarı Sayısı: **${kişiuyari}/${sınır}**`
+          )
+          .setTimestamp()
+          .setFooter(`${client.user.username}`, client.user.avatarURL);
+        message.channel
+          .send(reklambanuyari)
+          .then(message => message.delete(10000));
+        if (kişiuyari == sınır) {
+          message.delete();
+          kullanici.ban({
+            reason: `${client.user.username} Reklam Oto Ban Sistemi`
+          });
+          db.set(`uyarisayisi_${message.author.id}${message.guild.id}`, 1);
+          let yeteramkreklamban = new Discord.RichEmbed()
+            .addField(
+              `Reklam Ban Sistemi Reklam Yapan Kişiyi Banladı :white_check_mark:`,
+              `Reklamdan Banlanan Kişi: **${kullanici}**`
+            )
+            .setTimestamp(new Date())
+            .setFooter(
+              `${client.user.username} Blocker`,
+              client.user.avatarURL
+            );
+          message.channel.send(yeteramkreklamban);
+        }
+      }
+    }
+  }
+});
 
 client.on("message", async msg => {
     if(msg.author.bot) return;

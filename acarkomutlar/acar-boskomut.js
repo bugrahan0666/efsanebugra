@@ -24,7 +24,7 @@ var hours = (num / 60);
 var rhours = Math.floor(hours);
 var minutes = (hours - rhours) * 60;
 var rminutes = Math.round(minutes);
-return num + " minutes = " + rhours + " hour(s) and " + rminutes + " minute(s).";
+return "▫ Yetkili **" + rhours + "** Saat **" + rminutes + "** Dakika seste durmuş.";
 }
 var ses_suresi = Math.round(db.get(`${uye.id}_sesdedur`)/60)
  const embed = new Discord.RichEmbed()

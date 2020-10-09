@@ -13,11 +13,9 @@ exports.run = async (client, message, args) => {
 if(member.roles.has(acarayarlar.erkekrol1)) {
     db.fetch(`yetkili.${message.author.id}`);
     db.add(`yetkili.${message.author.id}.erkek`, -1);
-    message.reply('Bir erkeği kayıtsıza attığın için teyit sıralamana -1 puan yansıdı.')
 } else {
     db.fetch(`yetkili.${message.author.id}`);
     db.add(`yetkili.${message.author.id}.kadın`, -1);
-    message.reply('Bir kadını kayıtsıza attığın için teyit sıralamana -1 puan yansıdı.')
 }
  await member.setNickname(`${acarayarlar.tagsiz} ' ${acar.yenibiriisim}`)
       message.guild.members.get(member.id).roles.forEach(r => {
@@ -26,13 +24,17 @@ message.guild.members.get(member.id).removeRole(r)
    
 })
     await member.addRole(acarayarlar.kayıtsızrol) // kayıtsız 1
-  
+let uye = message.mentions.users.first() || message.author;
+let bilgi = db.get(`yetkili.${uye.id}`);
+let erkek = db.get(`yetkili.${uye.id}.erkek`) || 0;
+let kiz = db.get(`yetkili.${uye.id}.kadın`) || 0;
   let embed = new Discord.RichEmbed() 
   .setColor("BLACK")
-  .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}`, `${member.user} **adlı üyeye** <@&${acarayarlar.kayıtsızrol}> **rolünü verip kayıtsıza attım.**`)                                                                             
+  .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}`, `${member.user} **adlı üyeye** <@&${acarayarlar.kayıtsızrol}> **rolünü verip kayıtsıza attım.**`)
+  .addField(`Yetkili Bilgilerin`,`${erkek+kiz} toplam teyitlerin\n kayıtsız işlemi yaptığın için etkilendin ve teyitlerinden bir kişi düşüldü.`)
   .setFooter(message.author.tag ,message.author.avatarURL)
   .setTimestamp()
-  return message.channel.send(embed).then(msg => msg.delete(5000));
+  return message.channel.send(embed).then(message => message.delete(12000));
 
  
 };

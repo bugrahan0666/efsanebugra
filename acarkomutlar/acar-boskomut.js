@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
 let uye = message.mentions.users.first() || message.author;
 let bilgi = db.get(`yetkili.${uye.id}`);
 let erkek = db.get(`yetkili.${uye.id}.erkek`) || 0;
-let kiz = db.get(`yetkili.${uye.id}.kiz`) || 0;
+let kiz = db.get(`yetkili.${uye.id}.kadın`) || 0;
 let ban = db.get(`yetkili.${uye.id}.ban`) || 0;
 let jail = db.get(`yetkili.${uye.id}.jail`) || 0;
 let mute = db.get(`yetkili.${uye.id}.mute`) || 0;

@@ -19,9 +19,8 @@ let yas = args[2]
   .setTitle(acarayarlar.tag + ' ' + acarayarlar.sunucuadi)
   .setThumbnail(acarayarlar.sunucuresim)
   .setImage(acarayarlar.sunucuembedaltıresim)
-  .addField(`🔹 İşlem Bilgileri`, `▫ İşlem Yapılanın Yeni İsmi : \`${acarf(isim)}\`\n▫ İşlem Yapılanın Yeni Yaşı : \`${yas}\`\n▫ İşlem Yapılan Kullanıcı Adı : \`${member.user.tag}\`\n▫ İşlem Yapılan Kullanıcı ID : \`${member.user.id}\``) 
-  .addField(`🔸 Yetkili Bilgileri`,`▫ İşlemi Yapan Yetkili : \`${message.author.tag}\`\n▫ İşlemi Yapan Yetkili ID : \`${message.author.id}\`\n▫ Detaylı bilgi için : \`${acarayarlar.prefix}yb <@${message.author.id}>\` `)
-  .setDescription("\n▫ <@" + member.user.id + "> Adlı kullanıcı **Erkek** olarak kayıt edildi!")
+  .addField(`🔹 İşlem Bilgisi`, `▫ Kullanıcının Yeni İsmi : \`${acarf(isim)}\`\n▫ Kullanıcının Yeni Yaşı : \`${yas}\``) 
+  .setDescription("\n▫ <@" + member.user.id + "> Adlı kullanıcının isim bilgilerini değiştirdim!")
   message.channel.send(embed).then(msg => msg.delete(12000));
 };
 

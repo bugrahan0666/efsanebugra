@@ -27,9 +27,9 @@ exports.run = async(client, message, args) => {
             banlar[message.author.id] = banlar[message.author.id]-1;
           }, 10*60*1000)
         });
-        mesaj.edit(new Discord.RichEmbed().setImage('https://cdn.discordapp.com/attachments/660894924664864878/660895579349581864/kod_icin.gif').setDescription(`${message.mentions.members.filter(a => !message.guild.members.has(a.id)).array().join(', ')} üyeleri başarıyla ${message.author} tarafından **${sebep}** nedeniyle yasaklandı!`));
+        mesaj.edit(new Discord.RichEmbed().setImage(acarayarlar.sunucuembedaltıresim).setDescription(`${message.mentions.members.filter(a => !message.guild.members.has(a.id)).array().join(', ')} üyeleri başarıyla ${message.author} tarafından **${sebep}** nedeniyle yasaklandı!`));
         db.add(`yetkili.${message.author.id}.ban`, 1);
-        client.channels.get(logKanali).send(new Discord.RichEmbed().setTimestamp().setImage('https://cdn.discordapp.com/attachments/660894924664864878/660895579349581864/kod_icin.gif').setDescription(`${message.mentions.members.filter(a => !message.guild.members.has(a.id)).array().join(', ')} üyeleri ${message.author} tarafından **${sebep}** nedeniyle yasaklandı!`));
+        client.channels.get(logKanali).send(new Discord.RichEmbed().setTimestamp().setImage(acarayarlar.sunucuembedaltıresim).setDescription(`${message.mentions.members.filter(a => !message.guild.members.has(a.id)).array().join(', ')} üyeleri ${message.author} tarafından **${sebep}** nedeniyle yasaklandı!`));
       };
     });
   } else {
@@ -49,9 +49,9 @@ exports.run = async(client, message, args) => {
           setTimeout(() => {
             banlar[message.author.id] = banlar[message.author.id]-1;
           }, 10*60*1000)
-        mesaj.edit(new Discord.RichEmbed().setImage('https://cdn.discordapp.com/attachments/660894924664864878/660895579349581864/kod_icin.gif').setDescription(`${uyemiz} üyesi ${message.author} tarafından **${sebep}** nedeniyle yasaklandı!`));
+        mesaj.edit(new Discord.RichEmbed().setImage(acarayarlar.sunucuembedaltıresim).setDescription(`${uyemiz} üyesi ${message.author} tarafından **${sebep}** nedeniyle yasaklandı!`));
         db.add(`yetkili.${message.author.id}.ban`, 1);
-        client.channels.get(logKanali).send(new Discord.RichEmbed().setTimestamp().setImage('https://cdn.discordapp.com/attachments/660894924664864878/660895579349581864/kod_icin.gif').setDescription(`${uyemiz} üyesi ${message.author} tarafından **${sebep}** nedeniyle yasaklandı!`));
+        client.channels.get(logKanali).send(new Discord.RichEmbed().setTimestamp().setImage(acarayarlar.sunucuembedaltıresim).setDescription(`${uyemiz} üyesi ${message.author} tarafından **${sebep}** nedeniyle yasaklandı!`));
       };
     });
   };

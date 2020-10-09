@@ -45,9 +45,11 @@ await
   .setColor("RANDOM")
   .setTitle(acarayarlar.tag + ' ' + acarayarlar.sunucuadi)
   .setThumbnail(acarayarlar.sunucuresim)
-  .addField(`🔹 Yapılan İşlem Açıklaması`, ` ▫ ${member.user}, adlı üyeyi **Erkek Üye** olarak kayıt edip <@&${acarayarlar.erkekrol1}> ve <@&${acarayarlar.erkekrol2}> rollerini verdim.\n`) 
-  .addField(`🔸 Yapan Yetkili Bilgileri`,` ▫ Toplam **${message.author.tag}** .\n▫ Toplam **${erkek+kiz}** adet kayıt işlemin bulunmaktadır.\n▫ Toplam **${erkek}** erkek kayıt etmişsin seni tebrik ederim!`)
+  .addField(`🔹 İşlem Bilgileri`, ` ▫ İşlem Yapılan Kullanıcı : \`${member.user}\`\n▫ İşlem Yapılan Kullanıcı ID : \`${member.user.id}\`\n▫ İşlem Sırasında Alınan Roller : <@&${acarayarlar.kayıtsızrol}>\n▫ İşlem Sırasında Verilen Roller : <@&${acarayarlar.erkekrol1}> & <@&${acarayarlar.erkekrol1}>\n`) 
+  .addField(`🔸 Yetkili Bilgileri`,` ▫ İşlemi Yapan Yetkili : \`${message.author.tag}\`\n▫ İşlemi Yapan Yetkili ID : \`${message.author.id}\``)
+  .setDescription("▫ Erkek Üye Olarak Kayıt Ettim!")
   return await(kanal1.send(embed).then(kanal.send(embed1).then(msg => msg.delete(12000))));
+  message.reply(`▫ Şuan da toplam \`${erkek+kiz}\` adet kayıt işlemi bulunmakta seni tebrik ederiz.`).then(msg => msg.delete(5000));
  
 };
 exports.conf = {

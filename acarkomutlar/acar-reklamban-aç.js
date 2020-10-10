@@ -4,10 +4,7 @@ const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
   const sınır = args.slice(0).join(" ");
   if (!message.member.hasPermission("ADMINISTRATOR"))
-    return message.channel.send(
-      ":warning: Bu komutu kullanabilmek için `Yönetici` yetkisine sahip olmalısın!"
-    );
-
+   return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   if (!sınır)
     return message.channel.send(
       ":warning: Reklam Ban sınırını belirtmeyi unuttun :wink:"

@@ -1,8 +1,9 @@
 const Discord = require("discord.js");
-const acarayarlar = require('../acarregister/botayarlari.json');
-let acar = require('../acarregister/botayarlari.json');
+const acarayarlar = require('../acar/botayarlari.json');
+const acar = require('../acar/botayarlari.json');
+const db = require('quick.db')
 exports.run = (client, message, args) => {
-  if (!message.member.roles.has(acarayarlar.movecommandid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.morparıltı} Bilgi` , `${acarayarlar.ünlem} Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+  if (!message.member.roles.has(acarayarlar.botcommandid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   let kanal = args[1];
   let kullanici = message.mentions.members.first();
   if (!kullanici) return message.channel.send("Kullanıcıyı belirtmedin");
@@ -10,6 +11,7 @@ exports.run = (client, message, args) => {
   
 
   kullanici.setVoiceChannel(`${kanal}`).then(() =>message.channel.send(`${kullanici} <#${kanal}> adlı kanala taşındı`)).catch(console.error);
+  db.add(`yetkili.${message.author.id}.cek`, 1);
 };
 
 exports.conf = {

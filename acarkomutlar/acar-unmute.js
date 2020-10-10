@@ -7,7 +7,7 @@ const acarayarlar = require('../acar/botayarlari.json');
 let acar = require('../acar/botayarlari.json');
 
 exports.run = async (receivedMessage, msg, args) => {
-      if (!msg.member.roles.has(acarayarlar.mutecommandid) && !msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.send("Bir yetkili değilsin bu yüzden komutu kullanamazsın!")
+      if (!msg.member.roles.has(acarayarlar.mutecommandid) && !msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
 var mod = msg.author
 let reason = args.slice(1).join(" ") || `Sebep Girilmemiş.`;
       if(!reason) return msg.reply('Mute kaldırabilmem için bir sebep girmelisin.')

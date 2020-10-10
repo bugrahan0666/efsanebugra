@@ -4,7 +4,7 @@ const acar = require('../acar/botayarlari.json');
 exports.run = function(client, message, args) {
     if(message.channel.type == "dm")  return;
   if(message.channel.type !== "text") return;
-  if (!message.member.roles.has(acarayarlar.boosterrolid) && !message.member.roles.has(acarayarlar.botcommandid)  && !message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`Bu komutu kullanabilmek için "**Yönetici**" yetkisine sahip olmalısın.`);
+  if (!message.member.roles.has(acarayarlar.boosterrolid) && !message.member.roles.has(acarayarlar.botcommandid)  && !message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   let guild = message.guild
   let [link, ad] = args.join(" ").split(" ");
   if (!link) return message.channel.send(`Bir link yazmalısın.`)

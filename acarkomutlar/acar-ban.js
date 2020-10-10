@@ -3,7 +3,7 @@ let acarayarlar = require('../acar/botayarlari.json')
 const db = require('quick.db')
 var banlar = {};
 exports.run = async(client, message, args) => {
-  if (!message.member.roles.has(acarayarlar.bancırolid) && !message.member.hasPermission('ADMINISTRATOR')) return message.reply(`Bu komutu kullanmak için yeterli bir iznine sahip olmalısın!`);
+  if (!message.member.roles.has(acarayarlar.bancırolid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   if (!message.mentions.members.first()) return message.reply(`Bir üyeyi etiketlemelisin!`);
   if (!args.join(' ').replace(/[^a-zA-ZığüşöçĞÜŞİÖÇ]+/g, "")) return message.reply(`Bir sebep belirtmelisin!`);
   var logKanali = acarayarlar.banlogid; // BURAYA LOG KANALININ ID

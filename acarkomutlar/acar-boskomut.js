@@ -15,9 +15,11 @@ let jail = db.get(`yetkili.${uye.id}.jail`) || 0;
 let sesmute = db.get(`yetkili.${uye.id}.sesmute`) || 0;
 let mute = db.get(`yetkili.${uye.id}.mute`) || 0;
 let isim = db.get(`yetkili.${uye.id}.isim`) || 0;
-  
+let bkes =  db.get(`yetkili.${uye.id}.bkes`) || 0;
+let taşı = db.get(`yetkili.${uye.id}.tasi`) || 0;
+let forceban = db.get(`yetkili.${uye.id}.forceban`) || 0;
 var input = db.get(`${uye.id}_sesdedur`)
-var toplamislem = erkek+kiz+ban+kick+jail+sesmute+mute+isim 
+var toplamislem = erkek+kiz+ban+kick+jail+sesmute+mute+isim+bkes+taşı
 function timeConvert(n) {
 var num = n;
 var hours = (num / 60);

@@ -4,14 +4,14 @@ const db = require("quick.db")
 const acarayarlar = require('../acar/botayarlari.json');
 let acar = require('../acar/botayarlari.json');
 exports.run = async (client, message,  args) => {
-  if (!message.member.roles.has(acarayarlar.jailhammerid) && !message.member.roles.has(acarayarlar.bancırolid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.morparıltı}    Bilgi`, `${acarayarlar.ünlem}  Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("2e0101").setFooter(message.author.tag, message.author.avatarURL).setTimestamp());
+  if (!message.member.roles.has(acarayarlar.jailhammerid) && !message.member.roles.has(acarayarlar.bancırolid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   let kullanıcı = message.mentions.users.first()
-  if (!kullanıcı) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi} Moderasyon`, `${acarayarlar.ünlem}  Bir kullanıcıyı Cezalıya atıcaksam etiketlemelisin!`).setColor("RANDOM"));
+  if (!kullanıcı) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!`, `▫ Bir kullanıcıyı Cezalıya atıcaksam etiketlemelisin!`).setColor("RANDOM"));
   let user = message.mentions.users.first();
   let rol = message.mentions.roles.first()
   let member = message.guild.member(kullanıcı);
   if (member.user.bot) return message.reply("Bot'a jail atamazsınız!")
-  if (member.highestRole.position >= message.member.highestRole.position || !member.bannable) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi} Moderasyon`, `${acarayarlar.ünlem}  Bu kullanıcıyı cezalıya atmanız için yetkiniz bulunmamaktadır!`).setColor("RANDOM"));
+  if (member.highestRole.position >= message.member.highestRole.position || !member.bannable) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!`, `▫ Bu kullanıcıyı cezalıya atmanız için yetkiniz bulunmamaktadır!`).setColor("RANDOM"));
   let reason = args.slice(1).join(" ") || `Sebep girilmemiş.`;
       if(!reason) return message.channel.send(acarayarlar.ünlem+" Tabi atabilmem için geçerli bi sebebin olmalıdır!").then(m => m.delete(5000));
       message.guild.members.get(member.id).roles.forEach(r => {

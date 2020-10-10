@@ -4,7 +4,7 @@ const Discord = require('discord.js')
 exports.run = async (client, message, args) => {
 
     if (!message.member.hasPermission('ADMINISTRATOR'))
-        return message.channel.send(':warning: Bu komutu kullanabilmek için `Yönetici` yetkisine sahip olmalısın!')
+        return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   let zatenkapalı = await db.fetch(`reklambanayar_${message.guild.id}`)
   if(zatenkapalı == 'kapali') {
     message.channel.send('Reklam Ban sistemi zaten kapalı :wink:')

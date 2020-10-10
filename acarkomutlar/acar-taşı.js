@@ -1,9 +1,9 @@
 const Discord = require("discord.js");
 const acarayarlar = require('../acar/botayarlari.json');
 const acar = require('../acar/botayarlari.json');
-
+const db = require('quick.db')
 exports.run = async (client, message, args) => {
-  if (!message.member.roles.has(acarayarlar.movecommandid) && !message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.morparıltı}  Bilgi` , `${acarayarlar.ünlem} Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());     
+  if (!message.member.roles.has(acarayarlar.botcommandid) && !message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   if (!message.member.voiceChannel) {
     return message.channel.send("Ses kanalında olman lazım!");
   }
@@ -32,6 +32,7 @@ exports.run = async (client, message, args) => {
     )
     .setFooter(`${message.author.tag}`, `${message.author.displayAvatarURL}`)
     .setTimestamp();
+  db.add(`yetkili.${message.author.id}.cek`, 1);
   message.channel.send(embed).then(m => m.delete(10000));
 };
 exports.conf = {

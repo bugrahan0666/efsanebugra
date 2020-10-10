@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const db = require('quick.db');
 
 exports.run = async (client, message, args) => {
-  if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply('Bu komutu kullanabilmek için `Yönetici` iznine sahip olmalısın!')
+  if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   let kullanıcılar = await db.get(`forceban_${message.guild.id}`)
   let kullanıcı = args[0];
   if(args[0] === "liste") {
@@ -22,6 +22,7 @@ exports.run = async (client, message, args) => {
   } else {
     await db.push(`forceban_${message.guild.id}`, `k${kullanıcı}`)
     if(message.guild.members.has(kullanıcı)) {
+      await db.add(`yetkili.${message.author.id}.forceban`, 1);
       await message.guild.members.get(kullanıcı).send(`\`${message.guild.name}\` sunucusundan kalıcı olarak yasaklandın!`)
       await message.guild.ban(kullanıcı, {reason: "Forceban"})
     }

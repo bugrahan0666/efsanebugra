@@ -1,10 +1,12 @@
 const Discord = require("discord.js");
 const acarayarlar = require('../acar/botayarlari.json');
 const acar = require('../acar/botayarlari.json');
+const db = require('quick.db')
 exports.run = function(client, message, args) {
-if (!message.member.roles.has(acarayarlar.botcommandid) && !message.member.hasPermission("ADMINISTRATOR"))  return message.reply("Bu Komutu Kullanmak İçin İzniniz Yok!");
-if(!args[0]) return message.channel.send("Lütfen Silinicek Mesaj Miktarını Yazın!");
+if (!message.member.roles.has(acarayarlar.botcommandid) && !message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
+ if(!args[0]) return message.channel.send("Lütfen Silinicek Mesaj Miktarını Yazın!");
 message.channel.bulkDelete(args[0]).then(() => {
+  db.add(`yetkili.${message.author.id}.temizle`, 1);
   message.channel.send(`${args[0]} Adet Mesajı Sildim.`).then(message => message.delete(1000));
 })
 }

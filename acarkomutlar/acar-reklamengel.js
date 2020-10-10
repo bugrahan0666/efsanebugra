@@ -3,6 +3,8 @@ const db = require('quick.db');
 exports.run = async (client, message, args) => {
 const code = message.mentions.channels.first() || message.channel
 const acar = args[0]
+ if (!message.member.hasPermission('ADMINISTRATOR'))
+        return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
 if (!acar) return message.reply(`Reklam engel sistemini açmak için reklamengel aç #kanal veya reklamengel aç yazmalsın!`)
  
   if (acar == 'aç') { 

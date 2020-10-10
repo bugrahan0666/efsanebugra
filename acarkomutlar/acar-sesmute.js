@@ -2,9 +2,10 @@ const Discord = require("discord.js");
 const ms = require("ms");
 const acarayarlar = require('../acar/botayarlari.json');
 const acar = require('../acar/botayarlari.json');
+const db = require('quick.db')
 exports.run = (client, message, args) => {
   if (!message.member.roles.has(acarayarlar.mutecommandid) && !message.member.hasPermission("ADMINISTRATOR"))    
-    return message.channel.send("Bu komutu kullanabilmek için gerekli yetkiye sahip değilsin!").then(m => m.delete(2000));
+  return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   let kullanici = message.mentions.members.first();
   let log = message.guild.channels.find(c => c.id === acarayarlar.cezaişlemid);
   let süre = args[1]
@@ -36,6 +37,7 @@ exports.run = (client, message, args) => {
     .setDescription(`${kullanici} adlı kullanıcı <@${message.author.id}> adlı yetkili tarafından sesli kanallarda **${reason}** sebepi ile **${sürezaman}** boyunca susturuldu!`)
       .setFooter(message.author.tag , message.author.avatarURL)
   log.send(acarsesmute).catch(console.error);
+  db.add(`yetkili.${message.author.id}.sesmute`, 1);
   setTimeout(() => {
     kullanici.setMute(false, `Ceza süren doldu knk`);
     message.channel.send(`${kullanici} Susturulman açıldı bir daha yapmazsın umarım!`);

@@ -30,7 +30,7 @@ var num = n;
   if(toplamceza == "0") {
     return 'Sicil Temiz ✅';
   } else {
-    return 'Sicil Temiz Değil ❌'
+    return 'Sicil Temiz Değil 📛'
   }
 }
 function cezaban(n) {
@@ -74,7 +74,13 @@ var num = n;
   }
 }
 var input = db.get(`${uye.id}_sesdedur`)
-var toplamislem = erkek+kiz+ban+kick+jail+sesmute+mute+isim+bkes+taşı || "Hiç işlem yapmamış!";
+var toplamislem = erkek+kiz+ban+kick+jail+sesmute+mute+isim+bkes+taşı || "Hiç işlem yapmamış 😔";
+function toplam(n){
+  if(toplamislem == "Hiç işlem yapmamış 😔") {
+    return 'Hiç işlem yapmamış 😔';
+  } else
+}
+var toplamislemsayi = erkek+kiz+ban+kick+jail+sesmute+mute+isim+bkes+taşı || "Veri bulunamadı!";
 function timeConvert(n) {
 var num = n;
 var hours = (num / 60);
@@ -91,9 +97,9 @@ var ses_suresi = Math.round(db.get(`${uye.id}_sesdedur`)/60)
   .setImage(acarayarlar.sunucuembedaltıresim)
   .addField(`🔹 Kayıt İşlemleri`, `▫ Şuana kadar toplam \`${kiz+erkek}\` kişiyi kayıt etmiş.\n▫ Şuana kadar \`${erkek}\` erkek kayıt etmiş.\n▫ Şuana kadar \`${kiz}\` kadın kayıt etmiş.\n ▫ Şuana kadar toplam \`${isim}\` isim ve yaş değiştirmiş.`) 
   .addField(`🔸 Mod İşlemleri`,`▫ Şuana kadar \`${forceban}\` kişiyi sunucudan forcebanlamış.\n▫ Şuana kadar \`${ban}\` kişiyi sunucudan yasaklamış.\n▫ Şuana kadar \`${kick}\` kişiyi sunucudan atmış.\n▫ Şuana kadar \`${jail}\` kişiyi jaile atmış.\n ▫ Şuana kadar \`${mute}\` chat'de susturmuş.\n ▫ Şuana kadar \`${sesmute}\` ses de susturmuş.\n▫ Şuana kadar \`${taşı}\` kişiyi taşımış çekmiş.\n▫ Şuana kadar \`${bkes}\` kişinin bağlantısını kesmiş.\n\n`)
-  .addField(`✍ Sicil bilgileri`, `▫ Yasaklanma **${cezaban(kban)}**\n▫ Atılma **${cezakick(kkick)}**\n▫ Jail **${cezajail(kjail)}**\n▫ Seste Susturulma **${ksesmute}**\n▫ Susturulma **${kmute}**\n `) 
+  .addField(`✍ Sicil bilgileri`, `▫ Yasaklanma **${cezaban(kban)}**\n▫ Atılma **${cezakick(kkick)}**\n▫ Jail **${cezajail(kjail)}**\n▫ Seste Susturulma **${cezasesmute(ksesmute)}**\n▫ Susturulma **${cezamute(kmute)}**\n `) 
   .addField(`🔊 Ses bilgileri`, `${timeConvert(ses_suresi)}`)
-  .setDescription(`▫ Sicil Bilgisi: \`${ceza(toplamceza)}\`\n▫ İşlem Puanı: \`${toplamislem}\``)
+  .setDescription(`▫ Sicil Bilgisi : \`${ceza(toplamceza)}\`\n▫ İşlem Puanı: \`${toplamislem}\`\n▫ Toplam İşlem Sayısı: \`${toplamislemsayi}\``)
   message.channel.send(embed);
 };
 

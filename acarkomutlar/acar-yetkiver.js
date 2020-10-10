@@ -14,7 +14,7 @@ if (!message.member.hasPermission('ADMINISTRATOR'))
 
   if(!member.roles.has(acarayarlar.botcommandid)) {
     member.addRole(acarayarlar.botcommandid)
-    db.add(`yetki.${message.author.id}.1`, 1);
+    db.add(`yetki.${kişi.id}.1`, 1);
     let kayıt = new Discord.RichEmbed()
     .setColor("BLACK")
     .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}`, `${kişi} **adlı üyeyi yetkili yaptı!**`)
@@ -23,7 +23,7 @@ if (!message.member.hasPermission('ADMINISTRATOR'))
     return message.channel.send(kayıt).then(msg => msg.delete(5000));
   } else {
     member.removeRole(acarayarlar.botcommandid)
-    db.delete(`yetki.${message.author.id}.1`, 1);
+    db.delete(`yetki.${kişi.id}.1`, 1);
     let kayıt = new Discord.RichEmbed()
     .setColor("BLACK")
     .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}`, `${kişi} **adlı üyenin yetkisini aldı!!**`)

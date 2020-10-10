@@ -18,7 +18,7 @@ let isim = db.get(`yetkili.${uye.id}.isim`) || 0;
 let bkes =  db.get(`yetkili.${uye.id}.bkes`) || 0;
 let taşı = db.get(`yetkili.${uye.id}.cek`) || 0;
 let forceban = db.get(`yetkili.${uye.id}.forceban`) || 0;
-let yetkilimi = db.get(`yetki.${uye.id}.1`) || 0;
+let yetkilimi = db.get(`yetki.${uye.id}.1`)
 let kban = db.get(`kullanıcı.${uye.id}.ban`)|| 0;
 let kkick = db.get(`kullanıcı.${uye.id}.kick`) || 0;
 let kjail =  db.get(`kullanıcı.${uye.id}.jail`)  || 0;
@@ -38,7 +38,7 @@ var num = n;
   if(kban == "0") {
     return ' bulunamadı!';
   } else {
-    return kban + ' kez!'
+    return kban + ' kez yasaklanmış!'
   }
 }
 function cezakick(n) {
@@ -46,7 +46,7 @@ var num = n;
   if(kkick == "0") {
     return ' bulunamadı!';
   } else {
-    return kkick + ' kez!'
+    return "`" + kkick + + ' kez atılmış!'
   }
 }
 function cezajail(n) {
@@ -54,7 +54,7 @@ var num = n;
   if(kjail == "0") {
     return ' bulunamadı!';
   } else {
-    return kjail + ' kez!'
+    return kjail + ' kez cezalandırılmış!'
   }
 }
 function cezamute(n) {
@@ -62,7 +62,7 @@ var num = n;
   if(kmute == "0") {
     return ' bulunamadı!';
   } else {
-    return kmute + ' kez!'
+    return kmute + ' kez susturulmuş!'
   }
 }
 function cezasesmute(n) {
@@ -70,7 +70,7 @@ var num = n;
   if(ksesmute == "0") {
     return ' bulunamadı!';
   } else {
-    return ksesmute + ' kez!'
+    return ksesmute + ' kez seste susturulmuş!'
   }
 }
 var input = db.get(`${uye.id}_sesdedur`)
@@ -95,26 +95,36 @@ var ses_suresi = Math.round(db.get(`${uye.id}_sesdedur`)/60)
 if(yetkilimi == "0") {
 const embed1 = new Discord.RichEmbed()
  .setColor("RANDOM")
-  .setAuthor(`${uye.tag} bilgileri`, uye.avatarURL)
+  .setAuthor(`${uye.tag} kullanıcı bilgileri`, uye.avatarURL)
   .setThumbnail(acarayarlar.sunucuresim)
   .setImage(acarayarlar.sunucuembedaltıresim)
   .addField(`📛 Sicil bilgileri`, `▫ Yasaklanma **${cezaban(kban)}**\n▫ Atılma **${cezakick(kkick)}**\n▫ Cezalandırılma **${cezajail(kjail)}**\n▫ Seste Susturulma **${cezasesmute(ksesmute)}**\n▫ Susturulma **${cezamute(kmute)}**\n `) 
   .addField(`🔊 Ses bilgileri`, `${timeConvert(ses_suresi)}`)
-  .setDescription(`▫ Sicil Bilgisi: \`${ceza(toplamceza)}\`\n▫ İşlem Puanı: \`${toplam(toplamislem)}\`\n▫ Toplam İşlem Sayısı: \`${toplamislemsayi}\``)
+  .setDescription(`▫ Sicil Bilgisi: \`${ceza(toplamceza)}\``)
   message.channel.send(embed1);    
 } 
-  
+  if(yetkilimi == null) {
+const embed1 = new Discord.RichEmbed()
+ .setColor("RANDOM")
+  .setAuthor(`${uye.tag} kullanıcı bilgileri`, uye.avatarURL)
+  .setThumbnail(acarayarlar.sunucuresim)
+  .setImage(acarayarlar.sunucuembedaltıresim)
+  .addField(`📛 Sicil bilgileri`, `▫ Yasaklanma **${cezaban(kban)}**\n▫ Atılma **${cezakick(kkick)}**\n▫ Cezalandırılma **${cezajail(kjail)}**\n▫ Seste Susturulma **${cezasesmute(ksesmute)}**\n▫ Susturulma **${cezamute(kmute)}**\n `) 
+  .addField(`🔊 Ses bilgileri`, `${timeConvert(ses_suresi)}`)
+  .setDescription(`▫ Sicil Bilgisi: \`${ceza(toplamceza)}\``)
+  message.channel.send(embed1);    
+}
   if(yetkilimi == "1") {
     const embed = new Discord.RichEmbed()
   .setColor("RANDOM")
-  .setAuthor(`${uye.tag} bilgileri`, uye.avatarURL)
+  .setAuthor(`${uye.tag} yetkili bilgileri`, uye.avatarURL)
   .setThumbnail(acarayarlar.sunucuresim)
   .setImage(acarayarlar.sunucuembedaltıresim)
-  .addField(`📛 Sicil bilgileri`, `▫ Yasaklanma **${cezaban(kban)}**\n▫ Atılma **${cezakick(kkick)}**\n▫ Cezalandırılma **${cezajail(kjail)}**\n▫ Seste Susturulma **${cezasesmute(ksesmute)}**\n▫ Susturulma **${cezamute(kmute)}**\n `) 
-  .addField(`🔊 Ses bilgileri`, `${timeConvert(ses_suresi)}`)
   .addField(`🔹 Kayıt İşlemleri`, `▫ Şuana kadar toplam \`${kiz+erkek}\` kişiyi kayıt etmiş.\n▫ Şuana kadar \`${erkek}\` erkek kayıt etmiş.\n▫ Şuana kadar \`${kiz}\` kadın kayıt etmiş.\n ▫ Şuana kadar toplam \`${isim}\` isim ve yaş değiştirmiş.`) 
   .addField(`🔸 Mod İşlemleri`,`▫ Şuana kadar \`${forceban}\` kişiyi sunucudan forcebanlamış.\n▫ Şuana kadar \`${ban}\` kişiyi sunucudan yasaklamış.\n▫ Şuana kadar \`${kick}\` kişiyi sunucudan atmış.\n▫ Şuana kadar \`${jail}\` kişiyi cezalandırmış.\n ▫ Şuana kadar \`${mute}\` chat'de susturmuş.\n ▫ Şuana kadar \`${sesmute}\` ses de susturmuş.\n▫ Şuana kadar \`${taşı}\` kişiyi taşımış çekmiş.\n▫ Şuana kadar \`${bkes}\` kişinin bağlantısını kesmiş.\n\n`)
-  .setDescription(`▫ Sicil Bilgisi: \`${ceza(toplamceza)}\`\n▫ İşlem Puanı: \`${toplam(toplamislem)}\`\n▫ Toplam İşlem Sayısı: \`${toplamislemsayi}\``)
+  .addField(`📛 Sicil bilgileri`, `▫ Yasaklanma ${cezaban(kban)}\n▫ Atılma ${cezakick(kkick)}\n▫ Cezalandırılma ${cezajail(kjail)}\n▫ Seste Susturulma ${cezasesmute(ksesmute)}\n▫ Susturulma ${cezamute(kmute)}\n `) 
+  .addField(`🔊 Ses bilgileri`, `${timeConvert(ses_suresi)}`)
+  .setDescription(`▫ Sicil Bilgisi: \`${ceza(toplamceza)}\`\n▫ Yetkili mi? \`Evet 🚀\`\n▫ İşlem Puanı: \`${toplam(toplamislem)}\`\n▫ Toplam İşlem Sayısı: \`${toplamislemsayi}\``)
   message.channel.send(embed);     
 } 
   

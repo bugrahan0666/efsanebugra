@@ -14,7 +14,7 @@ let user = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(
 let reason = args[2] || `Sebep girilmemiş.`;
 if (!user) return msg.reply('Bir kullanıcı etiketlemelisin.').then(msg => msg.delete(5000));
 if (user.user.bot) return msg.reply("Bot'a mute atamazsınız!").then(msg => msg.delete(5000));
-if (user.highestRole.position >= msg.member.highestRole.position || !user.bannable) return  msg.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi} Moderasyon`, `${acarayarlar.ünlem}  Bu kullanıcıyı susturmanız için yeterli yetkiye sahip değilsiniz!`).setColor("RANDOM"));
+if (user.highestRole.position >= msg.member.highestRole.position || !user.bannable) return  msg.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi} Moderasyon`, ` Bu kullanıcıyı susturmanız için yeterli yetkiye sahip değilsiniz!`).setColor("RANDOM"));
       if(!reason) return msg.reply('Mute atabilmem için bir sebep girmelisin.').then(msg => msg.delete(5000));
 
   let mute = msg.guild.roles.find(r => r.name === muteayarlari.muteroladi); //verilecek chat mute rolü ismi

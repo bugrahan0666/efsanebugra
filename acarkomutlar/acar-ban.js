@@ -8,7 +8,7 @@ exports.run = async(client, message, args) => {
   if (!message.mentions.members.first()) return message.reply(`Bir üyeyi etiketlemelisin!`).then(message => message.delete(5000))
   if (!args.join(' ').replace(/[^a-zA-ZığüşöçĞÜŞİÖÇ]+/g, "")) return message.reply(`Bir sebep belirtmelisin!`).then(message => message.delete(5000))
   var logKanali = acarayarlar.banlogid; // BURAYA LOG KANALININ ID
-  var banLimit = 10; // BURAYA BAN LİMİTİ
+  var banLimit = 3; // BURAYA BAN LİMİTİ
   var filter = msj => msj.author.id === message.author.id && msj.author.id !== client.user.id;
   if (message.mentions.members.size > 1) {
     let mesaj = await message.channel.send(new Discord.RichEmbed().setDescription(`${message.mentions.members.array().join(', ')} üyelerini yasaklamakta emin misiniz? (evet/hayır)`));

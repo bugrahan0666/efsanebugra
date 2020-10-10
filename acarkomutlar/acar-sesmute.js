@@ -4,6 +4,7 @@ const acarayarlar = require('../acar/botayarlari.json');
 const acar = require('../acar/botayarlari.json');
 const db = require('quick.db')
 exports.run = (client, message, args) => {
+  message.delete()
   if (!message.member.roles.has(acarayarlar.mutecommandid) && !message.member.hasPermission("ADMINISTRATOR"))    
   return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   let kullanici = message.mentions.members.first();
@@ -15,7 +16,7 @@ exports.run = (client, message, args) => {
    if (kullanici.highestRole.position >= message.member.highestRole.position || !kullanici.bannable) return  message.channel.sendEmbed(new Discord.RichEmbed().addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi} Moderasyon`, `${acarayarlar.ünlem}  Bu kullanıcıyı seste susturmanız için yeterli yetkiye sahip değilsiniz!`).setColor("RANDOM")).then(m => m.delete(3000));
       if(!süre) return message.channel.send(acarayarlar.ünlem+" Lütfen bir kullanıcıyı etiketleyip süreyi yazınız. Örn: .sesmute @etiket 5m sebep").then(m => m.delete(5000));
   let reason = args[2]
-      if(!reason) return message.reply('Seste susturabilmem için lütfen geçerli bir sebep giriniz.')
+      if(!reason) return message.reply('Seste susturabilmem için lütfen geçerli bir sebep giriniz.').then(msg => msg.delete(5000))
   if (!log) return;
     let sürezaman = args[1]
     
@@ -27,10 +28,10 @@ exports.run = (client, message, args) => {
   
    
   if (!kullanici)
-    return message.channel.send("Lütfen bir kullanıcı etiketleyin!");
+    return message.channel.send("Lütfen bir kullanıcı etiketleyin!").then(msg => msg.delete(5000));
   kullanici.setMute(true, `Susturan yetkili: ${message.author.tag} - Susturma süresi: ${sürezaman}sustur`)
     .then(() => 
-          message.channel.send(`${kullanici}, **${reason}** sebepi ile \`${sürezaman}\` süre boyunca sesli kanallarda susturuldu!`));
+          message.channel.send(`${kullanici}, **${reason}** sebepi ile \`${sürezaman}\` süre boyunca sesli kanallarda susturuldu!`)).then(msg => msg.delete(5000));
   const acarsesmute = new Discord.RichEmbed()
     .setColor("BLACK")
     .setTimestamp()

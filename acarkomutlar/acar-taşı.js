@@ -3,18 +3,19 @@ const acarayarlar = require('../acar/botayarlari.json');
 const acar = require('../acar/botayarlari.json');
 const db = require('quick.db')
 exports.run = async (client, message, args) => {
+  message.delete()
   if (!message.member.roles.has(acarayarlar.botcommandid) && !message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   if (!message.member.voiceChannel) {
-    return message.channel.send("Ses kanalında olman lazım!");
+    return message.channel.send("Ses kanalında olman lazım!").then(msg => msg.delete(5000));
   }
   let kullanıcı = message.mentions.users.first();
   if (!kullanıcı)
-    return message.channel.send("**Kullanıcıyı etiketlemelisin.**");
+    return message.channel.send("**Kullanıcıyı etiketlemelisin.**").then(msg => msg.delete(5000));
   let rol = message.mentions.roles.first();
   let member = message.guild.member(kullanıcı);
   if (!member.voiceChannel)
     return message.channel
-      .send("Etiketlenen kullanıcı bir ses kanalında değil")
+      .send("Etiketlenen kullanıcı bir ses kanalında değil").then(msg => msg.delete(5000))
       .then(m => m.delete(5000));
   const voiceChannel = message.member.voiceChannel.id;
   if (!voiceChannel) return;

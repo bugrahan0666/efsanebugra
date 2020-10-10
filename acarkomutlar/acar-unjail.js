@@ -4,6 +4,7 @@ const ms = require("ms");
 const acarayarlar = require('../acar/botayarlari.json');
 let acar = require('../acar/botayarlari.json');
 exports.run = async (client, message, args) => {
+  message.delete()
   if (!message.member.roles.has(acarayarlar.jailhammerid) && !message.member.roles.has(acarayarlar.bancırolid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   let kullanıcı = message.mentions.users.first()
   if (!kullanıcı) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!`, `Bir kullanıcı etiketlemelisin!`).setColor("RED")).then(message => message.delete(3000));

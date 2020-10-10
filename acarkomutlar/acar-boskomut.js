@@ -19,21 +19,62 @@ let bkes =  db.get(`yetkili.${uye.id}.bkes`) || 0;
 let taşı = db.get(`yetkili.${uye.id}.cek`) || 0;
 let forceban = db.get(`yetkili.${uye.id}.forceban`) || 0;
  
-let kban = db.get(`kullanıcı.${uye.id}.ban`)|| "Yok";
-let kkick = db.get(`kullanıcı.${uye.id}.kick`) || "Yok";
-let kjail =  db.get(`kullanıcı.${uye.id}.jail`)  || "Yok";
-let kmute = db.get(`kullanıcı.${uye.id}.mute`)  || "Yok";
-let ksesmute = db.get(`kullanıcı.${uye.id}.sesmute`) || "Yok";
+let kban = db.get(`kullanıcı.${uye.id}.ban`)|| 0;
+let kkick = db.get(`kullanıcı.${uye.id}.kick`) || 0;
+let kjail =  db.get(`kullanıcı.${uye.id}.jail`)  || 0;
+let kmute = db.get(`kullanıcı.${uye.id}.mute`)  || 0;
+let ksesmute = db.get(`kullanıcı.${uye.id}.sesmute`) || 0;
 var toplamceza = kban+kkick+kjail+kmute+ksesmute
 function ceza(n) {
 var num = n;
-  if(toplamceza == "YokYokYokYokYok") {
-    var
+  if(toplamceza == "0") {
+    return 'Sicil Temiz ✅';
+  } else {
+    return 'Sicil Temiz Değil ❌'
   }
 }
-
+function cezaban(n) {
+var num = n;
+  if(kban == "0") {
+    return ' bulunamadı!';
+  } else {
+    return kban + ' kez!'
+  }
+}
+function cezakick(n) {
+var num = n;
+  if(kkick == "0") {
+    return ' bulunamadı!';
+  } else {
+    return kkick + ' kez!'
+  }
+}
+function cezajail(n) {
+var num = n;
+  if(kjail == "0") {
+    return ' bulunamadı!';
+  } else {
+    return kjail + ' kez!'
+  }
+}
+function cezamute(n) {
+var num = n;
+  if(kmute == "0") {
+    return ' bulunamadı!';
+  } else {
+    return kmute + ' kez!'
+  }
+}
+function cezasesmute(n) {
+var num = n;
+  if(ksesmute == "0") {
+    return ' bulunamadı!';
+  } else {
+    return ksesmute + ' kez!'
+  }
+}
 var input = db.get(`${uye.id}_sesdedur`)
-var toplamislem = erkek+kiz+ban+kick+jail+sesmute+mute+isim+bkes+taşı || "Hiç işlem yapmamış.";
+var toplamislem = erkek+kiz+ban+kick+jail+sesmute+mute+isim+bkes+taşı || "Hiç işlem yapmamış!";
 function timeConvert(n) {
 var num = n;
 var hours = (num / 60);
@@ -50,9 +91,9 @@ var ses_suresi = Math.round(db.get(`${uye.id}_sesdedur`)/60)
   .setImage(acarayarlar.sunucuembedaltıresim)
   .addField(`🔹 Kayıt İşlemleri`, `▫ Şuana kadar toplam \`${kiz+erkek}\` kişiyi kayıt etmiş.\n▫ Şuana kadar \`${erkek}\` erkek kayıt etmiş.\n▫ Şuana kadar \`${kiz}\` kadın kayıt etmiş.\n ▫ Şuana kadar toplam \`${isim}\` isim ve yaş değiştirmiş.`) 
   .addField(`🔸 Mod İşlemleri`,`▫ Şuana kadar \`${forceban}\` kişiyi sunucudan forcebanlamış.\n▫ Şuana kadar \`${ban}\` kişiyi sunucudan yasaklamış.\n▫ Şuana kadar \`${kick}\` kişiyi sunucudan atmış.\n▫ Şuana kadar \`${jail}\` kişiyi jaile atmış.\n ▫ Şuana kadar \`${mute}\` chat'de susturmuş.\n ▫ Şuana kadar \`${sesmute}\` ses de susturmuş.\n▫ Şuana kadar \`${taşı}\` kişiyi taşımış çekmiş.\n▫ Şuana kadar \`${bkes}\` kişinin bağlantısını kesmiş.\n\n`)
-  .addField(`✍ Sicil bilgileri`, `▫ Yasaklanma: **${kban}**\n▫ Atılma: **${kkick}**\n▫ Jail: **${kjail}**\n▫ Seste Susturulma: **${ksesmute}**\n▫ Susturulma: **${kmute}**\n `) 
+  .addField(`✍ Sicil bilgileri`, `▫ Yasaklanma **${cezaban(kban)}**\n▫ Atılma **${cezakick(kkick)}**\n▫ Jail **${cezajail(kjail)}**\n▫ Seste Susturulma **${ksesmute}**\n▫ Susturulma **${kmute}**\n `) 
   .addField(`🔊 Ses bilgileri`, `${timeConvert(ses_suresi)}`)
-  .setDescription(`▫ Sicil Puanı: \`${toplamcezagoster}\`\n▫ Bu kullanıcının \`${toplamislem}\` kez toplam işlemi bulunmaktadır.`)
+  .setDescription(`▫ Sicil Bilgisi: \`${ceza(toplamceza)}\`\n▫ İşlem Puanı: \`${toplamislem}\``)
   message.channel.send(embed);
 };
 

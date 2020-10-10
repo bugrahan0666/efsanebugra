@@ -115,14 +115,13 @@ client.on("guildBanAdd", async function(guild, user) {
    db.add(`yetkili.${yetkili.id}.ban`, 1);
     db.add(`kullanıcı.${user.id}.ban`, 1);
 });
-client.on("guildMemberRemove", async (kickhammer, member) => {
-  const guild = kickhammer.guild
-  const entry = await guild.fetchAuditLogs().then(audit => audit.entries.first());
+client.on("guildMemberRemove", async function(guild, user)  {
+  const guild2 = guild.guild
+  const entry = await guild2.fetchAuditLogs().then(audit => audit.entries.first());
 if (entry.action == `MEMBER_KICK`) {
-  let yetkili = await guild.members.get(entry.executor.id);
-  let kullanici = guild.members.get(member.id);
+  let yetkili = await guild2.members.get(entry.executor.id);
     db.add(`yetkili.${yetkili.id}.kick`, 1);
-    db.add(`kullanıcı.${kullanici.id}.kick`, 1);
+    db.add(`kullanıcı.${user.id}.kick`, 1);
 }
 })
 

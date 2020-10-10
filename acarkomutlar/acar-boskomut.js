@@ -4,7 +4,8 @@ let acar = require('../acar/botayarlari.json');
 const db = require('quick.db')
 
 exports.run = (client, message, args) => {
-message.delete()  
+message.delete()
+ if (!message.member.roles.has(acarayarlar.botcommandid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
 let uye = message.mentions.users.first() || message.author
 let bilgi = db.get(`yetkili.${uye.id}`);
 let erkek = db.get(`yetkili.${uye.id}.erkek`) || 0;

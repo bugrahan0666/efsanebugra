@@ -74,7 +74,7 @@ await member.setNickname(`${acarayarlar.tag} ' ${acarf(isim)} | ${yas}`)
   .setThumbnail(acarayarlar.sunucuresim)
   .setImage(acarayarlar.sunucuembedaltıresim)
   .addField(`🔹 İşlem Bilgileri`, `▫ İşlem Yapılanın İsmi : \`${acarf(isim)}\`\n▫ İşlem Yapılanın Yaşı : \`${yas}\`\n▫ İşlem Yapılan Kullanıcı Adı : \`${member.user.tag}\`\n▫ İşlem Yapılan Kullanıcı ID : \`${member.user.id}\``) 
-  .addField(`🔸 Yetkili Bilgileri`,`▫ İşlemi Yapan Yetkili : \`${message.author.tag}\`\n▫ İşlemi Yapan Yetkili ID : \`${message.author.id}\`\n▫ Detaylı bilgi için : \`${acarayarlar.prefix}yb <@${message.author.id}>\` `)
+  .addField(`🔸 Yetkili Bilgileri`,`▫ Yetkili : \`${message.author.tag}\`\n▫ Yetkili ID : \`${message.author.id}\`\n▫ Detaylı bilgi için : \`${acarayarlar.prefix}yb <@${message.author.id}>\` `)
   .setDescription("\n▫ <@" + member.user.id + "> Adlı kullanıcı **Kadın** olarak kayıt edildi!")
   return  await(message.channel.sendEmbed(new Discord.RichEmbed().addField(`✅ Başarılı!` , `▫ Kullanıcıyı başarıyla **Kadın** olarak kayıt ettim!!`).setColor("RED")).then(msg => msg.delete(5000)).then(kanal1.send(embed).then(kanal.send(embed1).then(msg => msg.delete(30000)))));   
 } else return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Lütfen geçerli bir cinsiyet girin **erkek** veya **kadın** !!`).setColor("RED").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp())

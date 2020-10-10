@@ -633,12 +633,12 @@ client.on("guildBanAdd", async function(guild, user) {
    db.add(`yetkili.${yetkili.id}.ban`, 1);
     db.add(`kullanıcı.${user.id}.ban`, 1);
 });
-client.on("guildMemberRemove", async function(guild, user) {
-  const entry = await guild
-    .fetchAuditLogs({ type: "MEMBER_KICK" })
-    .then(audit => audit.entries.first());
-  const yetkili = await guild.members.get(entry.executor.id);
-   db.add(`yetkili.${yetkili.id}.kick`, 1);
-   db.add(`kullanıcı.${user.id}.kick`, 1);
-});
-    
+client.on("guildMemberRemove", async function(guild, user)  {
+  const entry = await guild.fetchAuditLogs().then(audit => audit.entries.first());
+if (entry.action == `MEMBER_KICK`) {
+  let yetkili = await guild.members.get(entry.executor.id);
+  let kullanici = await user
+    db.add(`yetkili.${yetkili.id}.kick`, 1);
+    db.add(`kullanıcı.${kullanici.id}.kick`, 1);
+}
+})

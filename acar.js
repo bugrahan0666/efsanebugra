@@ -248,7 +248,8 @@ ${acar} <@&${acarayarlar.registercommandid}> seninle ilgilenecektir.
 ${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - member.user.createdAt.getTime() < 15*24*60*60*1000
             ? acargüvensiz + " __**Bu Hesap Şüpheli Görünüyor**__ " + acargüvensiz
             : acargüvenli + " __**Bu Hesap Güvenilir Görünüyor**__ " + acargüvenli
-            }\n\n`,);
+            }\n\n`,
+           new Discord.Attachment("https://i.hizliresim.com/P9AOjj.gif"));
   } catch (err) {
     console.log(err);
   }

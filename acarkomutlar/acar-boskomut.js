@@ -24,8 +24,13 @@ let kkick = db.get(`kullanıcı.${uye.id}.kick`) || "Yok";
 let kjail =  db.get(`kullanıcı.${uye.id}.jail`)  || "Yok";
 let kmute = db.get(`kullanıcı.${uye.id}.mute`)  || "Yok";
 let ksesmute = db.get(`kullanıcı.${uye.id}.sesmute`) || "Yok";
-  
-var toplamceza = kban+kkick+kjail+kmute+ksesmute || "Sicili temiz!"
+var toplamceza = kban+kkick+kjail+kmute+ksesmute
+function ceza(n) {
+var num = n;
+  if(toplamceza == "YokYokYokYokYok") {
+    var
+  }
+}
 
 var input = db.get(`${uye.id}_sesdedur`)
 var toplamislem = erkek+kiz+ban+kick+jail+sesmute+mute+isim+bkes+taşı || "Hiç işlem yapmamış.";
@@ -47,7 +52,7 @@ var ses_suresi = Math.round(db.get(`${uye.id}_sesdedur`)/60)
   .addField(`🔸 Mod İşlemleri`,`▫ Şuana kadar \`${forceban}\` kişiyi sunucudan forcebanlamış.\n▫ Şuana kadar \`${ban}\` kişiyi sunucudan yasaklamış.\n▫ Şuana kadar \`${kick}\` kişiyi sunucudan atmış.\n▫ Şuana kadar \`${jail}\` kişiyi jaile atmış.\n ▫ Şuana kadar \`${mute}\` chat'de susturmuş.\n ▫ Şuana kadar \`${sesmute}\` ses de susturmuş.\n▫ Şuana kadar \`${taşı}\` kişiyi taşımış çekmiş.\n▫ Şuana kadar \`${bkes}\` kişinin bağlantısını kesmiş.\n\n`)
   .addField(`✍ Sicil bilgileri`, `▫ Yasaklanma: **${kban}**\n▫ Atılma: **${kkick}**\n▫ Jail: **${kjail}**\n▫ Seste Susturulma: **${ksesmute}**\n▫ Susturulma: **${kmute}**\n `) 
   .addField(`🔊 Ses bilgileri`, `${timeConvert(ses_suresi)}`)
-  .setDescription(`▫ Bu kullanıcının \`${toplamislem}\` kez toplam işlemi bulunmaktadır.\n▫ Bu kullanıcının \`${toplamislem}\` kez toplam işlemi bulunmaktadı.`)
+  .setDescription(`▫ Sicil Puanı: \`${toplamcezagoster}\`\n▫ Bu kullanıcının \`${toplamislem}\` kez toplam işlemi bulunmaktadır.`)
   message.channel.send(embed);
 };
 

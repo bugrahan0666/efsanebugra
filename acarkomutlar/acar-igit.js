@@ -12,9 +12,9 @@ module.exports.run = async (client, message, args) => {
     );
   };
   if (!msg.mentions.users.first())
-    return message.channel.send("Birini etiketlemelisin.");
+    return message.channel.send("Birini etiketlemelisin.").then(message => message.delete(5000));
   if (message.mentions.users.first() === message.author)
-    return message.channel.send("Kendini seçemezsin.");
+    return message.channel.send("Kendini seçemezsin.").then(message => message.delete(5000));
  const acarembed = new Discord.RichEmbed()
    .setColor("RANDOM")
    .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}` , `Merhaba ${msg.mentions.users.first().username}, ${msg.author} bulunduğun sesli kanala gelmek istiyor, kabul ediyor musun?\n*Unutma, 30 saniye içerisinde onaylamazsan istek iptal edilecek.*`)
@@ -95,3 +95,4 @@ exports.acar = {
     acardizini: 'acar-igit.js',
     acarprefix: acar.prefix,
 };
+

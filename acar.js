@@ -649,3 +649,40 @@ client.on("message", async msg => {
               }
           
   });
+client.on("message",async message => {
+   if (message.author.bot || message.channel.type === "dm") return;
+ 
+  //return message.channel.send(`**${user_tag}** Şu anda afk.\nNedeni:${key.reason}`)
+  //return message.reply(`Artık afk değilsin. Tekrardan hoş geldin.`).then(msg => msg.delete(9000))
+    var afklar =await db.fetch(`afk_${message.author.id}, ${message.guild.id}`)
+    
+  if(afklar){
+    
+    db.delete(`afk_${message.author.id}, ${message.guild.id}`)
+    db.delete(`afk-zaman_${message.author.id}, ${message.guild.id}`)
+    
+    message.reply(`Artık afk değilsin. Tekrardan hoş geldin.`).then(msg => msg.delete(9000))
+       try{
+    let takma_ad = message.member.nickname.replace("[AFK]", "")
+    message.member.setNickname(takma_ad).catch(err => console.log(err));
+       }catch(err){   
+
+ console.log(err.message)
+  }
+  }
+  var kullanıcı = message.mentions.users.first()
+  if(!kullanıcı) return
+   let zaman =  await db.fetch(`afk-zaman_${kullanıcı.id}, ${message.guild.id}`)
+  
+   
+    var süre = ms(Date.now() - zaman)
+    
+    
+   var sebep = await db.fetch(`afk_${kullanıcı.id}, ${message.guild.id}`)
+  if(await db.fetch(`afk_${message.mentions.users.first().id}, ${message.guild.id}`)){
+  if(süre.days !== 0){
+     message.channel.send(`**${kullanıcı}** adlı kullanıcı **${sebep}** sebebi ile afk! `)
+   return
+   }
+  }
+})

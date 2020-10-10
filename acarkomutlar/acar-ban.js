@@ -4,9 +4,9 @@ const db = require('quick.db')
 var banlar = {};
 exports.run = async(client, message, args) => {
   message.delete()
-  if (!message.member.roles.has(acarayarlar.bancırolid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
-  if (!message.mentions.members.first()) return message.reply(`Bir üyeyi etiketlemelisin!`);
-  if (!args.join(' ').replace(/[^a-zA-ZığüşöçĞÜŞİÖÇ]+/g, "")) return message.reply(`Bir sebep belirtmelisin!`);
+  if (!message.member.roles.has(acarayarlar.bancırolid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(message => message.delete(5000))
+  if (!message.mentions.members.first()) return message.reply(`Bir üyeyi etiketlemelisin!`).then(message => message.delete(5000))
+  if (!args.join(' ').replace(/[^a-zA-ZığüşöçĞÜŞİÖÇ]+/g, "")) return message.reply(`Bir sebep belirtmelisin!`).then(message => message.delete(5000))
   var logKanali = acarayarlar.banlogid; // BURAYA LOG KANALININ ID
   var banLimit = 10; // BURAYA BAN LİMİTİ
   var filter = msj => msj.author.id === message.author.id && msj.author.id !== client.user.id;
@@ -17,11 +17,11 @@ exports.run = async(client, message, args) => {
       if(collected.first().content.toLowerCase() === "evet") {
         let sebep = args.join(' ').replace(/[^a-zA-ZığüşöçĞÜŞİÖÇ]+/g, "");
         message.mentions.members.forEach(async uye => {
-          if (banlar[message.author.id] > banLimit) return message.reply('Ban limitini doldurdun (10)');
-          if (uye.bot) return mesaj.edit(new Discord.RichEmbed().setDescription(`Botu yasaklıcak kadar mal mısın?`));
-          if (uye.id === message.author.id) return message.reply(`Kendini yasaklayacak kadar sorunlu musun?`);
-          if (uye.highestRole.position >= message.member.highestRole.position) return message.reply(`Yasaklamaya çalıştığın ${uye} üyesi senden yetkili!`);
-          if (!uye.bannable) return message.channel.send(new Discord.RichEmbed().setDescription(`${uye} üyesini yasaklamaya yetkim yetmiyor!`));
+          if (banlar[message.author.id] > banLimit) return message.reply('Ban limitini doldurdun (10)').then(message => message.delete(5000));
+          if (uye.bot) return mesaj.edit(new Discord.RichEmbed().setDescription(`Botu yasaklıcak kadar mal mısın?`)).then(message => message.delete(5000));
+          if (uye.id === message.author.id) return message.reply(`Kendini yasaklayacak kadar sorunlu musun?`).then(message => message.delete(5000));
+          if (uye.highestRole.position >= message.member.highestRole.position) return message.reply(`Yasaklamaya çalıştığın ${uye} üyesi senden yetkili!`).then(message => message.delete(5000));
+          if (!uye.bannable) return message.channel.send(new Discord.RichEmbed().setDescription(`${uye} üyesini yasaklamaya yetkim yetmiyor!`)).then(message => message.delete(5000));
           await db.add(`kullanıcı.${uye.id}.ban`, 1); message.guild.ban(uye.id, { reason: sebep });
           banlar[message.author.id] = banlar[message.author.id] ? banlar[message.author.id]+1 : 1;
           setTimeout(() => {

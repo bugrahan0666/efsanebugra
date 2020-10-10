@@ -25,7 +25,7 @@ let yas = args[3]
       if(!yas) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Kayıt edilecek kullanıcıya bir yaş belirlemelisin!!!!`).setColor("RED")).then(msg => msg.delete(5000))
 
 if(cinsiyet == "erkek"){
-await member.setNickname(`${acarayarlar.tag} ' ${acarf(isim)} | ${yas}`)
+await member.setNickname(`${acarayarlar.tag} ${acarf(isim)} | ${yas}`)
   member.addRole(acarayarlar.erkekrol1); // erkek 1
   member.addRole(acarayarlar.erkekrol2); // erkek 2
   member.removeRole(acarayarlar.kadınrol1); // kadın 1
@@ -52,7 +52,7 @@ await member.setNickname(`${acarayarlar.tag} ' ${acarf(isim)} | ${yas}`)
   return  await(message.channel.sendEmbed(new Discord.RichEmbed().addField(`✅ Başarılı!` , `▫ Kullanıcıyı başarıyla **Erkek** olarak kayıt ettim!!`).setColor("RED")).then(msg => msg.delete(5000)).then(kanal1.send(embed).then(kanal.send(embed1).then(msg => msg.delete(30000)))));   
 } 
 if(cinsiyet == "kadın"){
-await member.setNickname(`${acarayarlar.tag} ' ${acarf(isim)} | ${yas}`)
+await member.setNickname(`${acarayarlar.tag} ${acarf(isim)} | ${yas}`)
   member.removeRole(acarayarlar.erkekrol1); // erkek 1
   member.removeRole(acarayarlar.erkekrol2); // erkek 2
   member.addRole(acarayarlar.kadınrol1); // kadın 1

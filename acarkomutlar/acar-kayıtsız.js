@@ -18,7 +18,7 @@ if(member.roles.has(acarayarlar.erkekrol1)) {
     db.fetch(`yetkili.${message.author.id}`);
     db.add(`yetkili.${message.author.id}.kadın`, -1);
 }
- await member.setNickname(`${acarayarlar.tagsiz} ' ${acar.yenibiriisim}`)
+ await member.setNickname(`${acarayarlar.tagsiz} ${acar.yenibiriisim}`)
       message.guild.members.get(member.id).roles.forEach(r => {
 message.guild.members.get(member.id).removeRole(r) 
 

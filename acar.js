@@ -249,7 +249,7 @@ ${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - memb
             ? acargüvensiz + " __**Bu Hesap Şüpheli Görünüyor**__ " + acargüvensiz
             : acargüvenli + " __**Bu Hesap Güvenilir Görünüyor**__ " + acargüvenli
             }\n\n`,
-           new Discord.Attachment("https://i.hizliresim.com/P9AOjj.gif"));
+           new Discord.Attachment("https://media.giphy.com/media/kQuJhE1Bh5RNh2aKRo/giphy.gifhttps://media.giphy.com/media/kQuJhE1Bh5RNh2aKRo/giphy.gif"));
   } catch (err) {
     console.log(err);
   }
@@ -260,19 +260,19 @@ let j = await db.fetch(`jail.${member.id}`)
 db.fetch(`mute.${member.id}`, '0');
 db.fetch(`jail.${member.id}`, '0');
 member.addRole(acar.kayıtsızrol)
-member.setNickname(`${acarayarlar.tagsiz} ' ${kullanıcıadı}`);
+member.setNickname(`${acarayarlar.tagsiz} ${kullanıcıadı}`);
 
   
 if(j == '0' && m == '0') {
           member.addRole(acar.kayıtsızrol)
-          member.setNickname(`${acarayarlar.tag} ' ${kullanıcıadı}`);
+          member.setNickname(`${acarayarlar.tag} ${kullanıcıadı}`);
 }
   
 if(j == '1') {
       member.removeRole(acar.kayıtsızrol) 
       member.addRole(acar.cezalırolid).then(x => {
         x.addRole(acar.cezalırolid)
-        x.setNickname(acar.tagsiz + ` ' Cezalı Üye`)  
+        x.setNickname(acar.tagsiz + ` Cezalı Üye`)  
         x.removeRole(acar.kayıtsızrol)
     });
   let kanal = client.channels.get(acar.cezaişlemid) //log kanal ıd.
@@ -283,7 +283,7 @@ if(m == '1') {
      member.addRole(acar.muterolid)
      member.addRole(acar.muterolid).then(x => {
         x.addRole(acar.muterolid)
-        member.setNickname(`${acarayarlar.tagsiz} ' ${kullanıcıadı}`);
+        member.setNickname(`${acarayarlar.tagsiz} ${kullanıcıadı}`);
         x.addRole(acar.kayıtsızrol)
        x.addRole(acar.muterolid)
     });    
@@ -298,7 +298,7 @@ if(m == '1') {
       member.addRole(acar.şüphelirol).then(x => {
       x.addRole(acar.şüphelirol)
       x.removeRole(acar.kayıtsızrol)
-      member.setNickname(`${acarayarlar.tagsiz} ' ${kullanıcıadı}`);
+      member.setNickname(`${acarayarlar.tagsiz} ${kullanıcıadı}`);
          const logChannelx = member.guild.channels.find(channel => channel.id === acar.şüphelilog);
     const embed = new Discord.RichEmbed()
       .setColor("RED")

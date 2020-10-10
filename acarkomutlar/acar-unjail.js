@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => { // && !message.member.hasPermis
       if(!reason) return message.channel.send(" Kaldırmak için lütfen bir sebep yazınız.").then(message => message.delete(5000));
   db.set(`jail.${kullanıcı.id}` , '0') 
   await(member.addRole(acar.kayıtsızrol));
-    member.setNickname(`${acar.tagsiz} ' ${acar.yenibiriisim}`)
+    member.setNickname(`${acar.tagsiz} ${acar.yenibiriisim}`)
     member.removeRole(acarayarlar.cezalırolid);
     member.removeRole(acarayarlar.şüphelirol);
     await(member.addRole(acar.kayıtsızrol));

@@ -48,16 +48,16 @@ if(!mute){
   const muteembed = new Discord.RichEmbed()
   .setColor('RANDOM')    
   .addField(`🔹 Yetkiyi Kullanan Yetkili` , `▫ ${mod} adlı yetkili susturma komutu kullandı.`)
-  .setDescription(`🔸 ${acarayarlar.sunucuadi} \n\n**▫ <@${user.id}>** adlı kullanıcı **${reason}** sebebi ile ${mutezaman} susturuldu.`)
+  .setDescription(`🔸 ${acarayarlar.sunucuadi}**▫ <@${user.id}>** adlı kullanıcı **${reason}** sebebi ile ${mutezaman} susturuldu.`)
   .setTimestamp()
-  .setThumbnail(acar.sunucubanner)
+  .setThumbnail(acar.sunucuresim)
   let kanal1 = msg.guild.channels.get(acarayarlar.mutelogid);
   if (!kanal1) return;
   kanal1.send(muteembed);
    const muteembed1 = new Discord.RichEmbed()
   .setColor('RANDOM')    
-  .setDescription(`🔹 ${acarayarlar.sunucuadi}\n**▫ <@${user.id}>** adlı kullanıcı **${reason}** sebebi ile ${mutezaman} susturuldu.\n\n`)
-  .setThumbnail(acar.sunucubanner)
+  .setDescription(`🔹 ${acarayarlar.sunucuadi}**▫ <@${user.id}>** adlı kullanıcı **${reason}** sebebi ile ${mutezaman} susturuldu.\n\n`)
+  .setThumbnail(acar.sunucuresim)
    
   msg.channel.send(muteembed1).then(msg => msg.delete(10000));
   msg.delete()

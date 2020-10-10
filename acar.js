@@ -243,7 +243,7 @@ client.on("guildMemberAdd", async member => {
       .get(acarayarlar.hoşgeldinkanalid)
       .send(`${acar} **ACAR Code Center'a Hoşgeldin, ${member} Seninle Beraber \`${member.guild.memberCount}\` Kişiyiz!**
 ${acar} **Müsait Olduğunda Teyit Odalarından Birine Geçip Kaydını Yaptırabilirsin.**
-${acar} <@&763924998263275540> seninle ilgilenecektir.
+${acar} <@&${acarayarlar.registercommandid}> seninle ilgilenecektir.
 ${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - member.user.createdAt.getTime() < 15*24*60*60*1000
             ? acargüvensiz + " __**Bu Hesap Şüpheli Görünüyor**__ " + acargüvensiz
             : acargüvenli + " __**Bu Hesap Güvenilir Görünüyor**__ " + acargüvenli

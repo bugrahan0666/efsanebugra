@@ -105,6 +105,27 @@ client.on('warn', e => {
 client.on('error', e => {
 });
 
+//SağClick Kick ve Ban atınca Yetkiliye ve kullanıcıya Kick ve Ban sayma!
+client.on("guildBanAdd", async function(guild, user) {
+  const entry = await guild
+    .fetchAuditLogs({ type: "MEMBER_BAN_ADD" })
+    .then(audit => audit.entries.first());
+  const yetkili = await guild.members.get(entry.executor.id);
+    if (yetkili.id === acar.botid) return;
+   db.add(`yetkili.${yetkili.id}.ban`, 1);
+    db.add(`kullanıcı.${user.id}.ban`, 1);
+});
+client.on("guildMemberRemove", async (kickhammer, member) => {
+  const guild = kickhammer.guild
+  const entry = await guild.fetchAuditLogs().then(audit => audit.entries.first());
+if (entry.action == `MEMBER_KICK`) {
+  let yetkili = await guild.members.get(entry.executor.id);
+  let kullanici = guild.members.get(member.id);
+    db.add(`yetkili.${yetkili.id}.kick`, 1);
+    db.add(`kullanıcı.${kullanici.id}.kick`, 1);
+}
+})
+
 client.login(acar.token);
 
 // Main Olarak Belirlediğimiz Yer !
@@ -623,22 +644,3 @@ client.on("message", async msg => {
               }
           
   });
-//SağClick Kick ve Ban atınca Yetkiliye ve kullanıcıya Kick ve Ban sayma!
-client.on("guildBanAdd", async function(guild, user) {
-  const entry = await guild
-    .fetchAuditLogs({ type: "MEMBER_BAN_ADD" })
-    .then(audit => audit.entries.first());
-  const yetkili = await guild.members.get(entry.executor.id);
-    if (yetkili.id === acar.botid) return;
-   db.add(`yetkili.${yetkili.id}.ban`, 1);
-    db.add(`kullanıcı.${user.id}.ban`, 1);
-});
-client.on("guildMemberRemove", async function(guild, user)  {
-  const entry = await guild.fetchAuditLogs().then(audit => audit.entries.first());
-if (entry.action == `MEMBER_KICK`) {
-  let yetkili = await guild.members.get(entry.executor.id);
-  let kullanici = await user
-    db.add(`yetkili.${yetkili.id}.kick`, 1);
-    db.add(`kullanıcı.${kullanici.id}.kick`, 1);
-}
-})

@@ -7,40 +7,24 @@ exports.run = async (client, message, args) => {
 var Ölçüm = await message.channel.send('⏳ Ağ gecikmesi hesaplanıyor...')
 var Sonuç = await message.channel.send('⏳ Sistemsel gecikme hesaplanıyor...')
 function myFunc2(arg) {
-   Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor..")
-Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor..")
+   Sonuç.edit("⌛ Ağ gecikmesi hesaplanıyor..")
+Ölçüm.edit("⌛ Ağ gecikmesi hesaplanıyor..")
 }
 function myFunc3(arg) {
    Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor.")
 Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor.")
 }
 function myFunc4(arg) {
-   Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor..")
-Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor..")
+   Sonuç.edit("⌛ Ağ gecikmesi hesaplanıyor..")
+Ölçüm.edit("⌛ Ağ gecikmesi hesaplanıyor..")
 }
 function myFunc5(arg) {
    Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor...")
 Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor...")
 }
-function myFunc6(arg) {
-   Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor..")
-Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor..")
-}
-function myFunc7(arg) {
-   Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor.")
-Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor.")
-}
-function myFunc8(arg) {
-   Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor..")
-Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor..")
-}
-function myFunc9(arg) {
-   Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor...")
-Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor...")
-}
 function myFunc10(arg) {
    Sonuç.edit("📡 Sisteme bağlandı!")
-Ölçüm.edit("")
+Ölçüm.edit("⌛ Seni biraz daha bekleticem!")
 }  
 function myFunc(arg) {
   Sonuç.edit(new Discord.RichEmbed()
@@ -50,15 +34,12 @@ function myFunc(arg) {
 📡 Ağ gecikmesi; \`${Math.round(client.ping)} MS\``))
 Ölçüm.delete()
 }
-setTimeout(myFunc2, 1000, 'acar');
-setTimeout(myFunc3, 1000, 'acar');
-setTimeout(myFunc4, 1000, 'acar');
-setTimeout(myFunc5, 1000, 'acar');
-setTimeout(myFunc6, 1000, 'acar');
-setTimeout(myFunc7, 1000, 'acar');
-setTimeout(myFunc8, 1000, 'acar');
-setTimeout(myFunc9, 1000, 'acar');
-setTimeout(myFunc, 12000, 'acar');
+setTimeout(myFunc2, 2000, 'acar');
+setTimeout(myFunc3, 2000, 'acar');
+setTimeout(myFunc4, 2000, 'acar');
+setTimeout(myFunc5, 2000, 'acar');
+setTimeout(myFunc10, 5000, 'acar');
+setTimeout(myFunc, 15000, 'acar');
 
 }
 

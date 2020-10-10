@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const db = require('quick.db');
-const acarayarlar = require('../acarregister/botayarlari.json');
-let acar = require('../acarregister/botayarlari.json');
+const acarayarlar = require('../acar/botayarlari.json');
+let acar = require('../acar/botayarlari.json');
 exports.run = async (client, message, args) => {
 
 

@@ -7,20 +7,19 @@ const acarayarlar = require('../acar/botayarlari.json');
 let acar = require('../acar/botayarlari.json');
 
 exports.run = async (receivedMessage, msg, args) => {
-  msg.delete()
-      if (!msg.member.roles.has(acarayarlar.mutecommandid) && !msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
+      if (!msg.member.roles.has(acarayarlar.mutecommandid) && !msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.send("Bir yetkili değilsin bu yüzden komutu kullanamazsın!")
 var mod = msg.author
-let reason = args.slice(1).join(" ") || `Sebep Girilmemiş.`;
-      if(!reason) return msg.reply('Mute kaldırabilmem için bir sebep girmelisin.').then(msg => msg.delete(5000))
+let reason = args.slice(1).join(" ");
+      if(!reason) return msg.reply('Mute kaldırabilmem için bir sebep girmelisin.')
 let user = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
-  if (!user) return msg.reply('Bir kullanıcı etiketlemelisin.').then(msg => msg.delete(5000))
+  if (!user) return msg.reply('Bir kullanıcı etiketlemelisin.')
   let mute = msg.guild.roles.find(r => r.name === muteayarlari.muteroladi); //verilecek chat mute rolü ismi
           
   let mutetime = args[1];
 
   const muteembed = new Discord.RichEmbed()
   .setColor('RANDOM')    
-  .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}` , ` ${mod} adlı yetkili **<@${user.id}>** adlı kullanıcıyı **${reason}** sebebi ile sustururmasını kaldırıldı.`).then(msg => msg.delete(5000))
+  .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}` , ` ${mod} adlı yetkili **<@${user.id}>** adlı kullanıcıyı **${reason}** sebebi ile sustururmasını kaldırıldı.`)
   .setFooter(msg.author.tag , msg.author.avatarURL)
     msg.channel.send(muteembed);
     db.set(`mute.${user.id}`,'0')

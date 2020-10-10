@@ -9,7 +9,7 @@
   "prefix": ".",
   "tag": "𝕳",
   "tagsiz": "◈",
-  "hoşgeldinbaşlıkemojiadı" : "sunucubeyaz",
+  "hoşgeldinbaşlıkemojiadı" : "acarwelcome",
   "hoşgeldingüvensizemojiadı" : "gvensiz",
   "hoşgeldingüvenliemojiadı" : "gvenli",
   "hoşgeldinkanalid" : "761690533114282004",
@@ -46,5 +46,6 @@
   "tagemojiadi": "sunucubeyaz",
   "saygif": "https://i.hizliresim.com/H6kiDm.gif",
   "saytagemojiid": "746937640967864322",
-  "vipemojiadi": "VipPng"
+  "vipemojiadi": "VipPng",
+  "sayemojiismi": "sunucubeyaz"
 }

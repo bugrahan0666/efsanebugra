@@ -105,6 +105,13 @@ client.on('warn', e => {
 client.on('error', e => {
 });
 
+
+
+
+
+client.login(acar.token);
+
+
 //SağClick Kick ve Ban atınca Yetkiliye ve kullanıcıya Kick ve Ban sayma!
 client.on("guildBanAdd", async function(guild, user) {
   const entry = await guild
@@ -115,17 +122,16 @@ client.on("guildBanAdd", async function(guild, user) {
    db.add(`yetkili.${yetkili.id}.ban`, 1);
     db.add(`kullanıcı.${user.id}.ban`, 1);
 });
-client.on("guildMemberRemove", async function(guild, user)  {
-  const guild2 = guild.guild
-  const entry = await guild2.fetchAuditLogs().then(audit => audit.entries.first());
+client.on("guildMemberRemove", async function(user)  {
+  let guild = client.guilds.get(acarayarlar.sunucuid);
+  const entry = await guild.fetchAuditLogs().then(audit => audit.entries.first());
 if (entry.action == `MEMBER_KICK`) {
-  let yetkili = await guild2.members.get(entry.executor.id);
+  let yetkili = await guild.members.get(entry.executor.id);
     db.add(`yetkili.${yetkili.id}.kick`, 1);
     db.add(`kullanıcı.${user.id}.kick`, 1);
 }
 })
 
-client.login(acar.token);
 
 // Main Olarak Belirlediğimiz Yer !
 client.on("guildMemberAdd", async member => {

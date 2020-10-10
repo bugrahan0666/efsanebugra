@@ -93,42 +93,17 @@ var rminutes = Math.round(minutes);
 return "▫ Kullanıcı **" + rhours + "** Saat **" + rminutes + "** Dakika seste durmuş.";
 }
 var ses_suresi = Math.round(db.get(`${uye.id}_sesdedur`)/60)
-if(yetkilimi == "0") {
-const embed1 = new Discord.RichEmbed()
- .setColor("RANDOM")
-  .setAuthor(`${uye.tag} kullanıcı bilgileri`, uye.avatarURL)
-  .setThumbnail(acarayarlar.sunucuresim)
-  .setImage(acarayarlar.sunucuembedaltıresim)
-  .addField(`✍ Sicil bilgileri`, `▫ Yasaklanma ${cezaban(kban)}\n▫ Atılma ${cezakick(kkick)}\n▫ Cezalandırılma ${cezajail(kjail)}\n▫ Seste Susturulma ${cezasesmute(ksesmute)}\n▫ Susturulma ${cezamute(kmute)}\n `) 
-  .addField(`🔊 Ses bilgileri`, `${timeConvert(ses_suresi)}`)
-  .setDescription(`▫ Sicil Bilgisi: \`${ceza(toplamceza)}\``)
-  message.channel.send(embed1);    
-} 
-  if(yetkilimi == null) {
-const embed1 = new Discord.RichEmbed()
- .setColor("RANDOM")
-  .setAuthor(`${uye.tag} kullanıcı bilgileri`, uye.avatarURL)
-  .setThumbnail(acarayarlar.sunucuresim)
-  .setImage(acarayarlar.sunucuembedaltıresim)
-  .addField(`✍ Sicil bilgileri`, `▫ Yasaklanma ${cezaban(kban)}\n▫ Atılma ${cezakick(kkick)}\n▫ Cezalandırılma ${cezajail(kjail)}\n▫ Seste Susturulma ${cezasesmute(ksesmute)}\n▫ Susturulma ${cezamute(kmute)}\n `) 
-  .addField(`🔊 Ses bilgileri`, `${timeConvert(ses_suresi)}`)
-  .setDescription(`▫ Sicil Bilgisi: \`${ceza(toplamceza)}\``)
-  message.channel.send(embed1);    
-}
-  if(yetkilimi == "1") {
-    const embed = new Discord.RichEmbed()
+  const embed = new Discord.RichEmbed()
   .setColor("RANDOM")
-  .setAuthor(`${uye.tag} yetkili bilgileri`, uye.avatarURL)
+  .setAuthor(`${uye.tag}`, uye.avatarURL)
   .setThumbnail(acarayarlar.sunucuresim)
   .setImage(acarayarlar.sunucuembedaltıresim)
-  .addField(`🔹 Yaptığı Kayıt İşlemleri`, `▫ Şuana kadar toplam \`${kiz+erkek}\` kişiyi kayıt etmiş.\n▫ Şuana kadar \`${erkek}\` erkek kayıt etmiş.\n▫ Şuana kadar \`${kiz}\` kadın kayıt etmiş.\n ▫ Şuana kadar toplam \`${isim}\` isim ve yaş değiştirmiş.`) 
-  .addField(`🔸 Yaptığı Mod İşlemleri`,`▫ Şuana kadar \`${forceban}\` kişiyi sunucudan kalıcı banlamış.\n▫ Şuana kadar \`${ban}\` kişiyi sunucudan yasaklamış.\n▫ Şuana kadar \`${kick}\` kişiyi sunucudan atmış.\n▫ Şuana kadar \`${jail}\` kişiyi cezalandırmış.\n ▫ Şuana kadar \`${mute}\` chat'de susturmuş.\n ▫ Şuana kadar \`${sesmute}\` ses de susturmuş.\n▫ Şuana kadar \`${taşı}\` kişiyi taşımış çekmiş.\n▫ Şuana kadar \`${bkes}\` kişinin bağlantısını kesmiş.\n\n`)
-  .addField(`✍ Sicil bilgileri`, `▫ Yasaklanma ${cezaban(kban)}\n▫ Atılma ${cezakick(kkick)}\n▫ Cezalandırılma ${cezajail(kjail)}\n▫ Seste Susturulma ${cezasesmute(ksesmute)}\n▫ Susturulma ${cezamute(kmute)}\n `) 
+  .addField(`🔹 Yaptığı Kayıt İşlemleri`, ` • Şuana kadar toplam \`${kiz+erkek}\` kişiyi kayıt etmiş.\n • Şuana kadar \`${erkek}\` erkek kayıt etmiş.\n▫ Şuana kadar \`${kiz}\` kadın kayıt etmiş.\n ▫ Şuana kadar toplam \`${isim}\` isim ve yaş değiştirmiş.`) 
+  .addField(`🔸 Yaptığı Mod İşlemleri`,` • Şuana kadar \`${forceban}\` kişiyi sunucudan kalıcı banlamış.\n • Şuana kadar \`${ban}\` kişiyi sunucudan yasaklamış.\n▫ Şuana kadar \`${kick}\` kişiyi sunucudan atmış.\n▫ Şuana kadar \`${jail}\` kişiyi cezalandırmış.\n ▫ Şuana kadar \`${mute}\` chat'de susturmuş.\n ▫ Şuana kadar \`${sesmute}\` ses de susturmuş.\n▫ Şuana kadar \`${taşı}\` kişiyi taşımış çekmiş.\n▫ Şuana kadar \`${bkes}\` kişinin bağlantısını kesmiş.\n\n`)
+  .addField(`✍ Sicil bilgileri`, ` • Yasaklanma ${cezaban(kban)}\n • Atılma ${cezakick(kkick)}\n Cezalandırılma ${cezajail(kjail)}\n▫ Seste Susturulma ${cezasesmute(ksesmute)}\n▫ Susturulma ${cezamute(kmute)}\n `) 
   .addField(`🔊 Ses bilgileri`, `${timeConvert(ses_suresi)}`)
-  .setDescription(`▫ Sicil Bilgisi: \`${ceza(toplamceza)}\`\n▫ Yetkili mi? \`Evet 🚀\`\n▫ İşlem Puanı: \`${toplam(toplamislem)}\`\n▫ Toplam İşlem Sayısı: \`${toplamislemsayi}\``)
+  .setDescription(`▫ Sicil Bilgisi: \`${ceza(toplamceza)}\`\n▫ İşlem Puanı: \`${toplam(toplamislem)}\`\n▫ Toplam İşlem Sayısı: \`${toplamislemsayi}\``)
   message.channel.send(embed);     
-} 
-  
 
 };
 

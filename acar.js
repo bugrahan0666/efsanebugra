@@ -260,7 +260,7 @@ let j = await db.fetch(`jail.${member.id}`)
 db.fetch(`mute.${member.id}`, '0');
 db.fetch(`jail.${member.id}`, '0');
 member.addRole(acar.kayıtsızrol)
-member.setNickname(`${acarayarlar.tagsiz} ' '${kullanıcıadı}`);
+member.setNickname(`${acarayarlar.tagsiz} ' ${kullanıcıadı}`);
 
   
 if(j == '0' && m == '0') {

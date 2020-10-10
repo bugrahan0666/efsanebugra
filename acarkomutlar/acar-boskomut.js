@@ -4,7 +4,7 @@ let acar = require('../acar/botayarlari.json');
 const db = require('quick.db')
 
 exports.run = (client, message, args) => {
-  
+message.delete()  
 let uye = message.mentions.users.first() || message.author
 let bilgi = db.get(`yetkili.${uye.id}`);
 let erkek = db.get(`yetkili.${uye.id}.erkek`) || 0;
@@ -78,7 +78,9 @@ var toplamislem = erkek+kiz+ban+kick+jail+sesmute+mute+isim+bkes+taşı || "Hiç
 function toplam(n){
   if(toplamislem == "Hiç işlem yapmamış 😔") {
     return 'Hiç işlem yapmamış 😔';
-  } else
+  } else {
+    return toplamislem*5 + " İP" 
+  }
 }
 var toplamislemsayi = erkek+kiz+ban+kick+jail+sesmute+mute+isim+bkes+taşı || "Veri bulunamadı!";
 function timeConvert(n) {
@@ -96,10 +98,10 @@ var ses_suresi = Math.round(db.get(`${uye.id}_sesdedur`)/60)
   .setThumbnail(acarayarlar.sunucuresim)
   .setImage(acarayarlar.sunucuembedaltıresim)
   .addField(`🔹 Kayıt İşlemleri`, `▫ Şuana kadar toplam \`${kiz+erkek}\` kişiyi kayıt etmiş.\n▫ Şuana kadar \`${erkek}\` erkek kayıt etmiş.\n▫ Şuana kadar \`${kiz}\` kadın kayıt etmiş.\n ▫ Şuana kadar toplam \`${isim}\` isim ve yaş değiştirmiş.`) 
-  .addField(`🔸 Mod İşlemleri`,`▫ Şuana kadar \`${forceban}\` kişiyi sunucudan forcebanlamış.\n▫ Şuana kadar \`${ban}\` kişiyi sunucudan yasaklamış.\n▫ Şuana kadar \`${kick}\` kişiyi sunucudan atmış.\n▫ Şuana kadar \`${jail}\` kişiyi jaile atmış.\n ▫ Şuana kadar \`${mute}\` chat'de susturmuş.\n ▫ Şuana kadar \`${sesmute}\` ses de susturmuş.\n▫ Şuana kadar \`${taşı}\` kişiyi taşımış çekmiş.\n▫ Şuana kadar \`${bkes}\` kişinin bağlantısını kesmiş.\n\n`)
-  .addField(`✍ Sicil bilgileri`, `▫ Yasaklanma **${cezaban(kban)}**\n▫ Atılma **${cezakick(kkick)}**\n▫ Jail **${cezajail(kjail)}**\n▫ Seste Susturulma **${cezasesmute(ksesmute)}**\n▫ Susturulma **${cezamute(kmute)}**\n `) 
+  .addField(`🔸 Mod İşlemleri`,`▫ Şuana kadar \`${forceban}\` kişiyi sunucudan forcebanlamış.\n▫ Şuana kadar \`${ban}\` kişiyi sunucudan yasaklamış.\n▫ Şuana kadar \`${kick}\` kişiyi sunucudan atmış.\n▫ Şuana kadar \`${jail}\` kişiyi cezalandırmış.\n ▫ Şuana kadar \`${mute}\` chat'de susturmuş.\n ▫ Şuana kadar \`${sesmute}\` ses de susturmuş.\n▫ Şuana kadar \`${taşı}\` kişiyi taşımış çekmiş.\n▫ Şuana kadar \`${bkes}\` kişinin bağlantısını kesmiş.\n\n`)
+  .addField(`✍ Sicil bilgileri`, `▫ Yasaklanma **${cezaban(kban)}**\n▫ Atılma **${cezakick(kkick)}**\n▫ Cezalandırılma **${cezajail(kjail)}**\n▫ Seste Susturulma **${cezasesmute(ksesmute)}**\n▫ Susturulma **${cezamute(kmute)}**\n `) 
   .addField(`🔊 Ses bilgileri`, `${timeConvert(ses_suresi)}`)
-  .setDescription(`▫ Sicil Bilgisi : \`${ceza(toplamceza)}\`\n▫ İşlem Puanı: \`${toplamislem}\`\n▫ Toplam İşlem Sayısı: \`${toplamislemsayi}\``)
+  .setDescription(`▫ Sicil Bilgisi: \`${ceza(toplamceza)}\`\n▫ İşlem Puanı: \`${toplam(toplamislem)}\`\n▫ Toplam İşlem Sayısı: \`${toplamislemsayi}\``)
   message.channel.send(embed);
 };
 

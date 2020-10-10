@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const acarayarlar = require('../acar/botayarlari.json');
 const acar = require('../acar/botayarlari.json');
 exports.run = (client, message, args) => {
+  message.delete()
   let mention = message.mentions.users.first();
   let sender = "";
 

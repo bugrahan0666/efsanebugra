@@ -3,6 +3,7 @@ const filter = m => m.content.includes("discord");
 const acarayarlar = require('../acar/botayarlari.json');
 const acar = require('../acar/botayarlari.json');
 module.exports.run = async (client, message, args) => {
+  message.delete()
   const msg = message;
   const reactionFilter = (reaction, user) => {
     return (
@@ -14,11 +15,11 @@ module.exports.run = async (client, message, args) => {
     return message.channel.send("Birini etiketlemelisin.");
   if (message.mentions.users.first() === message.author)
     return message.channel.send("Kendini seçemezsin.");
- const amerikanembed = new Discord.RichEmbed()
+ const acarembed = new Discord.RichEmbed()
    .setColor("RANDOM")
    .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}` , `Merhaba ${msg.mentions.users.first().username}, ${msg.author} bulunduğun sesli kanala gelmek istiyor, kabul ediyor musun?\n*Unutma, 30 saniye içerisinde onaylamazsan istek iptal edilecek.*`)
    .setTimestamp();
-  msg.mentions.users.first().send(amerikanembed)
+  msg.mentions.users.first().send(acarembed)
     .then(async asd => {
       await asd.react("✅");
       asd
@@ -47,11 +48,11 @@ module.exports.run = async (client, message, args) => {
           });
         });
     });
- const amerikanxembed = new Discord.RichEmbed()
+ const acarxembed = new Discord.RichEmbed()
    .setColor("RANDOM")
    .addField(`${acarayarlar.tag} ${acarayarlar.sunucuadi}` , `Merhaba ${msg.mentions.users.first().username}, ${msg.author} bulunduğun sesli kanala gelmek istiyor, kabul ediyor musun?\n*Unutma, 30 saniye içerisinde onaylamazsan istek iptal edilecek.*`)
    .setTimestamp();
-  msg.channel.send(amerikanxembed)
+  msg.channel.send(acarxembed)
     .then(async asd => {
       await asd.react("✅");
       asd

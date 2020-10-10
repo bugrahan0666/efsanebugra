@@ -2,16 +2,16 @@ const Discord = require("discord.js");
 const acarayarlar = require('../acar/botayarlari.json');
 const acar = require('../acar/botayarlari.json');
 exports.run = async (client, message, args) => {
-    // Kullanıcının izini ile komutu kullanan kişinin yanına çeker.
+    message.delete()
     let getUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(getUser.user.bot) return message.reply("Botlar henüz cevap vermeyi bilmiyor, o yüzden çekemezsin.");
-    if(getUser.id === message.author.id) return message.reply("Kendinizi çekemezsiniz.");
-    if(!getUser) return message.reply("Çekmek istediğin kullanıcıyı bulamadım, bu sunucuda olduğundan emin misin?");
-    if(getUser && getUser.presence.status === "offline") return message.reply("Çekmek istediğin kullanıcı **çevrimdışı** görünüyor, **Çevrimiçi, meşgul veya boşta** olan kullanıcılar için bu komutu kullanabilirsin.");
+    if(getUser.user.bot) return message.reply("Botlar henüz cevap vermeyi bilmiyor, o yüzden çekemezsin.").then(msg => msg.delete(5000));
+    if(getUser.id === message.author.id) return message.reply("Kendinizi çekemezsiniz.").then(msg => msg.delete(5000));
+    if(!getUser) return message.reply("Çekmek istediğin kullanıcıyı bulamadım, bu sunucuda olduğundan emin misin?").then(msg => msg.delete(5000));
+    if(getUser && getUser.presence.status === "offline") return message.reply("Çekmek istediğin kullanıcı **çevrimdışı** görünüyor, **Çevrimiçi, meşgul veya boşta** olan kullanıcılar için bu komutu kullanabilirsin.").then(msg => msg.delete(5000));
     let authorVC = message.member.voiceChannel;
-    if(!authorVC) return message.reply("Birini çekmeden önce çekmek istediğin kanala girmen gerekiyor.");
+    if(!authorVC) return message.reply("Birini çekmeden önce çekmek istediğin kanala girmen gerekiyor.").then(msg => msg.delete(5000));
     let getUserVC = getUser.voiceChannelID;
-    if(!getUserVC) return message.reply(`Kullanıcıyı çekebilmen için herhangi bir odada bulunması gerekiyor.`);
+    if(!getUserVC) return message.reply(`Kullanıcıyı çekebilmen için herhangi bir odada bulunması gerekiyor.`).then(msg => msg.delete(5000));
     if(authorVC.id === getUserVC) return message.reply("Zaten aynı kanaldasınız.");
     if(getUserVC) {
         message.channel.send(`<@${getUser.id}>, <@${message.author.id}> sizi **${authorVC.name}** kanalına çekmek istiyor. **evet** yazarak kabul edebilir ve ya **hayır** yazarak reddedebilirsiniz. `)

@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const acarayarlar = require('../acar/botayarlari.json');
 let acar = require('../acar/botayarlari.json');
 exports.run = (client, message, args) => {
+    message.delete()
     if (!message.member.roles.has(acar.bancırolid) && !message.member.hasPermission("ADMINISTRATOR"))  return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
     let kullanici = args[0];
     if (!kullanici) return message.channel.send("Bir kullanıcı ID girmen gerek").then(message => message.delete(3000))

@@ -5,6 +5,7 @@ let acar = require('../acar/botayarlari.json');
 
 
 module.exports.run = async (bot, message, args) => {
+   message.delete()
     if(message.author.id !== acar.sahip)  return message.channel.send("Bu Komutu Sadece Sahibim Kullanabilir")
 
     message.channel.sendMessage(`Yeniden Başlatma Onaylandı ✅ `)

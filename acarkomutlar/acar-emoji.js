@@ -4,7 +4,7 @@ const acar = require('../acar/botayarlari.json');
 exports.run = (client, message, args) => {
   let emojiname = args[0];
   const emoji = message.guild.emojis.find("name", `${emojiname}`);
-  if (!emojiname) return message.channel.send("Emoji ismi belirtmediniz");
+  if (!emojiname) return message.channel.send("Emoji ismi belirtmediniz").then(msg => msg.delete(3000))
   const embed = new Discord.RichEmbed()
     .setAuthor(message.guild.name, message.guild.iconURL)
     .setDescription(

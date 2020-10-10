@@ -134,7 +134,7 @@ const embed1 = new Discord.RichEmbed()
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: [],
+  aliases: ["kullanıcıbilgi", "teyitlerim", "yetkibilgilerim", "bilgilerim"],
   permLevel: 0
 };
 

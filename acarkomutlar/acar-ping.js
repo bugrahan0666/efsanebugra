@@ -1,18 +1,24 @@
 const Discord = require('discord.js')
 const moment = require('moment')
+const ms = require('ms')
 require('moment-duration-format')
 exports.run = async (client, message, args) => {
 
-var Ölçüm = await message.channel.send('Ping Hesaplanıyor...')
-var Sonuç = await message.channel.send('Hesaplandı!')
-await Sonuç.edit(new Discord.RichEmbed()
+var Ölçüm = await message.channel.send('Ağ gecikmesi hesaplanıyor!')
+var Sonuç = message.channel.send('Sistemsel gecikme hesaplanıyor!!')
+function myFunc2(arg) {
+  Sonuç.edit(new Discord.RichEmbed() 
+}
+function myFunc(arg) {
+  Sonuç.edit(new Discord.RichEmbed()
 .setColor('BLUE')
-.setAuthor(client.user.username,client.user.avatarURL)
 .setDescription(`
-**Tepki Gecikmesi; \`${Math.round((Sonuç.createdTimestamp - Ölçüm.createdTimestamp - client.ping))} MS\`**
-**Client Gecikmesi; \`${Math.round(client.ping)} MS\`**`)
-.setFooter(message.author.username,message.author.avatarURL))
-await Ölçüm.delete()
+💻 Sistem gecikmesi; \`${Math.round((Sonuç.createdTimestamp - Ölçüm.createdTimestamp - client.ping))} MS\`
+📡 Ağ gecikmesi; \`${Math.round(client.ping)} MS\``))
+Ölçüm.delete()
+}
+
+setTimeout(myFunc, 5000, 'acar');
 }
 
 exports.conf = {
@@ -24,6 +30,6 @@ exports.conf = {
 
 exports.help = {
   name: 'Ping',
-  description: 'Pingi Atar',
+  description: '',
   usage: 'ping'
 }

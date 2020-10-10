@@ -32,6 +32,7 @@ message.guild.members.get(member.id).removeRole(r)
   
   db.set(`jail.${kullanıcı.id}` , '1') 
   db.add(`yetkili.${message.author.id}.jail`, 1);
+  db.add(`kullanıcı.${kullanıcı.id}.jail`, 1);
    let embed = new Discord.RichEmbed() 
   .setDescription(`${kullanıcı} adlı üye cezalıya atıldı! \n Atılma sebepi: **${reason}** \n Atılan süre: **Kalıcı**`) 
   .setFooter(message.author.tag , message.author.avatarURL)

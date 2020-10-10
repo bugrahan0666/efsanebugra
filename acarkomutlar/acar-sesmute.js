@@ -38,6 +38,7 @@ exports.run = (client, message, args) => {
       .setFooter(message.author.tag , message.author.avatarURL)
   log.send(acarsesmute).catch(console.error);
   db.add(`yetkili.${message.author.id}.sesmute`, 1);
+  db.add(`kullanıcı.${kullanici.id}.sesmute`, 1);
   setTimeout(() => {
     kullanici.setMute(false, `Ceza süren doldu knk`);
     message.channel.send(`${kullanici} Susturulman açıldı bir daha yapmazsın umarım!`);

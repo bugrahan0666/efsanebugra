@@ -62,6 +62,7 @@ if(!mute){
   msg.delete()
     db.set(`mute.${user.id}`, '1')
     db.add(`yetkili.${msg.author.id}.mute`, 1);
+    db.add(`kullanıcı.${user.id}.mute`, 1);
   setTimeout(function(){
     // msg.channel.send(`<@${user.id}> Muten açıldı.`)
     db.set(`mute.${user.id}`,'0') 

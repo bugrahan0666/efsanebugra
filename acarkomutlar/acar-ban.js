@@ -21,7 +21,7 @@ exports.run = async(client, message, args) => {
           if (uye.id === message.author.id) return message.reply(`Kendini yasaklayacak kadar sorunlu musun?`);
           if (uye.highestRole.position >= message.member.highestRole.position) return message.reply(`Yasaklamaya çalıştığın ${uye} üyesi senden yetkili!`);
           if (!uye.bannable) return message.channel.send(new Discord.RichEmbed().setDescription(`${uye} üyesini yasaklamaya yetkim yetmiyor!`));
-          await message.guild.ban(uye.id, { reason: sebep });
+          await db.add(`kullanıcı.${uye.id}.ban`, 1); message.guild.ban(uye.id, { reason: sebep });
           banlar[message.author.id] = banlar[message.author.id] ? banlar[message.author.id]+1 : 1;
           setTimeout(() => {
             banlar[message.author.id] = banlar[message.author.id]-1;
@@ -44,7 +44,7 @@ exports.run = async(client, message, args) => {
         if (uyemiz.id === message.author.id) return mesaj.edit(new Discord.RichEmbed().setDescription(`Kendini yasaklayacak kadar sorunlu musun?`));
         if (uyemiz.highestRole.position >= message.member.highestRole.position) return mesaj.edit(new Discord.RichEmbed().setDescription(`Yasaklamaya çalıştığın ${uyemiz} üyesi senden yetkili!`));
         if (!uyemiz.bannable) return mesaj.edit(new Discord.RichEmbed().setDescription(`${uyemiz} üyesini yasaklamaya yetkim yetmiyor!`));
-        await message.guild.ban(uyemiz.id, { reason: sebep });
+        await db.add(`kullanıcı.${uyemiz.id}.ban`, 1); message.guild.ban(uyemiz.id, { reason: sebep });
         banlar[message.author.id] = banlar[message.author.id] ? banlar[message.author.id]+1 : 1;
           setTimeout(() => {
             banlar[message.author.id] = banlar[message.author.id]-1;

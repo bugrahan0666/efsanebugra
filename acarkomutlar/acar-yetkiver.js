@@ -37,15 +37,15 @@ if (!message.member.hasPermission('ADMINISTRATOR'))
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ['vip' , 'gold' , 'special'],
+  aliases: [],
   permLevel: 0
 };
 
 exports.help = {
-  name: 'gold',
+  name: 'yetkiver',
 };
 
 exports.acar = {
-    acardizini: 'acar-vip.js',
+    acardizini: 'acar-yetkiver.js',
     acarprefix: acar.prefix,
 };

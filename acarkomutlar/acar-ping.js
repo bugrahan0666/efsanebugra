@@ -4,11 +4,44 @@ const ms = require('ms')
 require('moment-duration-format')
 exports.run = async (client, message, args) => {
 
-var Ölçüm = await message.channel.send('Ağ gecikmesi hesaplanıyor!')
-var Sonuç = message.channel.send('Sistemsel gecikme hesaplanıyor!!')
+var Ölçüm = await message.channel.send('⏳ Ağ gecikmesi hesaplanıyor...')
+var Sonuç = await message.channel.send('⏳ Sistemsel gecikme hesaplanıyor...')
 function myFunc2(arg) {
-  Sonuç.edit(new Discord.RichEmbed() 
+   Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor..")
+Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor..")
 }
+function myFunc3(arg) {
+   Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor.")
+Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor.")
+}
+function myFunc4(arg) {
+   Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor..")
+Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor..")
+}
+function myFunc5(arg) {
+   Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor...")
+Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor...")
+}
+function myFunc6(arg) {
+   Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor..")
+Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor..")
+}
+function myFunc7(arg) {
+   Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor.")
+Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor.")
+}
+function myFunc8(arg) {
+   Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor..")
+Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor..")
+}
+function myFunc9(arg) {
+   Sonuç.edit("⏳ Ağ gecikmesi hesaplanıyor...")
+Ölçüm.edit("⏳ Ağ gecikmesi hesaplanıyor...")
+}
+function myFunc10(arg) {
+   Sonuç.edit("📡 Sisteme bağlandı!")
+Ölçüm.edit("")
+}  
 function myFunc(arg) {
   Sonuç.edit(new Discord.RichEmbed()
 .setColor('BLUE')
@@ -17,8 +50,16 @@ function myFunc(arg) {
 📡 Ağ gecikmesi; \`${Math.round(client.ping)} MS\``))
 Ölçüm.delete()
 }
+setTimeout(myFunc2, 1000, 'acar');
+setTimeout(myFunc3, 1000, 'acar');
+setTimeout(myFunc4, 1000, 'acar');
+setTimeout(myFunc5, 1000, 'acar');
+setTimeout(myFunc6, 1000, 'acar');
+setTimeout(myFunc7, 1000, 'acar');
+setTimeout(myFunc8, 1000, 'acar');
+setTimeout(myFunc9, 1000, 'acar');
+setTimeout(myFunc, 12000, 'acar');
 
-setTimeout(myFunc, 5000, 'acar');
 }
 
 exports.conf = {

@@ -110,7 +110,7 @@ var ses_suresi = Math.round(db.get(`${uye.id}_sesdedur`)/60)
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["kullanıcıbilgi", "teyitlerim", "yetkibilgilerim", "bilgilerim", "ybilgi" , "sicil"],
+  aliases: ["kullanıcıbilgi", "teyitlerim", "yetkibilgi", "bilgilerim", "ybilgi" , "sicil"],
   permLevel: 0
 };
 

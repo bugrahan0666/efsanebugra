@@ -525,22 +525,27 @@ client.on("message", msg => {
 client.on('message', async message => {
 let aktif = await db.fetch(`reklamEngelacar_${message.channel.id}`)
 if (!aktif) return 
+const kanal = message.guild.channels.find(c => c.id == '764521752407310387') 
+if (!kanal) return
 let reklamlar = ["discord.app", "discord.gg" ,"discordapp","discordgg", ".com", ".net", ".xyz", ".tk", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ".org", ".com.tr", ".biz", ".party", ".rf.gd", ".az", ".cf", ".me", ".in"]
 let kelimeler = message.content.slice(" ").split(/ +/g)
 if (reklamlar.some(word => message.content.toLowerCase().includes(word))) {
 if (message.member.hasPermission("BAN_MEMBERS")) return;
+if (!kanal) return
 message.delete()
 message.reply('Reklamları engelliyorum!').then(msg => msg.delete(7000)) 
 }
 });
 
-client.on("messageUpdate", async (oldMsg, newMsg) => {
+client.on("messageUpdate", async (oldMsg, newMsg ) => {
 let aktif = await db.fetch(`reklamEngelacar_${oldMsg.channel.id}`)
 if(!aktif) return
+const kanal = oldMsg.guild.channels.find(c => c.id == '764521752407310387') 
 let reklamlar = ["discord.app", "discord.gg","discordapp","discordgg", ".com", ".net", ".xyz", ".tk", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ".org", ".com.tr", ".biz", ".party", ".rf.gd", ".az", ".cf", ".me", ".in"]
 let kelimeler = newMsg.content.slice(" ").split(/ +/g)
 if (reklamlar.some(word => newMsg.content.toLowerCase().includes(word))) {
 if (newMsg.member.hasPermission("BAN_MEMBERS")) return;
+if (kanal) return
 newMsg.delete()
 oldMsg.reply('Reklamları engelliyorum!').then(msg => msg.delete(7000)) 
 }

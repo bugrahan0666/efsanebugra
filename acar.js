@@ -139,57 +139,31 @@ client.on("guildMemberAdd", async member => {
     let embed = new Discord.RichEmbed();
     let user = client.users.get(member.id);
          const user2 = member.user;
-    const bir = client.emojis.find(emoji => emoji.name === "1_");
-    const iki = client.emojis.find(emoji => emoji.name === "2_");
-    const üç = client.emojis.find(emoji => emoji.name === "3_");
-    const dört = client.emojis.find(emoji => emoji.name === "4_");
-    const beş = client.emojis.find(emoji => emoji.name === "5_");
-    const altı = client.emojis.find(emoji => emoji.name === "6_");
-    const yedi = client.emojis.find(emoji => emoji.name === "7_");
-    const sekiz = client.emojis.find(emoji => emoji.name === "8_");
-    const dokuz = client.emojis.find(emoji => emoji.name === "9_");
-    const sıfır = client.emojis.find(emoji => emoji.name === "0_");
-    var sayı = member.guild.memberCount
-               if(member.guild.memberCount=== '0') {
-               var sayı = '<a:0_:764913510630162484>'
-             }
-            if(member.guild.memberCount === '1') {
-               var gün = '<a:1_:764913513247539200>'
-               }
-            if(mmember.guild.memberCount === '2') {
-               var gün = '<a:2_:764913516037275648>'
-             }
-            if(member.guild.memberCount === '3') {
-               var gün = '<a:3_:764913516690800680>'
-             }
-            if(member.guild.memberCount === '4') {
-               var gün = '4'
-             }
-            if(member.guild.memberCount === '5') {
-               var gün = '5'
-             }
-            if(member.guild.memberCount === '6') {
-               var gün = '6'
-             }
-            if(member.guild.memberCount === '7') {
-               var gün = '7'
-             }
-            if(member.guild.memberCount === '8') {
-               var gün = '8'
-             }
-            if(member.guild.memberCount=== '9') {
-               var gün = '9'
-             }
-  let acarkee = sayı.toString().replaceA("0", '<a:0_:764913510630162484>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("1", "<a:1_:764913513247539200>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("2", "<a:2_:764913516037275648>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("3", "<a:3_:764913516690800680>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("4", '<a:4_:764913518923087882>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("5", '<a:5_:764913518658453525>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("6", '<a:6_:764913519082340352>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("7", '<a:7_:764913519321153557>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("8", '<a:8_:764913518968569898>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("9", '<a:9_:764913519246049330>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+String.prototype.replaceA = function (find, replace) {
+  return this.replace(new RegExp(find, 'g'), replace);
+}         
+const dcs = function(sayı) {
+  let acarkee = sayı.toString().replace('0', '0a')
+    .replaceA('1', '1a')
+    .replaceA('2', '2a')
+    .replaceA('3', '3a')
+    .replaceA('4', '4a')
+    .replaceA('5', '5a')
+    .replaceA('6', '6a')
+    .replaceA('7', '7a')
+    .replaceA('8', '8a')
+    .replaceA('9', '9a')
+    acarkee = acarkee
+    .replaceA("0a", '<a:0_:764913510630162484>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("1a", "<a:1_:764913513247539200>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("2a", "<a:2_:764913516037275648>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("3a", "<a:3_:764913516690800680>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("4a", '<a:4_:764913518923087882>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("5a", '<a:5_:764913518658453525>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("6a", '<a:6_:764913519082340352>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("7a", '<a:7_:764913519321153557>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("8a", '<a:8_:764913518968569898>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("9a", '<a:9_:764913519246049330>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
   
   return acarkee
 }
@@ -252,40 +226,40 @@ client.on("guildMemberAdd", async member => {
              }
          var tarih = ''
             if(moment(user2.createdAt).format('MM') === '01') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Ocak ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Ocak ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
             }
             if(moment(user2.createdAt).format('MM') === '02') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Şubat ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Şubat ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
             }
             if(moment(user2.createdAt).format('MM') === '03') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Mart ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Mart ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
             }
             if(moment(user2.createdAt).format('MM') === '04') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Nisan ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Nisan ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
             }
             if(moment(user2.createdAt).format('MM') === '05') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Mayıs ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Mayıs ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
             }
             if(moment(user2.createdAt).format('MM') === '06') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Haziran ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Haziran ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
             }
             if(moment(user2.createdAt).format('MM') === '07') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Temmuz ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Temmuz ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
             }
             if(moment(user2.createdAt).format('MM') === '08') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Ağustos ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Ağustos ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
             }
             if(moment(user2.createdAt).format('MM') === '09') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Eylül ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Eylül ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
             }
             if(moment(user2.createdAt).format('MM') === '10') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Ekim ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Ekim ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
             }
             if(moment(user2.createdAt).format('MM') === '11') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Kasım ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Kasım ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
             }
             if(moment(user2.createdAt).format('MM') === '12') {
-                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Aralık ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')} ${güno})__`
+                var tarih = `${moment(user2.createdAt).format('YYYY')} __${gün} Aralık ${hafta} (${moment(user.createdAt).format('HH')}:${moment(user.createdAt).format('mm')}:${moment(user.createdAt).format('SS')})__`
             }
 
   
@@ -296,7 +270,7 @@ client.on("guildMemberAdd", async member => {
     await client.channels
     
       .get(acarayarlar.hoşgeldinkanalid)
-      .send(`${acar} **♰ Ambrøsia'ya Hoşgeldin, ${member} Seninle Beraber ${sayı} Kişiyiz!**
+      .send(`${acar} **♰ Ambrøsia'ya Hoşgeldin, ${member} Seninle Beraber ${dcs(member.guild.memberCount)} Kişiyiz!**
 ${acar} **Müsait Olduğunda Teyit Odalarından Birine Geçip Kaydını Yaptırabilirsin.**
 ${acar} <@&${acarayarlar.registercommandid}> seninle ilgilenecektir.
 ${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - member.user.createdAt.getTime() < 15*24*60*60*1000

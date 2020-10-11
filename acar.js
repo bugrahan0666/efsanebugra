@@ -193,7 +193,7 @@ client.on("guildMemberAdd", async member => {
             if(moment(user2.createdAt).format('a') === 'pm') {
                var güno = 'Öğleden sonra'
                }
-            if(moment(user2.createdAt).format('DD') === 'am') {
+            if(moment(user2.createdAt).format('a') === 'am') {
                var güno = 'Öğleden önce'
              }
          var tarih = ''
@@ -242,14 +242,14 @@ client.on("guildMemberAdd", async member => {
     await client.channels
     
       .get(acarayarlar.hoşgeldinkanalid)
-      .send(`${acar} **Manevra'ya Hoşgeldin, ${member} Seninle Beraber \`${member.guild.memberCount}\` Kişiyiz!**
+      .send(`${acar} **♰ Ambrøsia'ya Hoşgeldin, ${member} Seninle Beraber \`${member.guild.memberCount}\` Kişiyiz!**
 ${acar} **Müsait Olduğunda Teyit Odalarından Birine Geçip Kaydını Yaptırabilirsin.**
 ${acar} <@&${acarayarlar.registercommandid}> seninle ilgilenecektir.
 ${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - member.user.createdAt.getTime() < 15*24*60*60*1000
             ? acargüvensiz + " __**Bu Hesap Şüpheli Görünüyor**__ " + acargüvensiz
             : acargüvenli + " __**Bu Hesap Güvenilir Görünüyor**__ " + acargüvenli
             }\n\n`,
-           new Discord.Attachment("https://media.giphy.com/media/kQuJhE1Bh5RNh2aKRo/giphy.gifhttps://media.giphy.com/media/kQuJhE1Bh5RNh2aKRo/giphy.gif"));
+           new Discord.Attachment("https://im.ezgif.com/tmp/ezgif-1-30008bd7d89d.gif"));
   } catch (err) {
     console.log(err);
   }

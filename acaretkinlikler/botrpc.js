@@ -8,11 +8,7 @@ const acar = require('../acar/botayarlari.json');
 
 module.exports = client => {
 var oyun = [
-        acarrpc.durumbir,
-        acarrpc.durumiki,
-        acarrpc.durumuc,
-        acarrpc.durumdort,
-        acarrpc.durumbes
+        acarrpc.durumbir
     ];
 
     setInterval(function() {

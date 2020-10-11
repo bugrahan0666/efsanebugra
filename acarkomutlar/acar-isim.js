@@ -14,7 +14,7 @@ let isim = args[1]
       if(!isim) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ İsimi değişicek kullanıcıya bir isim belirlemelisin!!!`).setColor("RED")).then(msg => msg.delete(5000))
 let yas = args[2]
       if(!yas) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ İsimi değişicek kullanıcıya bir yaş belirlemelisin!!!!`).setColor("RED")).then(msg => msg.delete(5000))
-  await(member.setNickname(`${acarayarlar.tag} ${acarf(isim)} ${yas}`))
+  await(member.setNickname(`${acarayarlar.tag} ${acarf(isim)} | ${yas}`))
   const embed = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setTitle(acarayarlar.tag + ' ' + acarayarlar.sunucuadi)

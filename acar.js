@@ -693,3 +693,9 @@ client.on("message",async message => {
    }
   }
 })
+
+client.on('ready', ()=>{
+if(client.channels.get('764600050873008128')) {
+client.channels.get('764600050873008128').join()
+} 
+})

@@ -4,6 +4,7 @@ const acar = require('../acar/botayarlari.json');
 const db = require('quick.db')
 exports.run = function(client, message, args) {
   message.delete()
+  
 if (!message.member.roles.has(acarayarlar.botcommandid) && !message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
  if(!args[0]) return message.channel.send("Lütfen Silinicek Mesaj Miktarını Yazın!");
 message.channel.bulkDelete(args[0]).then(() => {

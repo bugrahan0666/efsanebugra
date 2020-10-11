@@ -4,6 +4,7 @@ const acarayarlar = require('../acar/botayarlari.json');
 let acar = require('../acar/botayarlari.json');
 exports.run = async (client, message, args) => {
  message.delete()
+  if(message.channel.id !== acarayarlar.botkomutkanalid && message.channel.id !== acarayarlar.hoşgeldinkanalid && message.channel.id !== '764600108313739285') return message.channel.send("Lütfen komutu kullanmak için <#"+ acarayarlar.botkomutkanalid + "> kanalını kullanınız!").then(message => message.delete(3000))
   if (!message.member.roles.has(acarayarlar.registercommandid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   let kullanıcı = message.mentions.users.first()
   if (!kullanıcı) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bir kullanıcı etiketlemelisin!`).setColor("RED")).then(msg => msg.delete(3000))

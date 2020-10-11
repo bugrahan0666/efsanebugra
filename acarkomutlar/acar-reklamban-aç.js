@@ -3,6 +3,7 @@ const Discord = require("discord.js");
 
 exports.run = async (client, message, args) => {
   message.delete()
+  
   const sınır = args.slice(0).join(" ");
   if (!message.member.hasPermission("ADMINISTRATOR"))
    return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))

@@ -2,8 +2,10 @@ const Discord = require('discord.js')
 const moment = require('moment')
 const ms = require('ms')
 require('moment-duration-format')
+const acarayarlar = require('../acar/botayarlari.json');
+let acar = require('../acar/botayarlari.json');
 exports.run = async (client, message, args) => {
-
+if(message.channel.id !== acarayarlar.botkomutkanalid ) return message.channel.send("Lütfen komutu kullanmak için <#"+ acarayarlar.botkomutkanalid + "> kanalını kullanınız!").then(message => message.delete(3000))
 var Ölçüm = await message.channel.send('⏳ Ağ gecikmesi hesaplanıyor...')
 var Sonuç = await message.channel.send('⏳ Sistemsel gecikme hesaplanıyor...')
 function myFunc2(arg) {

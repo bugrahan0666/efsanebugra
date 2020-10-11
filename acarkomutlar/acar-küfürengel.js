@@ -4,6 +4,7 @@ exports.run = async (client, message, args) => {
 const code = message.mentions.channels.first() || message.channel
 const acar = args[0]
 message.delete()
+  
  if (!message.member.hasPermission('ADMINISTRATOR'))
         return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
 if (!acar) return message.reply(`küfür engel sistemini açmak için küfürengel aç #kanal veya küfürengel aç yazmalsın!`).then(msg => msg.delete(5000))

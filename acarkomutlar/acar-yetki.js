@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 let acar = require('../acar/botayarlari.json');
 exports.run = async(client, message, args) => {
+  if(message.channel.id !== acar.botkomutkanalid ) return message.channel.send("Lütfen komutu kullanmak için <#"+ acar.botkomutkanalid + "> kanalını kullanınız!").then(message => message.delete(3000))
   var kullanabilecekRol = "764879982690304012"; // komutu kullanabilecek rolün id
   if (!message.member.roles.has(kullanabilecekRol) && !message.member.hasPermission("ADMINISTRATOR")) return;
   if(args[0] !== "yükselt" && args[0] !== "düşür") return message.reply(`\`${this.help.name} yükselt/düşür @üye1, üye2, üye3...\``);

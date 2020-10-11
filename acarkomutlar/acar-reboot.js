@@ -5,6 +5,7 @@ let acar = require('../acar/botayarlari.json');
 
 
 module.exports.run = async (bot, message, args) => {
+  if(message.channel.id !== acarayarlar.botkomutkanalid ) return message.channel.send("Lütfen komutu kullanmak için <#"+ acarayarlar.botkomutkanalid + "> kanalını kullanınız!").then(message => message.delete(3000))
    message.delete()
     if(message.author.id !== acar.sahip)  return message.channel.send("Bu Komutu Sadece Sahibim Kullanabilir")
 

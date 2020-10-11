@@ -149,29 +149,47 @@ client.on("guildMemberAdd", async member => {
     const sekiz = client.emojis.find(emoji => emoji.name === "8_");
     const dokuz = client.emojis.find(emoji => emoji.name === "9_");
     const sıfır = client.emojis.find(emoji => emoji.name === "0_");
-         
-const dcs = function(sayı) {
-  let acarkee = sayı.toString().replace('0', '0a')
-    .replaceA('1', '1a')
-    .replaceA('2', '2a')
-    .replaceA('3', '3a')
-    .replaceA('4', '4a')
-    .replaceA('5', '5a')
-    .replaceA('6', '6a')
-    .replaceA('7', '7a')
-    .replaceA('8', '8a')
-    .replaceA('9', '9a')
-    acarke = codeshare
-    .replaceA("0a", '<a:0_:759472031510822942>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("1a", "<a:1_:759472030277566505>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("2a", "<a:2_:759472028289204246>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("3a", "<a:3_:759472026695368736>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("4a", '<a:4_:759472025349128233>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("5a", '<a:5_:759472023549247550>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("6a", '<a:6_:759472021741502464>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("7a", '<a:7_:759472019585761300>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("8a", '<a:8_:759472017153589260>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("9a", '<a:9_:759472014146142209>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    var sayı = member.guild.memberCount
+               if(member.guild.memberCount=== '0') {
+               var sayı = '<a:0_:764913510630162484>'
+             }
+            if(member.guild.memberCount === '1') {
+               var gün = '<a:1_:764913513247539200>'
+               }
+            if(mmember.guild.memberCount === '2') {
+               var gün = '<a:2_:764913516037275648>'
+             }
+            if(member.guild.memberCount === '3') {
+               var gün = '<a:3_:764913516690800680>'
+             }
+            if(member.guild.memberCount === '4') {
+               var gün = '4'
+             }
+            if(member.guild.memberCount === '5') {
+               var gün = '5'
+             }
+            if(member.guild.memberCount === '6') {
+               var gün = '6'
+             }
+            if(member.guild.memberCount === '7') {
+               var gün = '7'
+             }
+            if(member.guild.memberCount === '8') {
+               var gün = '8'
+             }
+            if(member.guild.memberCount=== '9') {
+               var gün = '9'
+             }
+  let acarkee = sayı.toString().replaceA("0", '<a:0_:764913510630162484>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("1", "<a:1_:764913513247539200>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("2", "<a:2_:764913516037275648>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("3", "<a:3_:764913516690800680>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("4", '<a:4_:764913518923087882>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("5", '<a:5_:764913518658453525>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("6", '<a:6_:764913519082340352>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("7", '<a:7_:764913519321153557>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("8", '<a:8_:764913518968569898>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("9", '<a:9_:764913519246049330>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
   
   return acarkee
 }
@@ -278,7 +296,7 @@ const dcs = function(sayı) {
     await client.channels
     
       .get(acarayarlar.hoşgeldinkanalid)
-      .send(`${acar} **♰ Ambrøsia'ya Hoşgeldin, ${member} Seninle Beraber ${dcs(member.guild.memberCount)} Kişiyiz!**
+      .send(`${acar} **♰ Ambrøsia'ya Hoşgeldin, ${member} Seninle Beraber ${sayı} Kişiyiz!**
 ${acar} **Müsait Olduğunda Teyit Odalarından Birine Geçip Kaydını Yaptırabilirsin.**
 ${acar} <@&${acarayarlar.registercommandid}> seninle ilgilenecektir.
 ${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - member.user.createdAt.getTime() < 15*24*60*60*1000

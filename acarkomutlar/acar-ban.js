@@ -5,6 +5,7 @@ var banlar = {};
 exports.run = async(client, message, args) => {
   message.delete()
   if (!message.member.roles.has(acarayarlar.bancırolid) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(message => message.delete(5000))
+  if(message.channel.id !== acarayarlar.botkomutkanalid ) return message.channel.send("Lütfen komutu kullanmak için <#"+ acarayarlar.botkomutkanalid + "> kanalını kullanınız!").then(message => message.delete(3000))
   if (!message.mentions.members.first()) return message.reply(`Bir üyeyi etiketlemelisin!`).then(message => message.delete(5000))
   if (!args.join(' ').replace(/[^a-zA-ZığüşöçĞÜŞİÖÇ]+/g, "")) return message.reply(`Bir sebep belirtmelisin!`).then(message => message.delete(5000))
   var logKanali = acarayarlar.banlogid; // BURAYA LOG KANALININ ID

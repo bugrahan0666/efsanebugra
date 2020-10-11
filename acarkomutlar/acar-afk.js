@@ -7,7 +7,7 @@ const prefix = acarayarlar.prefix;
 let yazı = JSON.parse(fs.readFileSync("./database.json", "utf8"));
 exports.run = async (bot , message, args) => {
   //kapnıp açtığında hafızası siliniyorsa db den yapılcak
-  
+  if(message.channel.id !== acarayarlar.botkomutkanalid ) return message.channel.send("Lütfen komutu kullanmak için <#"+ acarayarlar.botkomutkanalid + "> kanalını kullanınız!").then(message => message.delete(3000))
   let reason = args.slice(0).join(' ') 
      let rol = message.mentions.roles.first()
 

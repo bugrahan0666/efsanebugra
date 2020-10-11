@@ -3,6 +3,7 @@ const acarayarlar = require('../acar/botayarlari.json');
 const acar = require('../acar/botayarlari.json');
 exports.run = function(client, message, args) {
   message.delete()
+    if(message.channel.id !== acarayarlar.botkomutkanalid ) return message.channel.send("Lütfen komutu kullanmak için <#"+ acarayarlar.botkomutkanalid + "> kanalını kullanınız!").then(message => message.delete(3000))
     if(message.channel.type == "dm")  return;
   if(message.channel.type !== "text") return;
   if (!message.member.roles.has(acarayarlar.boosterrolid) && !message.member.roles.has(acarayarlar.botcommandid)  && !message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))

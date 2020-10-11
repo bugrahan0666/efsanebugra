@@ -1,8 +1,10 @@
 const Discord = require('discord.js');
 const db = require('quick.db');
-
+const acarayarlar = require('../acar/botayarlari.json');
+const acar = require('../acar/botayarlari.json');
 exports.run = async (client, message, args) => {
  message.delete()
+    if(message.channel.id !== acarayarlar.botkomutkanalid ) return message.channel.send("Lütfen komutu kullanmak için <#"+ acarayarlar.botkomutkanalid + "> kanalını kullanınız!").then(message => message.delete(3000))
   if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(message => message.delete(5000))
   let kullanıcılar = await db.get(`forceban_${message.guild.id}`)
   let kullanıcı = args[0];

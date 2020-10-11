@@ -139,6 +139,42 @@ client.on("guildMemberAdd", async member => {
     let embed = new Discord.RichEmbed();
     let user = client.users.get(member.id);
          const user2 = member.user;
+    const bir = client.emojis.find(emoji => emoji.name === "1_");
+    const iki = client.emojis.find(emoji => emoji.name === "2_");
+    const üç = client.emojis.find(emoji => emoji.name === "3_");
+    const dört = client.emojis.find(emoji => emoji.name === "4_");
+    const beş = client.emojis.find(emoji => emoji.name === "5_");
+    const altı = client.emojis.find(emoji => emoji.name === "6_");
+    const yedi = client.emojis.find(emoji => emoji.name === "7_");
+    const sekiz = client.emojis.find(emoji => emoji.name === "8_");
+    const dokuz = client.emojis.find(emoji => emoji.name === "9_");
+    const sıfır = client.emojis.find(emoji => emoji.name === "0_");
+         
+const dcs = function(sayı) {
+  let acarkee = sayı.toString().replace('0', '0a')
+    .replaceA('1', '1a')
+    .replaceA('2', '2a')
+    .replaceA('3', '3a')
+    .replaceA('4', '4a')
+    .replaceA('5', '5a')
+    .replaceA('6', '6a')
+    .replaceA('7', '7a')
+    .replaceA('8', '8a')
+    .replaceA('9', '9a')
+    acarke = codeshare
+    .replaceA("0a", '<a:0_:759472031510822942>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("1a", "<a:1_:759472030277566505>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("2a", "<a:2_:759472028289204246>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("3a", "<a:3_:759472026695368736>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("4a", '<a:4_:759472025349128233>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("5a", '<a:5_:759472023549247550>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("6a", '<a:6_:759472021741502464>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("7a", '<a:7_:759472019585761300>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("8a", '<a:8_:759472017153589260>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("9a", '<a:9_:759472014146142209>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+  
+  return acarkee
+}
          var hafta = moment(user2.createdAt).format('dddd')
              if(moment(user2.createdAt).format('dddd') === 'Monday') {
                var hafta = 'Pazartesi'
@@ -242,7 +278,7 @@ client.on("guildMemberAdd", async member => {
     await client.channels
     
       .get(acarayarlar.hoşgeldinkanalid)
-      .send(`${acar} **♰ Ambrøsia'ya Hoşgeldin, ${member} Seninle Beraber \`${member.guild.memberCount}\` Kişiyiz!**
+      .send(`${acar} **♰ Ambrøsia'ya Hoşgeldin, ${member} Seninle Beraber ${dcs(member.guild.memberCount)} Kişiyiz!**
 ${acar} **Müsait Olduğunda Teyit Odalarından Birine Geçip Kaydını Yaptırabilirsin.**
 ${acar} <@&${acarayarlar.registercommandid}> seninle ilgilenecektir.
 ${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - member.user.createdAt.getTime() < 15*24*60*60*1000

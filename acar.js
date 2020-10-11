@@ -270,14 +270,14 @@ const dcs = function(sayı) {
     await client.channels
     
       .get(acarayarlar.hoşgeldinkanalid)
-      .send(`${acar} **♰ Ambrøsia'ya Hoşgeldin, ${member} Seninle Beraber ${dcs(member.guild.memberCount)} Kişiyiz!**
+      .send(`${acar} **The Ambrøsia'ya Hoşgeldin, ${member} Seninle Beraber ${dcs(member.guild.memberCount)} Kişiyiz!**
 ${acar} **Müsait Olduğunda Teyit Odalarından Birine Geçip Kaydını Yaptırabilirsin.**
 ${acar} <@&${acarayarlar.registercommandid}> seninle ilgilenecektir.
 ${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - member.user.createdAt.getTime() < 15*24*60*60*1000
             ? acargüvensiz + " __**Bu Hesap Şüpheli Görünüyor**__ " + acargüvensiz
             : acargüvenli + " __**Bu Hesap Güvenilir Görünüyor**__ " + acargüvenli
             }\n\n`,
-           new Discord.Attachment("https://cdn.discordapp.com/attachments/764600059680915487/764914960215965696/ezgif-1-30008bd7d89d.gif"));
+           new Discord.Attachment("https://cdn.discordapp.com/attachments/764903176083996682/764930174050893915/ezgif-2-804b7a25b2bb.gif"));
   } catch (err) {
     console.log(err);
   }
@@ -386,7 +386,7 @@ client.on('userUpdate', async (oldUser, newUser) => {
     let embed = new Discord.RichEmbed()
     .setColor(`GREEN`)
     .setDescription(`${acar10} <@${newUser.id}> adlı üye "${acar.tag}" tagımızı aldığı için <@&${acar.familyrol}> rolü verildi!`)
-    client.channels.get(acar.tagallogid).send(embed)
+    client.channels.get(acar.taglogid).send(embed)
 
   }
 }
@@ -403,7 +403,7 @@ client.on('userUpdate', async (oldUser, newUser) => {
     let embed = new Discord.RichEmbed()
     .setColor(`RED`)
     .setDescription(`${acar10} <@${oldUser.id}> adlı üye "${acar.tag}" tagımızı çıkardığı için <@&${acar.familyrol}> rolü alındı!`)
-    client.channels.get(acar.tagallogid).send(embed)
+    client.channels.get(acar.taglogid).send(embed)
 
   }
 }

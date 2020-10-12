@@ -277,7 +277,7 @@ ${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - memb
             ? acargüvensiz + " __**Bu Hesap Şüpheli Görünüyor**__ " + acargüvensiz
             : acargüvenli + " __**Bu Hesap Güvenilir Görünüyor**__ " + acargüvenli
             }\n\n`,
-           new Discord.Attachment("https://cdn.discordapp.com/attachments/764903176083996682/764930174050893915/ezgif-2-804b7a25b2bb.gif"));
+           new Discord.Attachment(acarayarlar.sunucuembedaltıresim));
   } catch (err) {
     console.log(err);
   }

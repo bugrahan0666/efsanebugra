@@ -1,16 +1,16 @@
 const Discord = require('discord.js');
 let acar = require('../acar/botayarlari.json');
 exports.run = async(client, message, args) => {
-  if(message.channel.id !== acar.botkomutkanalid ) return message.channel.send("Lütfen komutu kullanmak için <#"+ acar.botkomutkanalid + "> kanalını kullanınız!").then(message => message.delete(3000))
-  var kullanabilecekRol = "764879982690304012"; // komutu kullanabilecek rolün id
+  if(message.channel.id !== "756263357287366696" ) return message.channel.send("Lütfen komutu kullanmak için <#"+ acar.botkomutkanalid + "> kanalını kullanınız!").then(message => message.delete(3000))
+  var kullanabilecekRol = "768476684646744064"; // komutu kullanabilecek rolün id
   if (!message.member.roles.has(kullanabilecekRol) && !message.member.hasPermission("ADMINISTRATOR")) return;
   if(args[0] !== "yükselt" && args[0] !== "düşür") return message.reply(`\`${this.help.name} yükselt/düşür @üye1, üye2, üye3...\``);
   if(!message.mentions.members.first()) return message.reply('Üyeleri belirtmelisin!');
   if(message.mentions.members.some(x => !x.roles.first || !x.hoistRole)) return message.reply('Etiketlediğin üyeler arasında hiç role sahip olmayan üyeler var!');
 
-  let enÜstYetkiliRolü = "764599927531110441"; // en üst yetkili rolünün id
-  let enAltYetkiliRolü = "764599936691863612"; // en alt yetkili rolünün id
-  let boosterRolü = "764875054814199848"; // sunucu booster rolü varsa idsini girin
+  let enÜstYetkiliRolü = "756243913324363776"; // en üst yetkili rolünün id
+  let enAltYetkiliRolü = "764063639664590871"; // en alt yetkili rolünün id
+  let boosterRolü = ""; // sunucu booster rolü varsa idsini girin
 
   if(args[0] === "yükselt") {
     message.mentions.members.forEach(async x => {

@@ -6,7 +6,7 @@ const db = require('quick.db')
 exports.run = (client, message, args) => {
   message.delete()
   if (!message.member.roles.has(acarayarlar.mutecommandid) && !message.member.hasPermission("ADMINISTRATOR"))
-  if(message.channel.id !== acarayarlar.botkomutkanalid ) return message.channel.send("Lütfen komutu kullanmak için <#"+ acarayarlar.botkomutkanalid + "> kanalını kullanınız!").then(message => message.delete(3000))
+  
   return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hataa!` , `▫ Bu komutu kullanmak için gerekli yetkiye sahip değilsin!`).setColor("RED")).then(msg => msg.delete(5000))
   let kullanici = message.mentions.members.first();
   let log = message.guild.channels.find(c => c.id === acarayarlar.cezaişlemid);

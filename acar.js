@@ -154,16 +154,16 @@ const dcs = function(sayı) {
     .replaceA('8', '8a')
     .replaceA('9', '9a')
     acarkee = acarkee
-    .replaceA("0a", '<a:0_:764913510630162484>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("1a", "<a:1_:764913513247539200>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("2a", "<a:2_:764913516037275648>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("3a", "<a:3_:764913516690800680>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("4a", '<a:4_:764913518923087882>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("5a", '<a:5_:764913518658453525>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("6a", '<a:6_:764913519082340352>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("7a", '<a:7_:764913519321153557>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("8a", '<a:8_:764913518968569898>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
-    .replaceA("9a", '<a:9_:764913519246049330>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("0a", '<a:sifir:766361480618311710>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("1a", "<a:bir:766361479959150652>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("2a", "<a:iki:766361480290631730>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("3a", "<a:uc:766361480634433606>")//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("4a", '<a:dort:766361480244232192>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("5a", '<a:bes:766361479041253438>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("6a", '<a:alti:766361474820997120>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("7a", '<a:yedi:766361480329166879>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("8a", '<a:sekiz:766361480701935646>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
+    .replaceA("9a", '<a:dokuz:766361480575713292>')//hareketli sayı emoji isim ve idleri şekildeki gibi yapın 
   
   return acarkee
 }
@@ -270,7 +270,7 @@ const dcs = function(sayı) {
     await client.channels
     
       .get(acarayarlar.hoşgeldinkanalid)
-      .send(`${acar} **The Ambrøsia'ya Hoşgeldin, ${member} Seninle Beraber ${dcs(member.guild.memberCount)} Kişiyiz!**
+      .send(`${acar} **Volantis'e Hoşgeldin, ${member} Seninle Beraber ${dcs(member.guild.memberCount)} Kişiyiz!**
 ${acar} **Müsait Olduğunda Teyit Odalarından Birine Geçip Kaydını Yaptırabilirsin.**
 ${acar} <@&${acarayarlar.registercommandid}> seninle ilgilenecektir.
 ${acar} Hesabın Oluşturma Tarihi: **${tarih}** \n${new Date().getTime() - member.user.createdAt.getTime() < 15*24*60*60*1000
@@ -371,7 +371,7 @@ client.on('voiceStateUpdate', async (oldMember, newMember) => {
 client.on('message', async message => {
    if(message.author.bot || message.channel.type === "dm") return;
            if (message.content.toLowerCase() === prefix+'tag') {
-    message.channel.sendMessage(acar.tag).then(msg => msg.delete(5000));
+    message.channel.sendMessage(acar.tag)
             
   }
 });
@@ -412,8 +412,8 @@ client.on('userUpdate', async (oldUser, newUser) => {
 
 client.on('message', async (message , member) => {
    if(message.author.bot || message.channel.type === "dm") return;
-           if (message.content.toLowerCase() === '!tag') {
-    message.channel.sendMessage(acar.tag).then(msg => msg.delete(10000));
+           if (message.content.toLowerCase() === 'tag') {
+    message.channel.sendMessage(acar.tag)
   }
 });
 
@@ -495,59 +495,9 @@ client.on("message",async message => {
    }
   }
 });
-client.on("message", msg => {
-  if (msg.content.toLowerCase() === "sa") {
-    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
-  }
-});
 
-client.on("message", msg => {
-  if (msg.content.toLowerCase() === "Sa") {
-    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
-  }
-});
 
-client.on("message", msg => {
-  if (msg.content.toLowerCase() === "Sea") {
-    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
-  }
-});
 
-client.on("message", msg => {
-  if (msg.content.toLowerCase() === "sea") {
-    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
-  }
-});
-
-client.on("message", msg => {
-  if (msg.content.toLowerCase() === "Selamın Aleyküm") {
-    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
-  }
-});
-
-client.on("message", msg => {
-  if (msg.content.toLowerCase() === "selamın aleyküm") {
-    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
-  }
-});
-
-client.on("message", msg => {
-  if (msg.content.toLowerCase() === "Selamun Aleyküm") {
-    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
-  }
-});
-
-client.on("message", msg => {
-  if (msg.content.toLowerCase() === "selamun aleyküm") {
-    msg.reply("Aleyküm Selam Dostum Hoşgeldin !");
-  }
-});
-
-client.on("message", msg => {
-  if (msg.content.toLowerCase() === "bot seni kim yaptı") {
-    msg.reply("Nam-ı Değer Puşşttt ACAR#0001 Yaptı!!");
-  }
-});
 
 
 client.on('message', async message => {
@@ -587,7 +537,6 @@ client.on("message", async message => {
   const reklambankelimeler = [
     "discord.app",
     "discord.gg",
-    "invite",
     "discordapp",
     "discordgg"
   ];
@@ -722,8 +671,6 @@ client.on("message",async message => {
   }
 })
 
-client.on('ready', ()=>{
-if(client.channels.get('764600050873008128')) {
-client.channels.get('764600050873008128').join()
-} 
-})
+client.on("ready", () => {   // KALDIRINCA AKTİF OLUR
+ client.channels.get("766736925679681566").join();   // KALDIRINCA AKTİF OLUR
+}) 

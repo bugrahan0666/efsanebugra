@@ -7,7 +7,6 @@ const acarayarlar = require('../acar/botayarlari.json');
 let acar = require('../acar/botayarlari.json');
 
 exports.run = async (receivedMessage, msg, args) => {
-  if(msg.channel.id !== acarayarlar.botkomutkanalid ) return msg.channel.send("Lütfen komutu kullanmak için <#"+ acarayarlar.botkomutkanalid + "> kanalını kullanınız!").then(msg => msg.delete(3000))
       if (!msg.member.roles.has(acarayarlar.mutecommandid) && !msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.send("Bir yetkili değilsin bu yüzden komutu kullanamazsın!")
 var mod = msg.author
 let reason = args.slice(1).join(" ");
